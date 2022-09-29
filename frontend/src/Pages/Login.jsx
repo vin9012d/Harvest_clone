@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from "react";
 
 export const Login = () => {
-  return (
-    <div>Login</div>
-  )
-}
+  useEffect(() => {
+    document.title = "Sign in";
+  }, []);
+
+  return <div>Login</div>;
+};

@@ -7,11 +7,14 @@ import {
   Icon,
   Input,
   Text,
+  useMediaQuery,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Signup.module.css";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signup } from "../Redux/AuthReducer/actions";
 
 const initState = {
   firstName: "",
@@ -21,10 +24,11 @@ const initState = {
   password: "",
 };
 
-const red = { color: "blue" };
-
 const Signup = () => {
   const [formData, setFormData] = useState(initState);
+  const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { firstName, lastName, company, email, password } = formData;
 
@@ -37,8 +41,19 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(formData);
+    dispatch(signup(formData)).then((r) => {
+      if (r.type === "SIGNUP_SUCCESS" && r.status === true) {
+        return navigate("/login");
+      }
+      alert("User Already Exist! Please login");
+    });
+
+    setFormData({ ...initState });
   };
+
+  useEffect(() => {
+    document.title = "Sign up for Harvest";
+  }, []);
 
   return (
     <Box className={styles.signupContainer}>
@@ -139,16 +154,21 @@ const Signup = () => {
           <Box fontWeight="700" color="#393838f6">
             <form onSubmit={handleSubmit}>
               <Flex
+                direction={isSmallerThan768 ? "column" : "row"}
                 justifyContent="space-between"
-                m="8px 0"
-                alignItems="center"
+                m="10px 0"
+                alignItems={isSmallerThan768 ? "left" : "center"}
               >
-                <label for="">First name</label>
+                <label htmlFor="">First name</label>
                 <Input
+                  mt={isSmallerThan768 ? "5px" : ""}
+                  rounded="5px"
+                  outline="1px solid #73737390"
+                  isRequired
                   color="#333332"
                   fontSize="17px"
                   fontWeight="500"
-                  w="330px"
+                  w={isSmallerThan768 ? "100%" : "330px"}
                   size="md"
                   bgColor="white"
                   focusBorderColor="black"
@@ -159,17 +179,22 @@ const Signup = () => {
                 />
               </Flex>
               <Flex
+                direction={isSmallerThan768 ? "column" : "row"}
                 justifyContent="space-between"
-                m="8px 0"
-                alignItems="center"
+                m="10px 0"
+                alignItems={isSmallerThan768 ? "left" : "center"}
               >
-                <label for="">Last name</label>
+                <label htmlFor="">Last name</label>
                 <Input
+                  mt={isSmallerThan768 ? "5px" : ""}
+                  rounded="5px"
+                  outline="1px solid #73737390"
+                  isRequired
                   color="#333332"
                   fontSize="17px"
                   fontWeight="500"
                   _placeholder={{ color: "black" }}
-                  w="330px"
+                  w={isSmallerThan768 ? "100%" : "330px"}
                   size="md"
                   bgColor="white"
                   focusBorderColor="black"
@@ -180,17 +205,22 @@ const Signup = () => {
                 />
               </Flex>
               <Flex
+                direction={isSmallerThan768 ? "column" : "row"}
                 justifyContent="space-between"
-                m="8px 0"
-                alignItems="center"
+                m="10px 0"
+                alignItems={isSmallerThan768 ? "left" : "center"}
               >
-                <label for="">Company name</label>
+                <label htmlFor="">Company name</label>
                 <Input
+                  mt={isSmallerThan768 ? "5px" : ""}
+                  rounded="5px"
+                  outline="1px solid #73737390"
+                  isRequired
                   color="#333332"
                   fontSize="17px"
                   fontWeight="500"
                   _placeholder={{ color: "black" }}
-                  w="330px"
+                  w={isSmallerThan768 ? "100%" : "330px"}
                   size="md"
                   bgColor="white"
                   focusBorderColor="black"
@@ -201,42 +231,52 @@ const Signup = () => {
                 />
               </Flex>
               <Flex
+                direction={isSmallerThan768 ? "column" : "row"}
                 justifyContent="space-between"
-                m="8px 0"
-                alignItems="center"
+                m="10px 0"
+                alignItems={isSmallerThan768 ? "left" : "center"}
               >
-                <label for="">Work email</label>
+                <label htmlFor="">Work email</label>
                 <Input
+                  mt={isSmallerThan768 ? "5px" : ""}
+                  rounded="5px"
+                  outline="1px solid #73737390"
+                  isRequired
                   color="#333332"
                   fontSize="17px"
                   fontWeight="500"
                   _placeholder={{ color: "black" }}
-                  w="330px"
+                  w={isSmallerThan768 ? "100%" : "330px"}
                   size="md"
                   bgColor="white"
                   focusBorderColor="black"
-                  type="text"
+                  type="email"
                   name="email"
                   value={email}
                   onChange={handleChange}
                 />
               </Flex>
               <Flex
+                direction={isSmallerThan768 ? "column" : "row"}
                 justifyContent="space-between"
-                m="8px 0"
-                alignItems="center"
+                m="10px 0"
+                alignItems={isSmallerThan768 ? "left" : "center"}
               >
-                <label for="">Password</label>
+                <label htmlFor="">Password</label>
                 <Input
+                  mt={isSmallerThan768 ? "5px" : ""}
+                  rounded="5px"
+                  outline="1px solid #73737390"
+                  isRequired
                   color="#333332"
                   fontSize="17px"
                   fontWeight="500"
                   _placeholder={{ color: "black" }}
-                  w="330px"
+                  w={isSmallerThan768 ? "100%" : "330px"}
                   size="md"
                   bgColor="white"
                   focusBorderColor="black"
-                  type="text"
+                  type="password"
                   name="password"
                   value={password}
                   onChange={handleChange}
@@ -256,6 +296,34 @@ const Signup = () => {
                 Create my account
               </Button>
             </form>
+          </Box>
+          <Box color="#737472" mt="20px">
+            <Link to="/login">
+              <Text _hover={{ textDecoration: "underline" }}>
+                Already a customer?{" "}
+                <span style={{ textDecoration: "underline", color: "#4a4b49" }}>
+                  Sign in
+                </span>
+              </Text>
+            </Link>
+            <Box fontSize="13px" mt="18px">
+              <Box>
+                By creating an account, you agree to the Harvest{" "}
+                <span
+                  style={{ cursor: "pointer", textDecoration: "underline" }}
+                >
+                  {" "}
+                  Terms of service
+                </span>{" "}
+                and{" "}
+                <span
+                  style={{ cursor: "pointer", textDecoration: "underline" }}
+                >
+                  {" "}
+                  Privacy policy.
+                </span>
+              </Box>
+            </Box>
           </Box>
         </Box>
       </Container>
