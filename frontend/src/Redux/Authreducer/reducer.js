@@ -1,31 +1,61 @@
-import * as data from "./actiontype"
-let init = {
-    token : "",
-    isAuth:false,
-    isAuthloading:false
+import { getLocalData, saveLocalData } from "../../utils/localStorage";
+import * as types from "./actionTypes";
 
-}
-export const reducer = (oldstate = init,action)=>{
-    
-    const {type,payload} = action
-    switch (type) {
-        case data.USER_LOGIN_REQUEST:
-            return {
-                ...oldstate,isAuth:false,isAuthloading:true
-            };
-        case data.USER_LOGIN_SUCCESS:
-            return {
-                ...oldstate,isAuth:true,isAuthloading:false,token:payload
-            };
-        case data.USER_LOGIN_FAILURE:
-            return {
-                ...oldstate,isAuthloading:false,isAuth:false
-            };
-
-        case data.USER_LOGOUT_SUCCESS:
-            return {
-                ...oldstate,isAuthloading:false,isAuth:false,token:""
-            }
-        default:return oldstate
+const initialState = {
+  isLoading: false,
+  isError: false,
+  isAuth: getLocalData("token") ? true : false,
+  token: getLocalData("token") || "",
+};
+export const reducer = (state = initialState, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case types.SIGNUP_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+      };
     }
-}
+    case types.SIGNUP_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+      };
+    }
+    case types.SIGNUP_FALIURE: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    }
+
+    case types.LOGIN_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case types.LOGIN_SUCCESS: {
+      saveLocalData("token", payload);
+      return {
+        ...state,
+        isLoading: false,
+        isAuth: true,
+        token: payload,
+      };
+    }
+    case types.LOGIN_FALIURE: {
+      return {
+        ...state,
+        isLoading: false,
+        isAuth: false,
+        token: "",
+        isError: false,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+};

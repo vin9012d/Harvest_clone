@@ -1,17 +1,30 @@
-import * as types from "./actiontype";
 import axios from "axios";
-const login = (payload) => (dispatch) => {
-    dispatch({ type: types.USER_LOGIN_REQUEST });
-    return axios({
-        method: "post",
-        url: "/api/login",
-        baseURL: "https://reqres.in",
-        data: payload,
+import * as types from "./actionTypes";
+
+export const register = (payload) => (dispatch) => {
+  dispatch({ type: types.SIGNUP_REQUEST });
+  return axios
+    .post("http://localhost:8080/auth/signup", payload)
+    .then((r) => {
+      dispatch({ type: types.SIGNUP_REQUEST, payload: r.data });
+      return types.SIGNUP_SUCCESS;
     })
-        .then((r) => dispatch({type: types.USER_LOGIN_SUCCESS, payload: r.data.token}))
-        .catch((e) => dispatch({type: types.USER_LOGIN_FAILURE }));
+    .catch((e) => {
+      dispatch({ type: types.SIGNUP_FALIURE });
+      return types.SIGNUP_FALIURE;
+    });
 };
-const logout = (payload) => (dispatch) => {
-    dispatch({ type: types.USER_LOGOUT_SUCCESS });
+
+export const login = (params) => (dispatch) => {
+  dispatch({ type: types.LOGIN_REQUEST });
+  return axios
+    .post("http://localhost:8080/auth/login", params)
+    .then((r) => {
+      dispatch({ type: types.LOGIN_SUCCESS, payload: r.data.token });
+      return types.LOGIN_SUCCESS;
+    })
+    .catch((e) => {
+      dispatch({ type: types.LOGIN_FALIURE });
+      return types.LOGIN_FALIURE;
+    });
 };
-export { login ,logout};
