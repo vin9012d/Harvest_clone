@@ -1,0 +1,97 @@
+.project_filter_main {
+    width: 77%;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.project_heading {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
+}
+
+.project_filter_left {}
+
+.project_filter_right {
+    display: flex;
+    justify-content: space-between;
+    width: 31%;
+    gap: 10px;
+}
+
+.second_navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 77%;
+    margin: auto;
+    
+}
+.second_navbar_parent{
+        background: #eee;
+            box-shadow: inset 0 -1px #bbb;
+            padding: 16px 0;
+}
+.second_navbar_left{
+display: flex;
+gap:4px
+}
+.inp_search {
+    appearance: none;
+        background-clip: padding-box;
+        background-color: #fff;
+        border: 1px solid rgba(29, 30, 28, .3);
+        border-radius: 4px;
+        color: #1d1e1c;
+        display: inline-block;
+        font-size: 15px;
+        height: 34px;
+        line-height: 30px;
+        max-width: 100%;
+        padding: 0 8px;
+        vertical-align: middle;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGFyaWEtbGFiZWw9IlNlYXJjaCBpY29uIj4KICA8Y2lyY2xlIGN4PSIxMSIgY3k9IjExIiByPSI4IiAvPgogIDxsaW5lIHgxPSIyMSIgeTE9IjIxIiB4Mj0iMTYuNjUiIHkyPSIxNi42NSIgLz4KPC9zdmc+Cg==);
+                background-position: 10px 50%;
+                background-repeat: no-repeat;
+                background-size: 16px;
+                padding-left: 32px;
+                transition: width .2s;
+                width: 280px;
+}
+.new_prj_btn {
+    background-clip: border-box;
+    background-color: #188433;
+    border-color: transparent !important;
+    color: #fff;
+    font-weight: 500;
+    border: 1px solid rgba(29, 30, 28, .3);
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 0px 16px;
+    height: 34px;
+    line-height: 34px;
+    /* vertical-align: middle; */
+    width: auto;
+}
+
+.imp_exp_btn {
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid rgba(29, 30, 28, .3);
+    border-radius: 8px;
+    color: #1d1e1c;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 34px;
+    padding: 0 16px;
+    vertical-align: middle;
+    width: auto;
+}
+
+.inp_search:focus{
+    width: 400px;
+}
