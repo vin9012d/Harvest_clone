@@ -1,0 +1,8 @@
+.signupContainer {
+  background-image: url(https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/auras/aura-top-right-corner.png);
+  z-index: -1;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 125% 115%;
+}
