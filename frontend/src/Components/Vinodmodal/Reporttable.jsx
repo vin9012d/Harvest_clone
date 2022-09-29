@@ -24,7 +24,7 @@ export const Reporttable = ({ data }) => {
       <Box>
           <TableContainer>
   <Table size='lg'>
-                  <Thead >
+                  <Thead  backgroundColor="#efefef">
                       <Tr>
                           {heading.map((item,id) => (
                               <Th key={id}>{ item}</Th>
