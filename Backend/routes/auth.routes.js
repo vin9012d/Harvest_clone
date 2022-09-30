@@ -56,10 +56,12 @@ router.post("/login", async (req, res) => {
       return res.status(500).send({ message: "Invalid Credentials" });
     }
 
-    var token = jwt.sign({ email }, process.env.SECRET_KEY);
+    var token = jwt.sign({ email }, process.env.SECRET_KEY, {
+      expiresIn: "2d",
+    });
     res
       .status(200)
-      .send({ message: "Login Successfully", token, status: status });
+      .send({ message: "Login Successfully", token, status: results });
   });
 });
 

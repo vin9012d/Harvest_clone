@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -12,8 +12,30 @@ import {
 import { ReactComponent as IconHarvest } from "../assets/IconHarvest.svg";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { useDispatch } from "react-redux";
+import { login } from "../Redux/AuthReducer/actions";
 
 export const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const payload = {
+      email,
+      password,
+    };
+
+    dispatch(login(payload)).then((r) => {
+      console.log(r);
+    });
+
+    setEmail("");
+    setPassword("");
+  };
+
   useEffect(() => {
     document.title = "Sign in";
   }, []);
@@ -31,7 +53,6 @@ export const Login = () => {
       <Box
         border="1px solid rgb(255, 162, 108);"
         bgColor="rgb(255, 248, 241)"
-        borderImage="inital"
         p="30px"
         mt="25px"
       >
@@ -76,54 +97,55 @@ export const Login = () => {
           </Text>
         </Box>
         <Box>
-          <Input
-            p="8px"
-            rounded="5px"
-            outline="1px solid #73737390"
-            isRequired
-            color="#333332"
-            fontSize="17px"
-            w="100%"
-            size="md"
-            bgColor="white"
-            focusBorderColor="black"
-            type="email"
-            name="firstName"
-            placeholder="Work email"
-            // value={firstName}
-            // onChange={handleChange}
-          />
-          <Input
-            p="8px"
-            mt="10px"
-            rounded="5px"
-            outline="1px solid #73737390"
-            isRequired
-            color="#333332"
-            fontSize="17px"
-            w="100%"
-            size="md"
-            bgColor="white"
-            focusBorderColor="black"
-            type="password"
-            name="firstName"
-            placeholder="Password"
-            // value={firstName}
-            // onChange={handleChange}
-          />
-          <Button
-            mt="18px"
-            type="submit"
-            w="100%"
-            color="#fff"
-            _hover={{ bgColor: "#11742a" }}
-            _active={{ bgColor: "#07561b" }}
-            bgColor="#188433"
-            rounded="10px"
-            fontWeight="700"
-          >
-            Sign in
-          </Button>
+          <form onSubmit={handleSubmit}>
+            <Input
+              p="8px"
+              rounded="5px"
+              outline="1px solid #73737390"
+              isRequired
+              color="#333332"
+              fontSize="17px"
+              w="100%"
+              size="md"
+              bgColor="white"
+              focusBorderColor="black"
+              type="email"
+              placeholder="Work email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <Input
+              p="8px"
+              mt="10px"
+              rounded="5px"
+              outline="1px solid #73737390"
+              isRequired
+              color="#333332"
+              fontSize="17px"
+              w="100%"
+              size="md"
+              bgColor="white"
+              focusBorderColor="black"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button
+              mt="18px"
+              w="100%"
+              type="submit"
+              color="#fff"
+              _hover={{ bgColor: "#11742a" }}
+              _active={{ bgColor: "#07561b" }}
+              bgColor="#188433"
+              rounded="10px"
+              fontWeight="700"
+            >
+              Sign in
+            </Button>
+          </form>
         </Box>
       </Box>
       <Flex
