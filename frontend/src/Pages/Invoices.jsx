@@ -16,8 +16,8 @@ export const Invoices = () => {
           <Tab fontSize='14px' _selected={{fontWeight:"600",borderBottom:"2px solid orangered"}} _hover={{borderBottom:"2px solid orangered",fontWeight:"500"}}>Configure</Tab>
         </TabList>
         <TabPanels>
-          <TabPanel>
-            <Text ml='1rem' align='left' fontSize='32px' fontWeight='600'>Invoices</Text>
+          <TabPanel w='91%' m="auto">
+            <Text align='left' fontSize='32px' fontWeight='600'>Invoices</Text>
             <Overview/>
           </TabPanel>
           {/* <TabPanel>

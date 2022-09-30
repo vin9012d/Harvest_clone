@@ -1,45 +1,70 @@
-import {React,useDisclosure} from "react";
+import { React } from "react";
 import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    Box,
-    Button,
-    Text
-  } from '@chakra-ui/react'
-
+  Box,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  SimpleGrid,
+  Input,
+  InputRightElement,
+  InputGroup,
+  InputLeftElement,
+  Button,
+} from "@chakra-ui/react";
+import { ChevronDownIcon, SmallAddIcon } from "@chakra-ui/icons";
+import { useState } from "react";
 const Overview = () => {
-    // const { isOpen, onOpen, onClose } = useDisclosure()
+  const [toggle,setToggle]=useState(true)
   return (
-    <div>
-      {/* <Button onClick={onOpen}>Open Modal</Button>
+    <Box>
+      <Accordion >
+        <AccordionItem>
+          <h2>
+            <AccordionButton
+              my="1rem"
+              color={"white"}
+              w={"10rem"}
+              h={"2.2rem"}
+              bg="green"
+              borderRadius={"7px"}
+            >
+              <SmallAddIcon mr="6px" />
+              New Invoices
+            </AccordionButton>
+          </h2>
+          <AccordionPanel bg={"orange.100"} border={"1px solid orangered"}>
+            <SimpleGrid columns={{ xl: 4, lg: 3,md:2}} spacing={10} >
+              <Box position={'relative'} left='-5rem' fontWeight={500} >Client</Box>
+              <Box>
+                {toggle ? (
+                  <InputGroup w='100vh' h='12px'>
+                    <Input bg={"white"} placeholder="Choose a client..." />
+                    <InputRightElement children={<ChevronDownIcon />} />
+                  </InputGroup>
+                ) : (
+                  <Input w='100vh' bg={"white"} placeholder="Enter your client's name" />
+                )}
+              </Box>
+              <Box>or</Box>
+              <Box>
+                {toggle ? (
+                  <Button bg={"white"} onClick={()=>setToggle(!toggle)}>
+                    <SmallAddIcon />
+                    New Client
+                  </Button>
+                ) : (
+                  <Button bg={"white"} onClick={()=>setToggle(!toggle)}>Choose a client</Button>
+                )}
+              </Box>
+            </SimpleGrid>
+            <Box></Box>
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Text>erjgsdjf</Text>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal> */}
-
-      <Box>
-
-      </Box>
-    </div>
+      <Box>gfdgdgfdgs</Box>
+    </Box>
   );
 };
 
