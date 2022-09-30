@@ -18,9 +18,7 @@ const heading = Object.keys(data);
                   
           return <>    <TableColumn objkey={heading[id]} key={id} Values={item} />
           
-          </>
-                  
-             
+          </>  
           })}
  </Tr>
 

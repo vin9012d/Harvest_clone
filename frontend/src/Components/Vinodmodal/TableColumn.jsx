@@ -11,10 +11,27 @@ export const TableColumn = ({ Values, objkey }) => {
             textDecoration: "underline"
         }
     }
+
+    if (objkey == "email") {
+        obj = {
+            color: "green",
+            // textDecoration: "underline"
+        }
+    }
+
+
+    
+    
+
+ 
     
   
     return (
       
-        <Td  style={obj} >{Values} {objkey=="hour"? <Progress value={Values} />:"" }</Td>
+        <Td style={obj} >{Values} {objkey == "hour" ? <Progress value={Values} /> : ""}
+           
+        
+    
+        </Td>
   )
 }
