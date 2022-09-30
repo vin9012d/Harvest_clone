@@ -1,11 +1,12 @@
 import React from 'react'
-import {Box, CircularProgress, CircularProgressLabel, Flex, Text} from "@chakra-ui/react"
+import {Box, CircularProgress, CircularProgressLabel, Flex, Icon, Spacer, Text} from "@chakra-ui/react"
 import { Daytypes } from '../Components/Vinodmodal/Daytypes'
 import { Reporttable } from '../Components/Vinodmodal/Reporttable'
 import { Totalhours } from '../Components/Vinodmodal/Totalhours'
 import { Projectsbreakdown } from '../Components/Vinodmodal/Projectsbrekdown'
 import { Taskbreakdown } from '../Components/Vinodmodal/Taskbreakdown'
 import { Teamworktable } from '../Components/Vinodmodal/Teamwektable'
+import {BsArrowLeftSquare,BsArrowRightSquare} from "react-icons/bs"
 export const Report = () => {
 
   const data = [
@@ -73,7 +74,9 @@ export const Report = () => {
 
     <Box>
       <Box >
-        <Flex> <Text>This Week: 26 Sep – 02 Oct 2022</Text> <Daytypes w="140px"/>    </Flex>
+        <Flex alignItems='center'>   <Flex alignItems='center' > <Icon as={BsArrowLeftSquare} w={8} h={8} />
+        <Icon as={BsArrowRightSquare} w={8} h={8} />
+         </Flex> <Text ml='3' fontSize="3xl" fontWeight='bolder'>This Week: 26 Sep – 02 Oct 2022</Text><Spacer />  <Daytypes w="140px" />    </Flex>
         <Flex justifyContent='space-between'> 
           <Box>
             <Text>Total Hours</Text>
