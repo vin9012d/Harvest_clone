@@ -38,6 +38,9 @@ export const Report = () => {
   ]
 
   return (
+
+
+
     <Box>
       <Box >
         <Flex> <Text>This Week: 26 Sep – 02 Oct 2022</Text> <Daytypes w="140px"/>    </Flex>
@@ -67,5 +70,6 @@ export const Report = () => {
       </Box>
       <Reporttable data={data} />
     </Box>
+
   )
 }
