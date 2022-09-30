@@ -18,13 +18,6 @@ export const TableColumn = ({ Values, objkey }) => {
             // textDecoration: "underline"
         }
     }
-
-
-    
-    
-
- 
-    
   
     return (
       

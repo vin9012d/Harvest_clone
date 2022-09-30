@@ -10,6 +10,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "bootstrap": "^5.2.1",
     "framer-motion": "^7.4.0",
     "multi-color-progressbar-with-indicator": "^1.0.0",
     "react": "^18.2.0",
@@ -18,8 +19,10 @@
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
+    "reactstrap": "^9.1.4",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
+    "style-it": "^2.1.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
