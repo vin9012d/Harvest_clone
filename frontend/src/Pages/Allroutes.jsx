@@ -8,7 +8,7 @@ import { Homepage } from "./Homepage";
 import { Invoices } from "./Invoices";
 import { Login } from "./Login";
 import { Manage } from "./Manage";
-import { Projects } from "./Projects";
+import  Projects  from "./Projects";
 import { Report } from "./Report";
 import Signup from "./Signup";
 import { Team } from "./Team";

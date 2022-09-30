@@ -3,7 +3,7 @@ import styles from "./Signup.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { signup } from "../Redux/AuthReducer/actions";
+import {signup} from "../Redux/Authreducer/actions"
 import { ReactComponent as IconHarvest } from "../assets/IconHarvest.svg";
 import {
   Box,
