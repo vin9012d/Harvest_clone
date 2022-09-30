@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { UserModel } = require("../models/user.model");
-var bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const router = Router();
 
 router.post("/signup", async (req, res) => {
@@ -45,7 +46,21 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  res.send();
+  const { email, password } = req.body;
+
+  const user = await UserModel.findOne({ email });
+  const hash = user?.password;
+
+  bcrypt.compare(password, hash, function (err, results) {
+    if (err) {
+      return res.status(500).send({ message: "Invalid Credentials" });
+    }
+
+    var token = jwt.sign({ email }, process.env.SECRET_KEY);
+    res
+      .status(200)
+      .send({ message: "Login Successfully", token, status: status });
+  });
 });
 
 module.exports = router;
