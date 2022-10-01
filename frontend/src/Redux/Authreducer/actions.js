@@ -22,11 +22,13 @@ export const login = (params) => (dispatch) => {
     .post("http://localhost:8080/auth/login", params)
     .then((r) => {
       dispatch({ type: types.LOGIN_SUCCESS, payload: r.data.token });
-      console.log(r.data);
+
       return { type: types.LOGIN_SUCCESS, status: r.status };
     })
     .catch((e) => {
       dispatch({ type: types.LOGIN_FALIURE });
+
       return { type: types.LOGIN_FALIURE, status: e.status, error: e.message };
+
     });
 };
