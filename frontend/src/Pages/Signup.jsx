@@ -4,7 +4,9 @@ import styles from "./Signup.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { signup } from "../Redux/Authreducer/actions";
+
+import {signup} from "../Redux/Authreducer/actions"
+
 import { ReactComponent as IconHarvest } from "../assets/IconHarvest.svg";
 
 import {
@@ -49,8 +51,9 @@ const Signup = () => {
     dispatch(signup(formData)).then((r) => {
       if (r.type === "SIGNUP_SUCCESS" && r.status === true) {
         return navigate("/login");
+      } else if (r.type === "SIGNUP_SUCCESS" && r.status === false) {
+        alert("User Already Registerd, please login ");
       }
-      alert("User Already Exist! Please login");
     });
 
     setFormData({ ...initState });
