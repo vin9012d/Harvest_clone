@@ -6,7 +6,7 @@ import InvoiceTableOpen from "./InvoiceTableOpen";
 
 const OverviewAnalytics = () => {
   return (
-    <Box mt="1.5rem" w="100%" h="auto" border={"1px solid red"}>
+    <Box mt="1.5rem" w="100%" h="auto">
       <Flex
         flexDirection={{ base: "row", lg: "row", md: "column", sm: "column" }}
         flexWrap={"wrap"}
@@ -41,11 +41,26 @@ const OverviewAnalytics = () => {
         </Box>
       </Flex>
       {/* All invoice table */}
-      <Box>
+      <Box mt='1.5rem'>
         <Tabs>
-          <TabList>
-            <Tab>Open</Tab>
-            <Tab>All invoices</Tab>
+          <TabList gap='1rem'>
+            <Tab
+             fontSize="14px"
+             _selected={{
+               fontWeight: "600",
+               borderBottom: "2px solid #ff8000",
+             }}
+             _hover={{ borderBottom: "2px solid #ff8000", fontWeight: "500" }}
+            >Open</Tab>
+
+            <Tab
+             fontSize="14px"
+             _selected={{
+               fontWeight: "600",
+               borderBottom: "2px solid #ff8000",
+             }}
+             _hover={{ borderBottom: "2px solid #ff8000", fontWeight: "500" }}
+            >All invoices</Tab>
           </TabList>
 
           <TabPanels>
