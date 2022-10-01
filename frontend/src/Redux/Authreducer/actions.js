@@ -8,11 +8,11 @@ export const signup = (payload) => (dispatch) => {
     .then((r) => {
       dispatch({ type: types.SIGNUP_REQUEST, payload: r.data });
       console.log(r.data);
-      return { type: types.SIGNUP_SUCCESS, status: r.status };
+      return { type: types.SIGNUP_SUCCESS, status: r.data.status };
     })
     .catch((e) => {
       dispatch({ type: types.SIGNUP_FALIURE });
-      return { type: types.SIGNUP_FALIURE, status: e.status };
+      return { type: types.SIGNUP_FALIURE, status: false };
     });
 };
 
@@ -23,12 +23,14 @@ export const login = (params) => (dispatch) => {
     .then((r) => {
       dispatch({ type: types.LOGIN_SUCCESS, payload: r.data.token });
 
-      return { type: types.LOGIN_SUCCESS, status: r.status };
+      console.log(r.data);
+      return { type: types.LOGIN_SUCCESS, token: r.data?.tokens };
     })
     .catch((e) => {
       dispatch({ type: types.LOGIN_FALIURE });
+      return { type: types.LOGIN_FALIURE, status: false, error: e.message };
 
-      return { type: types.LOGIN_FALIURE, status: e.status, error: e.message };
+
 
     });
 };
