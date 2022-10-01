@@ -11,6 +11,7 @@ const SecondaryNavbar = () => {
         justifyContent="space-around"
         alignItems={"center"}
         position={"fixed"}
+        top='0'
         w="100%"
         h="3rem"
         bg="#ff6600"

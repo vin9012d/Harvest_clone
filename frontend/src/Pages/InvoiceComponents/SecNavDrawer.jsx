@@ -3,20 +3,21 @@ import {
   Drawer,
   DrawerBody,
   DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
   Button,
+  Box,
 } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
 
 function SecNavDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Button variant={"ghost"} onClick={onOpen}>
+      <Button variant={"ghost"} onClick={onOpen} _hover={{ variant: "ghost" }}>
         <HamburgerIcon
           ml="-2rem"
           h={8}
@@ -31,19 +32,30 @@ function SecNavDrawer() {
           }}
         />
       </Button>
-      <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose} bg="green">
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent bg="black" color="white">
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
 
-          <DrawerBody></DrawerBody>
+          <DrawerBody my="2rem">
+            <NavLink to="/time">Time</NavLink>
+            <Box my="5px" borderBottom={"1px solid grey"}></Box>
+            <NavLink to="/expenses">Expenses</NavLink>
+            <Box my="5px" borderBottom={"1px solid grey"}></Box>
+            <NavLink to="/projects">Projects</NavLink>
+            <Box my="5px" borderBottom={"1px solid grey"}></Box>
+            <NavLink to="/team">Team</NavLink>
+            <Box my="5px" borderBottom={"1px solid grey"}></Box>
+            <NavLink to="/report">Reports</NavLink>
+            <Box my="5px" borderBottom={"1px solid grey"}></Box>
+            <NavLink to="/invoices">Invoices</NavLink>
+            <Box my="5px" borderBottom={"1px solid grey"}></Box>
+            <NavLink to="/manages">Manage</NavLink>
+            <Box my="5px" borderBottom={"1px solid grey"}></Box>
+          </DrawerBody>
 
           <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
+            {/* In case of adding profile and sign out */}
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
