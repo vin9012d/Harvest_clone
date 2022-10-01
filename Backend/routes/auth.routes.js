@@ -48,21 +48,25 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await UserModel.findOne({ email });
-  const hash = user?.password;
+  const user = await UserModel.find({ email });
+  const hash = user[1]?.password;
 
-  bcrypt.compare(password, hash, function (err, results) {
-    if (err) {
-      return res.status(500).send({ message: "Invalid Credentials" });
-    }
-
-    var token = jwt.sign({ email }, process.env.SECRET_KEY, {
-      expiresIn: "2d",
+  if (user.length === 1) {
+    bcrypt.compare(password, hash, function (err, results) {
+      if (err) {
+        return res.status(400).send({ message: "Invalid Credentials" });
+      } else if (results) {
+        var token = jwt.sign({ email }, process.env.SECRET_KEY, {
+          expiresIn: "2d",
+        });
+        return res
+          .status(200)
+          .send({ message: "Login Successfully", token, status: results });
+      }
     });
-    res
-      .status(200)
-      .send({ message: "Login Successfully", token, status: results });
-  });
+  } else {
+    return res.status(400).send({ message: "Invalid Credentials" });
+  }
 });
 
 module.exports = router;

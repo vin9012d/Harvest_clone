@@ -10,7 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { ReactComponent as IconHarvest } from "../assets/IconHarvest.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { login } from "../Redux/AuthReducer/actions";
@@ -19,6 +19,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,10 +31,12 @@ export const Login = () => {
 
     dispatch(login(payload)).then((r) => {
       console.log(r);
+      if (r.type === "LOGIN_SUCCESS") {
+        setEmail("");
+        setPassword("");
+        navigate(-1);
+      }
     });
-
-    setEmail("");
-    setPassword("");
   };
 
   useEffect(() => {
