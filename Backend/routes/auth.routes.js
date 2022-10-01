@@ -1,7 +1,10 @@
 const { Router } = require("express");
 const { UserModel } = require("../models/user.model");
+
+
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
 const router = Router();
 
 router.post("/signup", async (req, res) => {
@@ -46,6 +49,7 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+
   const { email, password } = req.body;
 
   const user = await UserModel.find({ email });
@@ -64,9 +68,14 @@ router.post("/login", async (req, res) => {
           .send({ message: "Login Successfully", token, status: results });
       }
     });
-  } else {
-    return res.status(400).send({ message: "Invalid Credentials" });
-  }
+
+
+    res
+      .status(200)
+      .send({ message: "Login Successfully", token, status: results });
+  });
+
+
 });
 
 module.exports = router;

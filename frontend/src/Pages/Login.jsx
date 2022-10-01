@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import {
   Box,
@@ -39,9 +40,11 @@ export const Login = () => {
     });
   };
 
+
   useEffect(() => {
     document.title = "Sign in";
   }, []);
+
 
   return (
     <Container maxW="550px">
@@ -170,4 +173,5 @@ export const Login = () => {
       </Flex>
     </Container>
   );
+
 };
