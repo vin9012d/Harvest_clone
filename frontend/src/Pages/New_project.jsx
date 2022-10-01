@@ -40,16 +40,8 @@ const NewProject = () => {
         <h1 className={new_project.new_prj_heading}>New project</h1>
         <hr></hr>
         <div className={new_project.new_prj_box2}>
-          <div className={new_project.new_prj_box2_left}>
+          <div className={new_project.new_prj_box2_row}>
             <p className={new_project.new_prj_box2_left_1st}>Client</p>
-
-            <p className={new_project.new_prj_box2_left_2nd}>Project name</p>
-            <p className={new_project.new_prj_box2_left_3rd}>Project code</p>
-            <p className={new_project.new_prj_box2_left_4th}>Dates</p>
-            <p className={new_project.new_prj_box2_left_5th}>Notes</p>
-            <p className={new_project.new_prj_box2_left_6th}>Permissions</p>
-          </div>
-          <div className={new_project.new_prj_box2_right}>
             <div className={new_project.new_prj_box2_right_1st}>
               <Popover width={"90%"}>
                 <PopoverTrigger>
@@ -79,22 +71,32 @@ const NewProject = () => {
                 </PopoverContent>
               </Popover>
             </div>
+          </div>
+          <div className={new_project.new_prj_box2_row}>
+            <p className={new_project.new_prj_box2_left}>Project name</p>
             <div className={new_project.new_prj_box2_right_2nd}>
               <Input focusBorderColor="black" />
             </div>
+          </div>
+          <div className={new_project.new_prj_box2_row}>
+            <p className={new_project.new_prj_box2_left_3rd}>Project code</p>
             <div className={new_project.new_prj_box2_right_3rd}>
               <Input width={"20%"} focusBorderColor="black" />
             </div>
+          </div>
+          <div className={new_project.new_prj_box2_row}>
+            <p className={new_project.new_prj_box2_left}>Dates</p>
             <div className={new_project.new_prj_box2_right_4th}>
               <Input
                 htmlSize={10}
                 height="50px"
                 width="auto"
                 focusBorderColor="black"
+                marginRight={"10px"}
                 placeholder="start to"
                 type={"date"}
               />
-              <p width="20px">to</p>
+              <p >to</p>
               <Input
                 htmlSize={10}
                 height="50px"
@@ -102,8 +104,12 @@ const NewProject = () => {
                 focusBorderColor="black"
                 placeholder="ends to"
                 type={"date"}
+                marginLeft="10px"
               />
             </div>
+          </div>
+          <div className={new_project.new_prj_box2_row}>
+            <p className={new_project.new_prj_box2_left}>Notes</p>
             <div className={new_project.new_prj_box2_right_5th}>
               <Textarea focusBorderColor="black" />
               <p>
@@ -114,6 +120,9 @@ const NewProject = () => {
                 Settings.
               </p>
             </div>
+          </div>
+          <div className={new_project.new_prj_box2_row}>
+            <p className={new_project.new_prj_box2_left}>Permissions</p>
             <div className={new_project.new_prj_box2_right_6th}>
               <RadioGroup>
                 <Radio colorScheme="orange" size="md" value="1">
@@ -171,7 +180,158 @@ const NewProject = () => {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <p>one!</p>
+                  <div className={new_project.new_prj_type_right_2nd_form}>
+                    <div
+                      className={new_project.new_prj_type_right_2nd_form_2nddiv}
+                    >
+                      <p
+                        className={
+                          new_project.new_prj_type_right_2nd_form_title
+                        }
+                      >
+                        Billable rates
+                      </p>
+                      <p
+                        className={new_project.new_prj_type_right_2nd_form_text}
+                      >
+                        We need billable rates to determine how much of your
+                        budget is spent.
+                      </p>
+                      <div
+                        className={
+                          new_project.new_prj_type_right_2nd_form_2nddiv_check
+                        }
+                      >
+                        <Select
+                          bg={"white"}
+                          width={"20%"}
+                          focusBorderColor="black"
+                        >
+                          <option value="no budget">No budget</option>
+                          <hr
+                            className={
+                              new_project.new_prj_type_right_2nd_form_2nddiv_hr
+                            }
+                          />
+                          <option value="total project fees">
+                            Total project fees
+                          </option>
+                          <option value="fees per task">Fees per task</option>
+                          <hr
+                            className={
+                              new_project.new_prj_type_right_2nd_form_2nddiv_hr
+                            }
+                          />
+                          <option value="totl project hours">
+                            Total project hours
+                          </option>
+                          <option value="hours per task">Hours per task</option>
+                          <option value="Hours per person">
+                            Hours per person
+                          </option>
+                        </Select>
+                        <label> $</label>
+                        <Input
+                          height={"40px"}
+                          width={"10%"}
+                          focusBorderColor="black"
+                          bg={"white"}
+                        />
+                        <label>per hour</label>
+                      </div>
+                    </div>
+
+                    <div
+                      className={new_project.new_prj_type_right_2nd_form_2nddiv}
+                    >
+                      <p
+                        className={
+                          new_project.new_prj_type_right_2nd_form_title
+                        }
+                      >
+                        Budget
+                      </p>
+                      <p
+                        className={new_project.new_prj_type_right_2nd_form_text}
+                      >
+                        Set a budget to track project progress.
+                      </p>
+                      <div
+                        className={
+                          new_project.new_prj_type_right_2nd_form_2nddiv_check
+                        }
+                      >
+                        <Select
+                          bg={"white"}
+                          width={"20%"}
+                          focusBorderColor="black"
+                        >
+                          <option value="no budget">No budget</option>
+                          <hr
+                            className={
+                              new_project.new_prj_type_right_2nd_form_2nddiv_hr
+                            }
+                          />
+                          <option value="total project fees">
+                            Total project fees
+                          </option>
+                          <option value="fees per task">Fees per task</option>
+                          <hr
+                            className={
+                              new_project.new_prj_type_right_2nd_form_2nddiv_hr
+                            }
+                          />
+                          <option value="totl project hours">
+                            Total project hours
+                          </option>
+                          <option value="hours per task">Hours per task</option>
+                          <option value="Hours per person">
+                            Hours per person
+                          </option>
+                        </Select>
+                        <Input
+                          height={"35px"}
+                          width={"10%"}
+                          focusBorderColor="black"
+                          bg={"white"}
+                          marginLeft="10px"
+                        />
+                        <label> hours</label>
+                      </div>
+                      <div
+                        className={
+                          new_project.new_prj_type_right_2nd_form_2nddiv_check
+                        }
+                      >
+                        <Checkbox bg={"white"} size={"lg"} colorScheme="red" />
+                        <span>
+                          Budget includes billable and non-billable project
+                          expenses.
+                        </span>
+                      </div>
+                      <div
+                        className={
+                          new_project.new_prj_type_right_2nd_form_2nddiv_check
+                        }
+                      >
+                        <Checkbox
+                          bg={"white"}
+                          size={"lg"}
+                          colorScheme="red"
+                        ></Checkbox>
+                        <span>
+                          Send email alerts if project exceeds
+                          <Input
+                            height={"30px"}
+                            width={"13%"}
+                            focusBorderColor="black"
+                            bg={"white"}
+                          />
+                          % of budget.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </TabPanel>
                 <TabPanel>
                   <div className={new_project.new_prj_type_right_2nd_form}>
@@ -225,13 +385,21 @@ const NewProject = () => {
                         width={"20%"}
                         focusBorderColor="black"
                       >
-                        <option value="no budget">No budget</option>
-                        <hr />
+                        <option value="no budget">No budget </option>
+                        <hr
+                          className={
+                            new_project.new_prj_type_right_2nd_form_2nddiv_hr
+                          }
+                        />
                         <option value="total project fees">
                           Total project fees
                         </option>
                         <option value="fees per task">Fees per task</option>
-                        <hr />
+                        <hr
+                          className={
+                            new_project.new_prj_type_right_2nd_form_2nddiv_hr
+                          }
+                        />
                         <option value="totl project hours">
                           Total project hours
                         </option>
@@ -273,7 +441,9 @@ const NewProject = () => {
                         </span>
                       </div>
                     </div>
-                    <div>
+                    <div
+                      className={new_project.new_prj_type_right_2nd_form_2nddiv}
+                    >
                       <p
                         className={
                           new_project.new_prj_type_right_2nd_form_title
@@ -298,12 +468,22 @@ const NewProject = () => {
                           focusBorderColor="black"
                         >
                           <option value="no budget">No budget</option>
-                          <hr />
+                          <hr
+                            className={
+                              new_project.new_prj_type_right_2nd_form_2nddiv_hr
+                            }
+                          />
                           <option value="total project fees">
                             Total project fees
                           </option>
-                          <option value="fees per task">Fees per task</option>
-                          <hr />
+                          <option marginBottom="10px" value="fees per task">
+                            Fees per task
+                          </option>
+                          <hr
+                            className={
+                              new_project.new_prj_type_right_2nd_form_2nddiv_hr
+                            }
+                          />
                           <option value="totl project hours">
                             Total project hours
                           </option>
@@ -312,14 +492,14 @@ const NewProject = () => {
                             Hours per person
                           </option>
                         </Select>
-                        <label > $</label>
+                        <label> $</label>
                         <Input
                           height={"40px"}
                           width={"10%"}
                           focusBorderColor="black"
                           bg={"white"}
                         />
-                        <label >per hour</label>
+                        <label>per hour</label>
                       </div>
                     </div>
                   </div>

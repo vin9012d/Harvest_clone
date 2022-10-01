@@ -1,3 +1,11 @@
+
+import React, { useEffect, useState } from "react";
+import styles from "./Signup.module.css";
+import { FcGoogle } from "react-icons/fc";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signup } from "../Redux/Authreducer/actions";
+import { ReactComponent as IconHarvest } from "../assets/IconHarvest.svg";
 import {
   Box,
   Button,
@@ -9,12 +17,6 @@ import {
   Text,
   useMediaQuery,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import styles from "./Signup.module.css";
-import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { signup } from "../Redux/Authreducer/actions";
 
 const initState = {
   firstName: "",
@@ -56,7 +58,13 @@ const Signup = () => {
   }, []);
 
   return (
+
     <Box className={styles.signupContainer}>
+    <Box
+      className={styles.signupContainer}
+      h={isSmallerThan768 ? "100%" : "100vh"}
+    >
+
       <Container color="#1d1e1c" maxW="550px">
         <Box p="12px 0px">
           <Box>
@@ -94,6 +102,7 @@ const Signup = () => {
                   d="M27.6 64V40.6h8a4 4 0 0 0 3.8-4V24.7H27.6a4 4 0 0 0-4 4V64h4ZM51.3 1h-3.9v15.8a4 4 0 0 0-4 3.9V64h4a4 4 0 0 0 3.9-4V1ZM15.8 64h-4V5a3.9 3.9 0 0 1 4-3.9h4v43.3a4 4 0 0 1-4 4V64Z"
                 ></path>
               </svg>
+              <IconHarvest />
             </Link>
           </Box>
           <Box p="45px 0px 25px">
@@ -328,6 +337,7 @@ const Signup = () => {
         </Box>
       </Container>
     </Box>
+   </Box>
   );
 };
 
