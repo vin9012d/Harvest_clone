@@ -94,6 +94,7 @@ export const Invoices = () => {
               <Text align="left" fontSize="32px" fontWeight="600">
                 Invoices
               </Text>
+              {/* Invoices functionality start here */}
               <Accordion allowToggle>
                 <AccordionItem>
                   <h2>
