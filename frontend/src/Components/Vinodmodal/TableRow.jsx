@@ -5,8 +5,8 @@ import { TableColumn } from './TableColumn';
 export const TableRow = ({data}) => {
 
     const values = Object.values(data);
-console.log(data,'data')
-console.log(values,'values');
+    console.log(data,'data')
+    console.log(values,'values');
 
 const heading = Object.keys(data);
   return (
@@ -16,11 +16,9 @@ const heading = Object.keys(data);
       }}>          {values.map((item,id) => {
            
                   
-          return <>    <TableColumn objkey={heading[id]} key={id} Values={item} />
+          return <>    <TableColumn objkey={heading[id]} key={id} Values={item}  />
           
-          </>
-                  
-             
+          </>  
           })}
  </Tr>
 
