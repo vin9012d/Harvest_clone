@@ -24,12 +24,14 @@ import { useState } from "react";
 import { ChevronDownIcon, SmallAddIcon } from "@chakra-ui/icons";
 import Overview from "./InvoiceComponents/Tab-bar/Overview";
 import OverviewAnalytics from "./InvoiceComponents/Tab-bar/OverviewAnalytics";
+import SecondaryFooter from "./SecondaryFooter";
+import SecondaryNavbar from "./SecondaryNavbar";
 
 export const Invoices = () => {
   const [toggle, setToggle] = useState(true);
   return (
     <div>
-      <h1>Navbar</h1>
+      <SecondaryNavbar/>
       {/* Tab bar start here */}
       <Tabs>
         <TabList gap="1rem">
@@ -38,9 +40,9 @@ export const Invoices = () => {
             ml="5rem"
             _selected={{
               fontWeight: "600",
-              borderBottom: "2px solid orangered",
+              borderBottom: "2px solid #ff8000",
             }}
-            _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+            _hover={{ borderBottom: "2px solid #ff8000", fontWeight: "500" }}
           >
             Overview
           </Tab>
@@ -48,9 +50,9 @@ export const Invoices = () => {
             fontSize="14px"
             _selected={{
               fontWeight: "600",
-              borderBottom: "2px solid orangered",
+              borderBottom: "2px solid #ff8000",
             }}
-            _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+            _hover={{ borderBottom: "2px solid #ff8000", fontWeight: "500" }}
           >
             Report
           </Tab>
@@ -58,9 +60,9 @@ export const Invoices = () => {
             fontSize="14px"
             _selected={{
               fontWeight: "600",
-              borderBottom: "2px solid orangered",
+              borderBottom: "2px solid #ff8000",
             }}
-            _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+            _hover={{ borderBottom: "2px solid #ff8000", fontWeight: "500" }}
           >
             Recurring
           </Tab>
@@ -68,9 +70,9 @@ export const Invoices = () => {
             fontSize="14px"
             _selected={{
               fontWeight: "600",
-              borderBottom: "2px solid orangered",
+              borderBottom: "2px solid #ff8000",
             }}
-            _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+            _hover={{ borderBottom: "2px solid #ff8000", fontWeight: "500" }}
           >
             Retainers
           </Tab>
@@ -78,9 +80,9 @@ export const Invoices = () => {
             fontSize="14px"
             _selected={{
               fontWeight: "600",
-              borderBottom: "2px solid orangered",
+              borderBottom: "2px solid #ff8000",
             }}
-            _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+            _hover={{ borderBottom: "2px solid #ff8000", fontWeight: "500" }}
           >
             Configure
           </Tab>
@@ -106,7 +108,7 @@ export const Invoices = () => {
                     New Invoices
                   </AccordionButton>
                 </h2>
-                <AccordionPanel bg={"#fff2e6"} border={"1px solid orangered"}>
+                <AccordionPanel bg={"#fff2e6"} border={"1px solid #ff8000"}>
                   <Box display="flex" gap={"1rem"} flexWrap="wrap">
                     <Box display="flex" alignItems="center" fontWeight={500}>
                       Client
@@ -203,7 +205,7 @@ export const Invoices = () => {
         </TabPanels>
       </Tabs>
       {/* Footer page add here */}
-      <Box>Footer page</Box>
+      <Box><SecondaryFooter/></Box>
     </div>
   );
 };
