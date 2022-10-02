@@ -24,7 +24,8 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    navigate("/manages")
+    return;
     const payload = {
       email,
       password,

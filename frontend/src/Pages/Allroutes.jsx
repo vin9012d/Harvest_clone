@@ -38,7 +38,7 @@ export const Allroutes = () => {
       <Route path="/manages" element={<Manage />} />
       <Route path="/addclient" element={<AddClient />} />
       <Route path="/edit/:edit_id" element={<EditClient />} />
-      <Route path='/report/:name' element={<Reportname />} />
+      <Route path='/reports/:name' element={<Reportname />} />
 
     </Routes>
   );

@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import {Box, CircularProgress, CircularProgressLabel, Flex, Icon, Spacer, Text} from "@chakra-ui/react"
+import {Box, CircularProgress, CircularProgressLabel, Flex, Icon, Spacer, Text,  Tab, TabList, TabPanel, TabPanels, Tabs,} from "@chakra-ui/react"
 import { Daytypes } from '../Components/Vinodmodal/Daytypes'
 import { Reporttable } from '../Components/Vinodmodal/Reporttable'
 import { Totalhours } from '../Components/Vinodmodal/Totalhours'
@@ -8,6 +8,8 @@ import { Taskbreakdown } from '../Components/Vinodmodal/Taskbreakdown'
 import { Teamworktable } from '../Components/Vinodmodal/Teamwektable'
 import {BsArrowLeftSquare,BsArrowRightSquare} from "react-icons/bs"
 import { FormText } from 'reactstrap'
+import SecondaryNavbar from './SecondaryNavbar'
+import SecondaryFooter from './SecondaryFooter'
 export const Report = () => {
   const [clients, setClients] = useState([]);
   const [project, setProject] = useState([]);
@@ -116,6 +118,7 @@ export const Report = () => {
 
       obj[res[i].project_name].billable = obj[res[i].project_name].billable + Billable;
       obj[res[i].project_name].notbillable = obj[res[i].project_name].notbillable + Notbillable;
+      obj[res[i].project_name].hours = obj[res[i].project_name].notbillable + obj[res[i].project_name].billable;
       obj[res[i].project_name].total = obj[res[i].project_name].total + Total;
     }
 let vinu=[]
@@ -137,7 +140,7 @@ let vinu=[]
       let Total = 0;
 
       if (obj[res[i].client_name] == undefined) {
-        obj[res[i].client_name]={hours:0,billable:0,notbillable:0,total:0,project_name:res[i].project_name}
+        obj[res[i].client_name]={hours:0,billable:0,notbillable:0,total:0}
       }
   
       for(let j = 0; j < res[i].work.length; j++) {
@@ -150,6 +153,7 @@ let vinu=[]
 
       obj[res[i].client_name].billable = obj[res[i].client_name].billable + Billable;
       obj[res[i].client_name].notbillable = obj[res[i].client_name].notbillable + Notbillable;
+      obj[res[i].client_name].hours = obj[res[i].client_name].notbillable + obj[res[i].client_name].billable;
       obj[res[i].client_name].total = obj[res[i].client_name].total + Total;
     }
 let vinu=[]
@@ -180,7 +184,7 @@ let vinu=[]
       let Total = 0;
         
         if (obj[vin.task] == undefined) {
-          obj[vin.task]={ client_name:res[i].client_name, hours:0,billable:0,notbillable:0,total:0,project_name:res[i].project_name}
+          obj[vin.task]={ client_name:res[i].client_name,project_name:res[i].project_name ,hours:0,billable:0,notbillable:0,total:0}
         }
         
         console.log(vin,'vin')
@@ -191,8 +195,11 @@ let vinu=[]
         
         
           obj[vin.task].billable = obj[vin.task].billable + Billable;
-          obj[vin.task].notbillable = obj[vin.task].notbillable + Notbillable;
-          obj[vin.task].total = obj[vin.total] + Total;
+        obj[vin.task].notbillable = obj[vin.task].notbillable + Notbillable;
+        obj[vin.task].hours = obj[vin.task].billable + obj[vin.task].notbillable;
+        
+        
+          obj[vin.task].total = obj[vin.task].total + Total;
     
       }
 
@@ -200,9 +207,9 @@ let vinu=[]
     }
 let vinu=[]
     for (let key in obj) {
-  vinu.push({clientName:key, ...obj[key]})
+  vinu.push({task_name:key, ...obj[key]})
     }
-    console.log(obj,'vinubhai task object')
+    console.log(obj,'vinubhai task object') 
     console.log(vinu,'vinubhai task')
     return vinu;
   }
@@ -217,7 +224,7 @@ let vinu=[]
       let Total = 0;
 
       if (obj[res[i].emp_name] == undefined) {
-        obj[res[i].emp_name]={hours:0, client_name:res[i].client_name ,billable:0,notbillable:0,total:0,project_name:res[i].project_name}
+        obj[res[i].emp_name]={ project_name:res[i].project_name, client_name:res[i].client_name ,hours:0,billable:0,notbillable:0,total:0}
       }
   
       for(let j = 0; j < res[i].work.length; j++) {
@@ -230,11 +237,13 @@ let vinu=[]
 // console.log(obj,'teams')
       obj[res[i].emp_name].billable = obj[res[i].emp_name].billable + Billable;
       obj[res[i].emp_name].notbillable = obj[res[i].emp_name].notbillable + Notbillable;
+      obj[res[i].emp_name].hours= obj[res[i].emp_name].notbillable+obj[res[i].emp_name].billable
+
       obj[res[i].emp_name].total = obj[res[i].emp_name].total + Total;
     }
 let vinu=[]
     for (let key in obj) {
-  vinu.push({clientName:key, ...obj[key]})
+  vinu.push({team_name:key, ...obj[key]})
     }
     console.log(obj,'vinubhai team object')
     console.log(vinu,'vinubhai team')
@@ -282,10 +291,16 @@ let vinu=[]
 
 
     <Box>
-      <Box >
+      <Box>
+
+        <SecondaryNavbar />
+      </Box>
+      <Box m='auto' width={["90%","90%","80%"]}>   <Box mt='3.5rem'>
         <Flex alignItems='center'>   <Flex alignItems='center' > <Icon as={BsArrowLeftSquare} w={8} h={8} />
         <Icon as={BsArrowRightSquare} w={8} h={8} />
-         </Flex> <Text ml='3' fontSize="3xl" fontWeight='bolder'>This Week: 26 Sep – 02 Oct 2022</Text><Spacer />  <Daytypes w="140px" />    </Flex>
+        </Flex> <Text ml='3' fontSize="3xl" fontWeight='bolder'>This Week: 26 Sep – 02 Oct 2022</Text><Spacer />  <Daytypes w="140px" />    </Flex>
+        
+        <hr  style={{marginBottom:"20px",marginTop:'12px'}}/>
         <Flex justifyContent='space-between'> 
           <Box>
             <Text>Total Hours</Text>
@@ -313,7 +328,7 @@ let vinu=[]
               
             </Flex>
  
-          <Text>38.89</Text>
+        
           </Box>
          
           <Box>
@@ -333,16 +348,54 @@ let vinu=[]
       {/* <Totalhours width="400px" />
     
       <Reporttable data={data} /> */}
-   {  project.length>0 && <Reporttable data={project} />}
+   {/* {  project.length>0 && <Reporttable data={project} />}
    {  clients.length>0 && <Reporttable data={clients} />}
    {  task.length>0 && <Reporttable data={task} />}
-   {  team.length>0 && <Reporttable data={team} />}
-      <Teamworktable data={vinod} />
+   {  team.length>0 && <Reporttable data={team} />} */}
+      {/* <Teamworktable data={vinod} />
       <Totalhours width="400px" />
       <Taskbreakdown width="400px" />
-      <Projectsbreakdown width="400px" />
-    
-    </Box>
+      <Projectsbreakdown width="400px" /> */}
+      
+       <Box mb='60px' mt='20px'>
+     
+        
+     <Tabs >
+<TabList>
+         <Tab _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+          _selected={{ borderBottom: "2px solid orangered", fontWeight: "500" }}>Clients</Tab>
+         <Tab _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+          _selected={{ borderBottom: "2px solid orangered", fontWeight: "500" }}>Projects</Tab>
+         <Tab _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+          _selected={{ borderBottom: "2px solid orangered", fontWeight: "500" }}>Tasks</Tab>
+         <Tab _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+          _selected={{ borderBottom: "2px solid orangered", fontWeight: "500" }}>Team</Tab>
 
+</TabList>
+<TabPanels  mt='30px'>
+            <TabPanel>
+            {  clients.length>0 && <Reporttable data={clients} />}
+
+ </TabPanel>
+ <TabPanel>
+ {  project.length>0 && <Reporttable data={project} />}
+ </TabPanel>
+ <TabPanel>
+ {  task.length>0 && <Reporttable data={task} />}
+ </TabPanel>
+ <TabPanel>
+ {  team.length>0 && <Reporttable data={team} />}
+ </TabPanel>
+
+
+</TabPanels>
+</Tabs>
+   </Box > 
+      <Box>
+        <SecondaryFooter />
+      </Box>
+    </Box>
+    </Box>
+   
   )
 }

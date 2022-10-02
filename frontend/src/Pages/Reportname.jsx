@@ -8,6 +8,8 @@ import { Taskbreakdown } from '../Components/Vinodmodal/Taskbreakdown'
 import { Teamworktable } from '../Components/Vinodmodal/Teamwektable'
 import { BsArrowLeftSquare, BsArrowRightSquare } from "react-icons/bs"
 import { FormText } from 'reactstrap'
+import SecondaryFooter from './SecondaryFooter'
+import SecondaryNavbar from './SecondaryNavbar'
 export const Reportname = () => {
     const [clients, setClients] = useState([]);
     const [project, setProject] = useState([]);
@@ -282,7 +284,13 @@ export const Reportname = () => {
 
 
         <Box>
-            <Box  mt='8' >
+
+
+<Box>
+
+<SecondaryNavbar />
+</Box>
+            <Box  mt='3.5rem' >
                 <Flex alignItems='center'>   <Flex alignItems='center' > <Icon as={BsArrowLeftSquare} w={8} h={8} />
                     <Icon as={BsArrowRightSquare} w={8} h={8} />
                 </Flex> <Text ml='3' fontSize="3xl" fontWeight='bolder'>This Week: 26 Sep – 02 Oct 2022</Text><Spacer />  <Daytypes w="140px" />    </Flex>
@@ -356,7 +364,9 @@ export const Reportname = () => {
                 <Box mt={["30px",'30px','none']} width={['80%','80%',"60%"]}>    <Teamworktable data={vinod} /></Box>
 
             </Flex>
-
+            <Box>
+        <SecondaryFooter />
+      </Box>
 
         </Box>
 

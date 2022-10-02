@@ -9,8 +9,8 @@ import { Box,  Table,
 import React from "react";
 
 const data = [
-  { date: "01/01/2022", id: 1, client: "Ranajit Das", balance: 5000 },
-  { date: "03/02/2022", id: 2, client: "Jay Das", balance: 9000 },
+  { date: "01/01/2022", id: 1, client: "Ranajit Das", balance: 1500 },
+  { date: "03/02/2022", id: 2, client: "Jay Das", balance: 1300 },
 ];
 
 // coming from overview section

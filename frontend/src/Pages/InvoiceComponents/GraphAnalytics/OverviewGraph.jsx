@@ -36,7 +36,7 @@ export default function OverviewGraph() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="value" fill="#66ff66" />
+        <Bar dataKey="value" fill="green" />
       </BarChart>
     </Box>
   );

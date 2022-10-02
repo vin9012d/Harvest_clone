@@ -21,7 +21,7 @@ export const TableColumn = ({ Values, objkey }) => {
   
     return (
       
-        <Td style={obj} >{Values} {objkey == "hour" ? <Progress value={Values} /> : ""}
+        <Td style={obj} >{Values} {objkey == "hours" ? <Progress value={(Values*100)/700} /> : ""}
            
         
     
