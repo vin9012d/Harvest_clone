@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import {Box, CircularProgress, CircularProgressLabel, Flex, Icon, Spacer, Text} from "@chakra-ui/react"
 import { Daytypes } from '../Components/Vinodmodal/Daytypes'
 import { Reporttable } from '../Components/Vinodmodal/Reporttable'
@@ -7,7 +7,13 @@ import { Projectsbreakdown } from '../Components/Vinodmodal/Projectsbrekdown'
 import { Taskbreakdown } from '../Components/Vinodmodal/Taskbreakdown'
 import { Teamworktable } from '../Components/Vinodmodal/Teamwektable'
 import {BsArrowLeftSquare,BsArrowRightSquare} from "react-icons/bs"
+import { FormText } from 'reactstrap'
 export const Report = () => {
+  const [clients, setClients] = useState([]);
+  const [project, setProject] = useState([]);
+  const [task, setTask] = useState([]);
+  const [team, setTeam] = useState([]);
+
 
   const data = [
     {
@@ -47,26 +53,229 @@ export const Report = () => {
     {
       date: "21 sep",
       works: [{ title: "work of project", time: 1.01 },
-        { title: "work of project", time: 1.01 },
+        { title: "web development", time: 1.01 },
         {title:"work of project", time:1.01}]
     },
     
     {
-      date: "21 sep",
-      works:[{title:"work of project", time:1.01}]
+      date: "22 sep",
+      works:[{title:"software testing", time:1.01}]
     },
     
     {
-      date: "21 sep",
-      works:[{title:"work of project", time:1.01}]
+      date: "23 sep",
+      works: [
+        
+        { title: "Navbar building", time: 1.01 },
+        { title: "Navbar responsive", time: 5.01 },
+        { title: "Navbar css", time: 2.01 },
+        { title: "Navbar integrate", time: 3.01 },
+      
+      
+      ]
     },
     {
-      date: "21 sep",
-      works:[{}]
-    }
-  
-  
+      date: "24 sep",
+      works:[{title:"footer building", time:1.01}]
+    },
+    {
+      date: "25 sep",
+      works:[{title:"cart building", time:1.01}]
+    },
+    {
+      date: "25 sep",
+      works: [
+        { title: "checkout building", time: 1.01 },
+        { title: "checkout building", time: 1.01 }
+      
+      ]
+    },
+   
   ]
+
+  function getprojects(res) {
+    let obj={}
+    for (let i = 0; i < res.length; i++){
+
+      
+      let Billable = 0;
+      let Notbillable = 0;
+      let Total = 0;
+
+      if (obj[res[i].project_name] == undefined) {
+        obj[res[i].project_name]={hours:0,billable:0,notbillable:0,total:0}
+      }
+  
+      for(let j = 0; j < res[i].work.length; j++) {
+        let vin = res[i].work[j];
+        console.log(vin,'vin')
+        Billable = Billable + vin.billable;
+        Notbillable = Notbillable + vin.notbillable;
+        Total = Total + (vin.charge*vin.billable);
+      }
+
+      obj[res[i].project_name].billable = obj[res[i].project_name].billable + Billable;
+      obj[res[i].project_name].notbillable = obj[res[i].project_name].notbillable + Notbillable;
+      obj[res[i].project_name].total = obj[res[i].project_name].total + Total;
+    }
+let vinu=[]
+    for (let key in obj) {
+  vinu.push({projectname:key, ...obj[key]})
+    }
+    console.log(vinu,'vinu')
+    return vinu;
+  }
+
+
+  function getclient(res) {
+    let obj={}
+    for (let i = 0; i < res.length; i++){
+
+      
+      let Billable = 0;
+      let Notbillable = 0;
+      let Total = 0;
+
+      if (obj[res[i].client_name] == undefined) {
+        obj[res[i].client_name]={hours:0,billable:0,notbillable:0,total:0,project_name:res[i].project_name}
+      }
+  
+      for(let j = 0; j < res[i].work.length; j++) {
+        let vin = res[i].work[j];
+        console.log(vin,'vin')
+        Billable = Billable + vin.billable;
+        Notbillable = Notbillable + vin.notbillable;
+        Total = Total + (vin.charge*vin.billable);
+      }
+
+      obj[res[i].client_name].billable = obj[res[i].client_name].billable + Billable;
+      obj[res[i].client_name].notbillable = obj[res[i].client_name].notbillable + Notbillable;
+      obj[res[i].client_name].total = obj[res[i].client_name].total + Total;
+    }
+let vinu=[]
+    for (let key in obj) {
+  vinu.push({clientName:key, ...obj[key]})
+    }
+    console.log(obj,'vinubhai object')
+    console.log(vinu,'vinubhai')
+    return vinu;
+  }
+
+
+  function gettask(res) {
+    let obj={}
+    for (let i = 0; i < res.length; i++){
+
+      
+      let Billable = 0;
+      let Notbillable = 0;
+      let Total = 0;
+
+     
+  
+      for (let j = 0; j < res[i].work.length; j++) {
+        let vin = res[i].work[j];
+        let Billable = 0;
+      let Notbillable = 0;
+      let Total = 0;
+        
+        if (obj[vin.task] == undefined) {
+          obj[vin.task]={ client_name:res[i].client_name, hours:0,billable:0,notbillable:0,total:0,project_name:res[i].project_name}
+        }
+        
+        console.log(vin,'vin')
+        Billable = Billable + vin.billable;
+        Notbillable = Notbillable + vin.notbillable;
+        Total = Total + (vin.charge * vin.billable);
+
+        
+        
+          obj[vin.task].billable = obj[vin.task].billable + Billable;
+          obj[vin.task].notbillable = obj[vin.task].notbillable + Notbillable;
+          obj[vin.task].total = obj[vin.total] + Total;
+    
+      }
+
+    
+    }
+let vinu=[]
+    for (let key in obj) {
+  vinu.push({clientName:key, ...obj[key]})
+    }
+    console.log(obj,'vinubhai task object')
+    console.log(vinu,'vinubhai task')
+    return vinu;
+  }
+
+  function getteam(res) {
+    let obj={}
+    for (let i = 0; i < res.length; i++){
+
+      
+      let Billable = 0;
+      let Notbillable = 0;
+      let Total = 0;
+
+      if (obj[res[i].emp_name] == undefined) {
+        obj[res[i].emp_name]={hours:0, client_name:res[i].client_name ,billable:0,notbillable:0,total:0,project_name:res[i].project_name}
+      }
+  
+      for(let j = 0; j < res[i].work.length; j++) {
+        let vin = res[i].work[j];
+        console.log(vin,'vin')
+        Billable = Billable + vin.billable;
+        Notbillable = Notbillable + vin.notbillable;
+        Total = Total + (vin.charge*vin.billable);
+      }
+// console.log(obj,'teams')
+      obj[res[i].emp_name].billable = obj[res[i].emp_name].billable + Billable;
+      obj[res[i].emp_name].notbillable = obj[res[i].emp_name].notbillable + Notbillable;
+      obj[res[i].emp_name].total = obj[res[i].emp_name].total + Total;
+    }
+let vinu=[]
+    for (let key in obj) {
+  vinu.push({clientName:key, ...obj[key]})
+    }
+    console.log(obj,'vinubhai team object')
+    console.log(vinu,'vinubhai team')
+    return vinu;
+  }
+
+
+
+  const getdata = async () => {
+    await fetch("http://localhost:8080/time", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // token: `bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+         let a = getprojects(res)
+        setProject([...a])
+
+        let b = getclient(res)
+        setClients([...b])
+
+        let c = gettask(res)
+        setTask([...c])
+
+        let d = getteam(res)
+        setTeam([...d])
+      
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
+  useEffect(() => {
+    getdata();
+  }, []);
 
   return (
 
@@ -96,7 +305,7 @@ export const Report = () => {
                         <Box borderRadius="2px" width="20px" height="20px" backgroundColor="green.400" ></Box>
                         <Text>Billable</Text>
                     </Flex>
-              <Flex> 
+                    <Flex mt='3' alignItems='center'> 
                         <Box borderRadius="2px" width="20px" height="20px" backgroundColor="green.100" ></Box>
                         <Text>Not Billable</Text>
                     </Flex>
@@ -121,13 +330,17 @@ export const Report = () => {
           </Box>
         </Flex>
       </Box>
-      <Totalhours width="400px" />
-      <Projectsbreakdown width="400px" />
-      <Reporttable data={data} />
-      {/* <Reporttable data={vinod} /> */}
+      {/* <Totalhours width="400px" />
+    
+      <Reporttable data={data} /> */}
+   {  project.length>0 && <Reporttable data={project} />}
+   {  clients.length>0 && <Reporttable data={clients} />}
+   {  task.length>0 && <Reporttable data={task} />}
+   {  team.length>0 && <Reporttable data={team} />}
       <Teamworktable data={vinod} />
       <Totalhours width="400px" />
-      <Taskbreakdown width="400px"/>
+      <Taskbreakdown width="400px" />
+      <Projectsbreakdown width="400px" />
     
     </Box>
 

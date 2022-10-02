@@ -1,4 +1,4 @@
-import { Box, Flex, Icon, Spacer, Text } from '@chakra-ui/react'
+import { Box, Flex, Icon, Spacer, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react'
 import MultiColorProgressbar from 'multi-color-progressbar-with-indicator'
 import React from 'react'
 import { BsArrowLeftSquare, BsArrowRightSquare } from 'react-icons/bs'
@@ -10,6 +10,39 @@ export const Team = () => {
   const data = [
     {
       name: "Viinod",
+      email: "hfdsh@gmail.com",
+      price: 233,
+      hour:2
+    },
+    {
+      name: "Viinod",
+      email: "hfdsh@gmail.com",
+      price: 233,
+      hour:26
+    },
+    {
+      name: "Viinod",
+      email: "hfdsh@gmail.com",
+      price: 233,
+      hour:2
+    },
+    {
+      name: "Viinod",
+      email: "hfdsh@gmail.com",
+      price: 233,
+      hour:2
+    },
+    {
+      name: "Viinod",
+      email: "hfdsh@gmail.com",
+      price: 233,
+      hour:2
+    }
+  ]
+
+  const data1 = [
+    {
+      name: "Unknown",
       email: "hfdsh@gmail.com",
       price: 233,
       hour:2
@@ -71,7 +104,7 @@ export const Team = () => {
                         <Box borderRadius="2px" width="20px" height="20px" backgroundColor="green.400" ></Box>
                         <Text>Billable</Text>
                     </Flex>
-              <Flex gap='2'>  
+              <Flex gap='2'mt='2'>  
                         <Box borderRadius="2px" width="20px" height="20px" backgroundColor="green.100" ></Box>
                         <Text>Not Billable</Text>
                     </Flex>
@@ -91,16 +124,41 @@ export const Team = () => {
       </Flex>
 
       <Box mb='50px'>
-        <Flex gap='3'>
-          <Text>Clients</Text>
-          <Text>Projects</Text>
-          <Text>Tasks</Text>
-          <Text>Team</Text>
-        </Flex>
-        <hr />
-        <Mininavbar  />
+     
+        
+        <Tabs >
+  <TabList>
+            <Tab _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+             _selected={{ borderBottom: "2px solid orangered", fontWeight: "500" }}>Clients</Tab>
+            <Tab _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+             _selected={{ borderBottom: "2px solid orangered", fontWeight: "500" }}>Projects</Tab>
+            <Tab _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+             _selected={{ borderBottom: "2px solid orangered", fontWeight: "500" }}>Tasks</Tab>
+            <Tab _hover={{ borderBottom: "2px solid orangered", fontWeight: "500" }}
+             _selected={{ borderBottom: "2px solid orangered", fontWeight: "500" }}>Team</Tab>
+
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+    <Reporttable   data={data} />
+    </TabPanel>
+    <TabPanel>
+    <Reporttable   data={data1} />
+    </TabPanel>
+    <TabPanel>
+    <Reporttable   data={data} />
+    </TabPanel>
+    <TabPanel>
+    <Reporttable   data={data1} />
+    </TabPanel>
+    <TabPanel>
+    <Reporttable   data={data} />
+    </TabPanel>
+   
+  </TabPanels>
+</Tabs>
       </Box >
-      <Reporttable   data={data} />
+     
    </Box>
   )
 }
