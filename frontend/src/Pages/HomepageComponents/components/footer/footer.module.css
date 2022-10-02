@@ -1,0 +1,46 @@
+.harvestForc{    
+    border: 1px solid #a19d98;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+    color:#a19d98;
+}
+.socialIcons{
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4vw;
+    gap: .3vw;
+    color: #a19d98;
+    cursor: pointer;
+}
+.socialIcons:hover{
+    color: #fa5d00;
+}
+.links{
+    text-decoration: none;
+    cursor: pointer;    
+    line-height: 2.8vh;
+}
+.links:hover{    
+    color: #fa5d00;
+}
+
+@media only screen and (max-width: 800px){
+    .socialIcons{
+        justify-content: center;
+        align-items: center;
+        font-size: 3vw;
+        gap: .2vw;       
+    }    
+}
+
+@media only screen and (max-width: 500px){
+    .socialIcons{
+        justify-content: center;
+        align-items: center;
+        font-size: 4vw;
+        gap: .2vw;       
+    }    
+}
+

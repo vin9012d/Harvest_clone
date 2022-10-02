@@ -1,0 +1,48 @@
+.leftarrow{
+    border:0.5px solid #bfbfbe ;
+     border-top-left-radius:8px;
+     border-bottom-left-radius:8px;
+     border-right: none;
+     padding:0px 8px;
+     height:2rem;
+     
+}
+.leftarrow:hover{
+    border:0.5px solid black;
+     border-right: 0.1px solid black;
+}
+
+.rightarrow{
+    border:1px solid #bfbfbe ;
+     border-top-right-radius:8px;
+     border-bottom-right-radius:8px;
+     padding:0px 8px;
+     height:2rem;
+}
+.rightarrow:hover{
+    border:0.5px solid black;
+     
+}
+
+.select{
+   border-radius:10px;
+   width:3rem;
+}
+
+.select:hover{
+    border:0.5px solid black;
+}
+
+.weekheading{
+    font-size: 30px;
+    font-family:  sans-serif;
+    line-height: 36px;
+    color: #1d1e1c;
+    font-weight: 400;
+}
+
+.border{
+    border-top:1px solid #bbbbbb;
+     margin-top:1rem;
+     
+}

@@ -1,0 +1,41 @@
+
+.heroContainer{    
+    background-image: url(../../../assets/aura_integrations.jpg);
+    background-repeat: no-repeat;    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid red;
+    padding: 50px 90px;  
+    font-family: MuotoWeb, sans-serif; 
+}
+.heroContainer>div>h1{       
+    font-size: 3vw; 
+    font-weight: 400;   
+}
+.heroContainer>div>p{
+    font-size: 1.5vw;
+    font-weight: 400;
+}
+.timeDiv{    
+    width: 50%;
+    margin: auto;
+}
+.imageDiv{
+    width: 30%;
+    margin: auto;
+}
+
+@media only screen and (max-width: 800px){
+    .heroContainer{
+        padding: 40px 0; 
+        gap: 3vh;
+        flex-direction: column-reverse;        
+    }
+}
+
+
+
+
+
+

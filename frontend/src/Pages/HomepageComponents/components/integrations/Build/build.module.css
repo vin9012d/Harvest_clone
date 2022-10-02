@@ -1,0 +1,36 @@
+.buildContainer{    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 14vh 10vw;
+    border-bottom: 1px solid red;
+    line-height: 7vh;
+    gap: 6rem;
+}
+.buildDiv{
+    width: 70%;
+}
+.buildDiv>h1{
+    font-size: 2.4rem;
+}
+.buildDiv>p{
+    font-size: 1.2rem;
+}
+.buildDiv>button{
+    background-color: #1d1e1c;
+    color: #fff;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    padding: 0 25px;
+}
+.buildDiv>button:hover{
+    background-color: #242522d8;
+}
+
+@media only screen and (max-width: 800px){
+    .buildContainer{
+        flex-direction: column;
+        padding: 14vh 0vw;
+    }    
+}
+

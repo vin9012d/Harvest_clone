@@ -1,0 +1,46 @@
+.started{
+    width:90%;
+     gap:3rem;
+    margin:auto;
+    margin-top:2rem;
+    text-align:start;
+   color:hsl(90, 3%, 11%);
+    font-family:MuotoTrial;
+}
+.box{
+    margin-top:2rem;
+     margin-left:3rem;
+}
+.started_heading
+{
+    font-size:24px;
+      margin-top:1rem;
+}
+
+
+.started_desc{
+    font-size:16px;
+     font-weight:400;
+       margin-top:0.5rem;
+        color:#6d6e6d;
+}
+
+.border
+{
+    border-top:1px solid #fa5d00;
+     width:91%;
+      margin:auto;
+       margin-top:2rem;
+}
+
+@media  (max-width: 850px){
+    .started{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .box{
+        width: 100%;
+        margin-left: 0;
+    }
+}
