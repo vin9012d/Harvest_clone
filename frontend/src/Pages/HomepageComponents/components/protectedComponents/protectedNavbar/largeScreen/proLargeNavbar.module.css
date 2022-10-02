@@ -1,0 +1,25 @@
+
+.proLContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fa5d00;
+    color: #fff;
+    font-size: 1vw;
+    padding: 10px 12vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.proLContainer>div{
+    display: flex;
+    gap: .8vw;
+}
+
+.proLDiv2>button{
+    display: flex;
+    gap: .3vw;
+}
+.proLDiv2>button>img{
+    width: 25px;
+    border-radius: 50%;
+}

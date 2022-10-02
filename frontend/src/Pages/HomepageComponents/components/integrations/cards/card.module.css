@@ -1,0 +1,46 @@
+.cardMainDiv{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);    
+    gap: 20px;  
+    padding: 20px;    
+}
+.cardMainDiv>div{
+    cursor: pointer;
+    width: 90%;
+    height: fit-content;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 20px; 
+    line-height: 3vh;    
+}
+.cardMainDiv>div>div>img{
+    width: 50%;
+}
+.cardMainDiv>div>div>h1{
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: bold;
+}
+.cardMainDiv>div>div>p{
+    font-size: 15px;
+}
+.cardMainDiv>div:hover{
+    background-color: rgba(217, 232, 229, 0.519);
+}
+
+@media only screen and (max-width: 1250px){
+    .cardMainDiv{       
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .cardMainDiv>div{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 650px){
+    .cardMainDiv{       
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+

@@ -1,0 +1,109 @@
+
+.border
+{
+    border-top:1px solid #fa5d00;
+     width:91%;
+      margin:auto;
+       margin-top:2rem;
+}
+
+.outerbox{
+    width:90%;
+     margin:auto;
+      text-align:start;
+       margin-top:4rem;
+}
+
+.feature_box{
+    border:1px solid #fa5d00;
+     width:70%;
+      padding:1rem;
+       gap: 1rem;
+       border-radius: 15px;
+}
+
+.img{
+    margin-left: -10%;
+    width:60% ;
+    height: 27rem;
+}
+
+.feature_heading{
+    font-family:MuotoWeb - 400;
+     color:#1d1e1c;
+      font-weight:400;
+      margin-top: 1rem;
+      font-size: 39px;
+}
+.feature_heading2{
+    font-family:MuotoWeb - 400;
+     color:#1d1e1c;
+      font-weight:400;
+      margin-top: 1rem;
+      font-size: 26px;
+}
+.featurediv{
+    width: 60%;
+}
+
+.feature_box_heading{
+    margin-top:0.5rem;
+     font-size:26px;
+      font-family:MuotoWeb - 400;
+       color:#1d1e1c;
+        font-weight:400;
+}
+
+.feature_box_img{
+    width:3rem;
+    height: 3rem;
+    margin-top:1.5rem;
+}
+.feature_box_desc{
+     font-size:16px;
+      font-family:MuotoWeb - 400 ;
+      color:#1d1e1c;
+       font-weight:400;
+}
+.button{
+    width:  14rem;
+}
+@media  (max-width: 850px){
+    .outerbox{
+           width: 105%;
+           margin: 0;
+           margin-top: 4rem;
+    }
+    .border{
+        width:104%;
+        margin-left: -1rem;
+    }
+
+    .feature_heading{
+        font-size: 36px;
+        line-height: 43px;
+    }
+
+    .feature_heading2{
+        font-size: 24px;
+    }
+    
+    .flexbox{
+        display: flex;
+        flex-direction: column;
+    }
+    .featurediv
+    {
+        width: 135%;
+    }
+    .img{
+        margin: 0;
+        width: 95%;
+        height: 20rem;
+        margin-top: 1rem;
+    }
+    .button
+    {
+        width:70%;
+    }
+}
