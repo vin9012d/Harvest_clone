@@ -2,13 +2,16 @@
 
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Editclient from "../Components/managesubpage/Editclient";
+import Newclient from "../Components/managesubpage/Newclient";
+import NewContact from "../Components/managesubpage/NewContact";
 import { Estimates } from "./Estimates";
 import { Expenses } from "./Expenses";
 import { Homepage } from "./Homepage";
 import { Invoices } from "./Invoices";
 import { Login } from "./Login";
 import { Manage } from "./Manage";
-import { Projects } from "./Projects";
+import  Projects  from "./Projects";
 import { Report } from "./Report";
 import Signup from "./Signup";
 import { Team } from "./Team";
@@ -28,6 +31,9 @@ export const Allroutes = () => {
       <Route path="/invoices" element={<Invoices />} />
       <Route path="/estimates" element={<Estimates />} />
       <Route path="/manages" element={<Manage />} />
+      <Route path="/manages/newclient" element={<Newclient />} />
+      <Route path="/manages/newcontact" element={<NewContact />} />
+      <Route path="/manages/edit" element={<Editclient/>} />
     </Routes>
   );
 };
