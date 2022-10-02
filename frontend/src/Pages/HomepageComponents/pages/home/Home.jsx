@@ -7,7 +7,7 @@ import { Features } from "../../components/home/Featurediv/Features";
 import { Integration } from "../../components/home/Integrationdiv/Integration";
 import { Customer } from "../../components/home/Customer/Customer";
 import Learning from "../../components/home/Learning/Learning";
-import { Starttrack } from "../../components/home/Start-trackl/Starttrack";
+import { EndTrack } from "../../components/home/Start-trackl/EndTrack";
 const Home = () => {
   return (
     <Container bgColor="#fff8f1" maxW="100%">
@@ -19,7 +19,7 @@ const Home = () => {
       <Customer />
 
       <Learning />
-      <Starttrack/>
+      <EndTrack/>
     </Container>
   );
 };
