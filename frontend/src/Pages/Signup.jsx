@@ -1,10 +1,14 @@
+
 import React, { useEffect, useState } from "react";
 import styles from "./Signup.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { signup } from "../Redux/AuthReducer/actions";
+
+import {signup} from "../Redux/Authreducer/actions"
+
 import { ReactComponent as IconHarvest } from "../assets/IconHarvest.svg";
+
 import {
   Box,
   Button,
@@ -16,6 +20,8 @@ import {
   Text,
   useMediaQuery,
 } from "@chakra-ui/react";
+
+
 
 const initState = {
   firstName: "",
@@ -45,8 +51,9 @@ const Signup = () => {
     dispatch(signup(formData)).then((r) => {
       if (r.type === "SIGNUP_SUCCESS" && r.status === true) {
         return navigate("/login");
+      } else if (r.type === "SIGNUP_SUCCESS" && r.status === false) {
+        alert("User Already Registerd, please login ");
       }
-      alert("User Already Exist! Please login");
     });
 
     setFormData({ ...initState });
@@ -57,15 +64,19 @@ const Signup = () => {
   }, []);
 
   return (
+
     <Box
       className={styles.signupContainer}
       h={isSmallerThan768 ? "100%" : "100vh"}
     >
+
       <Container color="#1d1e1c" maxW="550px">
         <Box p="12px 0px">
           <Box>
             <Link to="/">
+
               <IconHarvest />
+
             </Link>
           </Box>
           <Box p="45px 0px 25px">
