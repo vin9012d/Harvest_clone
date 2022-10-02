@@ -1,0 +1,81 @@
+{
+    "contents": [
+        {
+            "id": 1,
+            "heading": "Empower your team with insight",
+            "para": "By tracking time and expenses in Harvest, you capture critical project data that allows you to learn from the past, keep current projects on track, and better estimate future projects.",
+            "points": [
+                {
+                    "line": "Review past data to improve how you scope and price work"
+                },
+                {
+                    "line": "Understand which projects are profitable — and why"
+                },
+                {
+                    "line": "Know when to take on new business (or grow your team)"
+                }
+            ],
+            "img": "https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/why-harvest/why-harvest-reflect.svg",
+            "quote": "As a growing business, with Harvest we get a lot of insights and intelligence that we couldn’t get before.",
+            "quote_by": "Ben Graham, Turnstyle"
+        },
+        {
+            "id": 2,
+            "heading": "Time tracking that works the way your team works",
+            "para": "Time tracking software is only useful if it’s actually used. That’s why we designed Harvest to be easy to adopt, integrated with your favorite apps, and flexible enough for all types of teams.",
+            "points": [
+                {
+                    "line": "Review past data to improve how you scope and price work"
+                },
+                {
+                    "line": "Understand which projects are profitable — and why"
+                },
+                {
+                    "line": "Know when to take on new business (or grow your team)"
+                }
+            ],
+            "img": "https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/why-harvest/why-harvest-keep.svg",
+            "quote": "We needed something super simple because we don’t want to have to teach people how to use it as part of onboarding.",
+            "quote_by": "Nick Frandsen, Dovetail"
+        },
+        {
+            "id": 3,
+            "heading": "Keep your projects on track",
+            "para": "Harvest provides visibility into the key aspects of your projects—budget, team capacity, and costs—enabling you to keep everything on time and on budget.",
+            "points": [
+                {
+                    "line": "Review past data to improve how you scope and price work"
+                },
+                {
+                    "line": "Understand which projects are profitable — and why"
+                },
+                {
+                    "line": "Know when to take on new business (or grow your team)"
+                }
+            ],
+            "img": "https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/why-harvest/why-harvest-track.svg",
+            "quote": "We can see if a project is in danger of going off track and course-correct way before it actually becomes a problem.",
+            "quote_by": "Michael Kucera, Zehner"
+        },
+        {
+            "id": 4,
+            "heading": "Trusted by thousands of teams worldwide",
+            "para": "We’ve been serving teams of all sizes, across all types of industries for over 15 years. Today, with more than 70,000 customers, you can be sure that Harvest will work for your team’s unique needs.",
+            "points": [
+                {
+                    "line": "Review past data to improve how you scope and price work"
+                },
+                {
+                    "line": "Understand which projects are profitable — and why"
+                },
+                {
+                    "line": "Know when to take on new business (or grow your team)"
+                }
+            ],
+            "img": "https://www.getharvest.com/hubfs/raw_assets/public/harvest-theme/images/why-harvest/why-harvest-invest.svg",
+            "quote": "Harvest gives us feedback on how we’re doing so we can be competitive, make a profit, and keep ourselves afloat.",
+            "quote_by": "John Wall, Public"
+        }
+        
+    ]
+}

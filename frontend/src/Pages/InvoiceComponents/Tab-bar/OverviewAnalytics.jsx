@@ -3,6 +3,7 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import InvoiceTableOpen from "./InvoiceTableOpen";
+import OverviewGraph from "../GraphAnalytics/OverviewGraph";
 
 const OverviewAnalytics = () => {
   return (
@@ -36,8 +37,9 @@ const OverviewAnalytics = () => {
             </Text>
           </Box>
         </Box>
-        <Box w="auto" h="100%" border="1px solid rgba(29,30,28,.25)">
-          Graph
+        {/* Analysis graph show here */}
+        <Box w="auto" border="1px solid rgba(29,30,28,.25)">
+          <OverviewGraph />
         </Box>
       </Flex>
       {/* All invoice table */}

@@ -3,7 +3,6 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Estimates } from "./Estimates";
 import { Expenses } from "./Expenses";
-import { Homepage } from "./Homepage";
 import { Invoices } from "./Invoices";
 import { Login } from "./Login";
 import { Manage } from "./Manage";
@@ -15,11 +14,15 @@ import Signup from "./Signup";
 import { Team } from "./Team";
 import { Time } from "./Time";
 import NewProject from "./New_project";
+import Home from "./HomepageComponents/pages/home/Home";
+import WithNavFoot from "./WithNavFoot";
 
 export const Allroutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Homepage />} />
+       <Route element={<WithNavFoot />}>
+      <Route path="/" element={<Home/>} />
+      </Route>
       <Route path="/login" element={<Login />} />
 
       <Route path="/Signup" element={<Signup />} />

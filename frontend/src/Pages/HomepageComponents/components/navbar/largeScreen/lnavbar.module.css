@@ -1,0 +1,69 @@
+
+.lNavContainer{    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: hsl(32, 87%, 97%); 
+    height: 90px;  
+    padding: 4vh 5.5vw;
+    font-family: 'Nunito Sans', sans-serif;
+    letter-spacing: 0.01vw;
+    font-size: 1.13vw;
+    color: black;
+}
+.lNavContainerW{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff; 
+    height: 90px;  
+    padding: 4vh 5.5vw;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    font-family: 'Nunito Sans', sans-serif;
+    letter-spacing: 0.01vw;
+    font-size: 1.13vw;
+    color: black;
+}
+.imgDiv{
+    border-right: 1px solid rgb(215, 207, 207);
+    padding-right: 1.5vw;
+}
+.lnimage{
+    width: 10vw;    
+}
+.linkDiv{
+    width: 59%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+.activeLink{
+    color: #fa5d00;
+}
+.notActiveLink:hover{    
+    color: #fa5d00;
+}
+.buttonDiv{
+    width: 21%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;        
+}
+.tryButton{
+    background-color: #fa5d00;
+    font-size: 1.15vw;
+    font-weight: 550;
+    height: 45px;
+    color: #fff;
+    padding: 0.6vh 1.5vw;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 1000px){
+    .lNavContainer{
+        display: none;
+    }  
+    .lNavContainerW{
+        display: none;
+    } 
+}

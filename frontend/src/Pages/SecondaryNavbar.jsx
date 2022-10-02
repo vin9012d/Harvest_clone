@@ -6,6 +6,7 @@ const SecondaryNavbar = () => {
   return (
     <>
       <Box
+      zIndex='10'
         fontWeight="600"
         display={"flex"}
         justifyContent="space-around"

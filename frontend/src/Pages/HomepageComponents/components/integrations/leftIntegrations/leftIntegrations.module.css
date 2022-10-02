@@ -1,0 +1,32 @@
+.leftContainer{
+    width: 50%;    
+    line-height: 70px;
+    font-size: 1vw;
+    font-weight: bolder;    
+}  
+.leftContainer>div>button{   
+    font-size: 1.1vw;
+    font-weight: 700; 
+    text-align: left; 
+    padding: 0 25px;
+    border-radius: 15px;    
+}
+.leftContainer>div>button:hover{
+    background-color: rgba(194, 188, 188, 0.485);
+}
+.leftContainer>div>button:active{
+    color: #fa5d00;
+    background-color: rgba(194, 188, 188, 0.485);
+}
+
+@media only screen and (max-width: 1500px){
+    .leftContainer{
+        font-size: 0.9vw;
+    }
+}
+
+@media only screen and (max-width: 950px){
+    .leftContainer{
+        display: none;
+    }
+}

@@ -1,0 +1,64 @@
+
+.helpcontainer {
+    background-image: url("https://19495563.fs1.hubspotusercontent-na1.net/hubfs/19495563/raw_assets/public/harvest-theme/images/auras/aura-spike-bottom-right.jpg");
+    background-size: cover;
+    background-repeat: no-repeat, repeat;
+    background-position: calc(50% + 340px) bottom;
+    background-size: 687px 410px;
+}
+.helpText {
+    margin-left: 10%;
+    width: 60%
+    
+}
+.helpText>h1{
+    font-size: 50px;
+    color: rgb(37, 36, 36) ;
+    font-weight: 300;
+    padding-top: 60px;
+    /* width: 100%; */
+    /* border: 1px solid black; */
+}
+.helpText>p {
+    margin-top: 20px;
+    font-size: 2vw;
+    font-weight: 350;
+    line-height: 6vh;
+  }
+.btnContainer {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+    width: 50%;
+    margin-top: 60px;
+    margin-left: 10%;
+    /* // border: 1px solid green; */
+}
+.btnContainer>p {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: gray;
+      padding-left: 1.5rem;
+    }
+.btnTry {
+    height: 50px;
+    width: 220px;
+    background-color: #fc6a15;
+    border-radius: 0.95rem;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 500;
+    box-shadow: rgba(80, 84, 87, 0.3) 0px 1px 2px 0px,
+    rgba(80, 85, 88, 0.15) 0px 2px 6px 2px;
+ }
+ .btnTry:hover {
+    background-color: #fa782d;
+    transition: 0.5s ease-in-out;
+}
+.line {
+    height: 1px;
+    background-color: #fa5d00;
+    margin-top: 90px;
+  }
+  

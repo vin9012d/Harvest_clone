@@ -1,0 +1,49 @@
+.box{
+    margin-left:3rem;
+     margin-top:4rem;
+}
+.finally_heading{
+    font-size:48px;
+    margin: auto;
+     margin-top:1rem ;
+     font-family:Monarch-400;
+      font-weight:100;
+       color:#1d1e1c;
+        line-height:56px;
+}
+.finally_desc{
+    font-size:18px;
+     line-height:26px;
+      color:#6d6e6d;
+       font-weight:400;
+        margin-top:1.5rem;
+        
+}
+
+.img2{
+    width:60%;
+    margin-top:1rem;
+
+}
+
+@media  (max-width: 850px){
+    .box{
+        margin: 0;
+        margin-top: 2rem;
+    }
+    .outerbox,.inputdiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .img2{
+        width:100%;
+    }
+    .trial{
+        text-align: center;
+    }
+    .finally_heading{
+        font-size: 36px;
+        line-height: 40px;
+    }
+}

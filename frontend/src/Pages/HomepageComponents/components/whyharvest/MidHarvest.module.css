@@ -1,0 +1,68 @@
+
+.mainMidContainer {
+    width: 80%;
+    margin: 80px auto;
+}
+.leftMid>line{
+    height: 1px;
+    background-color: #fa5d00;
+    margin-top: 90px;
+}
+.contents {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.leftMid {
+    width: 50%;
+}
+.leftMid>h4 {
+    font-size: 2.75rem;
+    width: 500px;
+    line-height: 50px;
+}
+.leftMid>p {
+    width: 600px;
+    font-size: 1.25rem;
+    font-weight: 450;
+}
+.line{
+    margin-top: 90px;
+    height: 1px;;
+    background-color: #fa5d00;
+}
+
+.point{
+    margin-top: 1rem;
+    padding-left: 35px;
+    background-image: url("//19495563.fs1.hubspotusercontent-na1.net/hubfs/19495563/raw_assets/public/harvest-theme/images/icons/icon-checklist.svg");
+    background-repeat: no-repeat;
+    background-position: left top;
+    margin-bottom: 5px;
+    font-size: 18px
+}
+.leftMid:nth-child(2) {
+    margin: 25px 0;
+}
+.leftMid>button {
+    margin-top: 25px;
+    height: 50px;
+    width: 220px;
+    background-color: black;
+    border-radius: 0.95rem;
+    color: white;
+    font-size: 1.25rem;
+       
+}
+
+.quoteContainer {
+    text-align: center;
+}
+.quoteContainer>p {
+    width: 80%;
+    margin-top: 25px;
+    font-size: 1.15rem;
+    color: gray;
+}
+      
