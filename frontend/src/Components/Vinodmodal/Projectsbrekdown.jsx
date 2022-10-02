@@ -51,7 +51,7 @@ export const Projectsbreakdown = ({ width }) => {
     //   ]
     return (
       <Box width={width}>
-            <Flex justifyContent="space-between">
+            <Flex justifyContent="space-between" >
                 <Box>
                     <Text>Total Hours</Text>
                     <Text>35</Text>
@@ -64,13 +64,13 @@ export const Projectsbreakdown = ({ width }) => {
            </Flex>
             <MultiColorProgressbar value={20} height={30} bars={bars} minVal={0} maxVal={100} />
      
-            <Box mt="40px">
+            <Box mt="50px">
 
                 
                 
                     {data.map((item,id) => (
-                        <Flex justifyContent="space-between"> 
-                              <Flex> 
+                        <Flex justifyContent="space-between" mt='3'> 
+                              <Flex gap='2'> 
                           <Box borderRadius="2px" width="20px" height="20px" backgroundColor={colors[id]} ></Box>
                                 <Text>{item.title}</Text>
                     </Flex>

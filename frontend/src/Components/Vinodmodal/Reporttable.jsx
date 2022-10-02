@@ -23,7 +23,7 @@ export const Reporttable = ({ data }) => {
   return (
       <Box>
           <TableContainer>
-  <Table size='lg'>
+  <Table size={['sm','md','lg']}>
                   <Thead  backgroundColor="#efefef">
                       <Tr>
                           {heading.map((item,id) => (
