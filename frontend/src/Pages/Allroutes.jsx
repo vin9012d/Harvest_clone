@@ -26,13 +26,12 @@ export const Allroutes = () => {
       <Route path="/time" element={<Time />} />
       <Route path="/expenses" element={<Expenses />} />
       <Route path="/projects" element={<Projects />} />
-      <Route path="/new_project" element={<NewProject/>} />
+      <Route path="/new_project" element={<NewProject />} />
 
       <Route path="/team" element={<Team />} />
       <Route path="/report" element={<Report />} />
       <Route path="/invoices" element={<Invoices />} />
       <Route path="/estimates" element={<Estimates />} />
-      <Route path="/manages" element={<Manage />} />
     </Routes>
   );
 };

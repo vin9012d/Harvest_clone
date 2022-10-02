@@ -14,7 +14,7 @@ import { ReactComponent as IconHarvest } from "../assets/IconHarvest.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
-import { login } from "../Redux/AuthReducer/actions";
+import { login } from "../Redux/Authreducer/actions";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
