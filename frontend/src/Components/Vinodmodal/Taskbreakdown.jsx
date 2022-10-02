@@ -70,8 +70,8 @@ export const Taskbreakdown = ({ width }) => {
                 
                 
                     {data.map((item,id) => (
-                        <Flex justifyContent="space-between"> 
-                              <Flex> 
+                        <Flex justifyContent="space-between" mt='3'> 
+                              <Flex gap='2'> 
                           <Box borderRadius="2px" width="20px" height="20px" backgroundColor={colors[id]} ></Box>
                                 <Text>{item.title}</Text>
                     </Flex>

@@ -1,0 +1,66 @@
+
+.dailyContainer{
+    width: 70%;
+    margin: auto;
+}
+
+.dailyMainContainer{
+    display: flex;    
+}
+
+.dailyMainContainer1{
+    width: 90%;
+    margin: auto; 
+    margin-top: 3vh;  
+    display: flex;
+    color: #6d6e6d;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.outputContainer{
+    border-top: 1px solid #6d6e6d;
+    width: 93%;
+    height: 40vh;    
+    margin: auto;
+    background-color: #efefef;
+    overflow: scroll;
+}
+.outputContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.outputDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid;
+}
+
+.outputDiv>div>h1{
+    font-weight: bold;
+}
+
+.outputDiv2{
+    display: flex;
+    gap: .5vw;
+}
+
+.outputbutton1{
+    background-color: #000;
+    color: #fff;
+    padding: 1px 8px;
+    border-radius: 5px;    
+}
+
+.outputbutton2{
+    border: 1px solid #6d6e6d;
+    color: #6d6e6d;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+.weekTotalDiv{
+    text-align: right;
+}

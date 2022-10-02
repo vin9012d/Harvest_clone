@@ -1,0 +1,56 @@
+
+  
+.customer_box_desc{
+  font-size: 30px;
+  line-height: 45px;
+  font-weight: 400;
+  color: #1d1e1c;
+  font-family: MuotoWeb-400;
+  margin-top:2rem;
+}
+
+.customer_box_writer{
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #1d1e1c;
+  font-family: MuotoWeb, sans-serif;
+  margin-top:2rem;
+}
+
+.img{
+  width:50%;
+   padding-right:1.5rem;
+    padding-left:0.5rem;
+     border-right:1px solid #fa5d00;
+
+}
+
+.right{
+  border-right:1px solid #fa5d00;
+    border-left:1px solid #fa5d00;
+}
+
+@media  (max-width: 850px){
+
+.flexdiv{
+  display: flex;
+  flex-direction: column;
+}
+.img{
+  width: 100%;
+  border: none;
+}
+.customer_box_desc{
+  margin-top: -2rem;
+  font-size: 24px;
+  line-height: 30px;
+}
+.right{
+  border: none;
+}
+.box{
+  border-right:1px solid #fa5d00;
+    border-left:1px solid #fa5d00;
+}
+}

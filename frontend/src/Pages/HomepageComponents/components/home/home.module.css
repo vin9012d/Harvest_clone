@@ -1,0 +1,104 @@
+.started{
+    width:90%;
+     gap:3rem;
+    margin:auto;
+    margin-top:2rem;
+    text-align:start;
+   color:hsl(90, 3%, 11%);
+    font-family:MuotoTrial;
+}
+
+.finally_heading{
+    font-size:48px;
+    margin: auto;
+     margin-top:1rem ;
+     font-family:Monarch-400;
+      font-weight:100;
+       color:#1d1e1c;
+        line-height:56px;
+}
+.finally_desc{
+    font-size:18px;
+     line-height:26px;
+      color:#6d6e6d;
+       font-weight:400;
+        margin-top:1.5rem;
+        
+}
+.started_heading
+{
+    font-size:24px;
+      margin-top:1rem;
+}
+
+.started_desc{
+    font-size:16px;
+     font-weight:400;
+       margin-top:0.5rem;
+        color:#6d6e6d;
+}
+
+.border
+{
+    border-top:1px solid #fa5d00;
+     width:91%;
+      margin:auto;
+       margin-top:2rem;
+}
+
+.feature_box{
+    border:1px solid #fa5d00;
+     width:70%;
+      padding:1rem;
+       gap: 1rem;
+       border-radius: 15px;
+}
+
+.feature_heading{
+    font-family:MuotoWeb - 400;
+     color:#1d1e1c;
+      font-weight:400;
+      margin-top: 1rem;
+}
+
+.feature_box_heading{
+    margin-top:0.5rem;
+     font-size:26px;
+      font-family:MuotoWeb - 400;
+       color:#1d1e1c;
+        font-weight:400;
+}
+
+.feature_box_img{
+    width:3rem;
+    height: 3rem;
+    margin-top:1.5rem;
+}
+.feature_box_desc{
+     font-size:16px;
+      font-family:MuotoWeb - 400 ;
+      color:#1d1e1c;
+       font-weight:400;
+}
+
+
+
+.learning_box{
+    border-top:1px solid #fa5d00;
+     width:103%;
+      padding:1rem;
+       gap: 1rem;
+}
+.learning_box_img{
+    width:4rem;
+    height: 4rem;
+    margin-top:1rem;
+}
+
+.arrow{
+    width: 8;
+    height: 8;
+    margin-top: 1rem;
+    color: #fa5d00;
+}
+

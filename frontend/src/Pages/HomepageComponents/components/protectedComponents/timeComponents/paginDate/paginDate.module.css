@@ -1,0 +1,54 @@
+
+.paginContainer{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    padding-top: 8vh;  
+}
+.paginDiv1{
+    display: flex;
+    align-items: center;    
+}
+.paginDiv1>div{
+    margin-left: 1vw;
+    font-size: 2vw;   
+}
+
+.today{
+    /* font-size: 2.1vw; */
+    font-weight: 500;
+    font-weight: bold;
+}
+
+.paginDiv2{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.paginButton1{
+    border: 1px solid;
+    padding: .3vw;
+    border-radius: 10px 0 0 10px;
+}
+
+.paginButton2{
+    border: 1px solid;
+    padding: .3vw;
+    border-radius: 0 10px 10px 0;
+}
+
+.calander{
+    border: 1px solid;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.returnto{
+    cursor: pointer;
+    font-size: 15px;
+    color: blue;
+    text-decoration: underline;
+}
