@@ -1,0 +1,81 @@
+
+.mainbox{
+    width: 50%;
+    
+}
+.h11font{
+    font-size: 30px;
+    font-weight: 500;
+    font-family: Muoto,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;
+    margin-top: 30px;
+}
+.button {
+    background-clip: border-box;
+    background-color: #188433;
+    border-color: transparent !important;
+    color: #fff;
+    font-weight: 500;
+    border: 1px solid rgba(29, 30, 28, 0.3);
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 0px 16px;
+    height: 34px;
+    line-height: 34px;
+    margin-top: 10px;
+    /* vertical-align: middle; */
+    width: auto;
+}
+.button:hover{
+    background-color: #0b531d;
+    
+}
+.btn,.btn2{
+    border-radius: 6px;
+    width: 39px;
+    font-weight: 500;
+    font-size: 14px;
+    height: 34px;
+    line-height: 29px;
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid rgba(29, 30, 28, 0.3);
+}
+.btn:hover,.btn2:hover{
+    border: 1px solid black;
+   
+}   
+.btn2{
+    width: 142px;
+    height: 34px;
+    margin-top: 10px; 
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .par{
+    font-size: 15px;
+    font-weight: 600;
+    
+    margin: 6px;
+    height: 30px;
+    width: 100%;
+}
+.par:hover,.par2:hover{
+    background-color: #1d1e1c;
+    width: 101%;
+    
+    color: white;
+    cursor: pointer;
+}
+.shadow{
+    box-shadow: 0px 0px 5px 5px gray;
+}
+.seconddiv{
+    width: 100%;
+    padding: 8px 8px;
+    background-color: #eee;
+   height: 50px;
+
+}
