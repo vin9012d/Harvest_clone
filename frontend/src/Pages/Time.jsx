@@ -1,9 +1,11 @@
 import { Icon, SmallAddIcon } from '@chakra-ui/icons';
-import { background, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
+import { background, Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { IoIosArrowDown } from 'react-icons/io';
 import { Input } from 'reactstrap';
 import time from "../module.css/time.module.css"
+import SecondaryFooter from './SecondaryFooter';
+import SecondaryNavbar from './SecondaryNavbar';
   const projects = {
     Exampl_project: {
       client_name: "Vinod",
@@ -35,18 +37,7 @@ export const Time = () => {
   const [week, setweek] = useState({day1:[],day2:[],day3:[],day4:[],day5:[],day6:[],day7:[]})
   const [isClockRunning, setisClockRunning] = useState(false)
 
-  const startTimer = () => {
-    setisClockRunning(!isClockRunning);
-   var counttime=0
-    const interval = setInterval(() => {
-      counttime++
-      console.log(counttime);
-    }, 1000);
-    if (isClockRunning) {
-      clearInterval(interval);
-      console.log(setisClockRunning);
-    }
-  };
+ 
     
    
   useEffect( () => {
@@ -75,6 +66,9 @@ const handleNewTime = () => {
 
   return (
     <div>
+      <Box marginTop={"50px"}>
+        <SecondaryNavbar />
+      </Box>
       <div className={time.time_firstdiv}>
         <div className={time.time_firstdiv_left}>
           <button onClick={onOpen} className={time.time_firstdiv_left_btn}>
@@ -264,49 +258,52 @@ const handleNewTime = () => {
             </div>
           </div>
           <div className={time.time_firstdiv_right_data}>
-
-              {week[selected_day].length>0 ? (
-                week[selected_day].map((elem) => {
-                  const showtime = timeconvert(elem.time)
-                  return (
-                    <div className={time.time_firstdiv_right_data_child}>
-                      <div className={time.time_firstdiv_right_data_left}>
-                        <div display="flex" backgroundColor="red">
-                          <p>{elem.project}</p>
-                          <p>({elem.client})</p>
-                        </div>
-
-                        <p>{elem.task}</p>
+            {week[selected_day].length > 0 ? (
+              week[selected_day].map((elem, index) => {
+                const showtime = timeconvert(elem.time);
+                return (
+                  <div className={time.time_firstdiv_right_data_child}>
+                    <div className={time.time_firstdiv_right_data_left}>
+                      <div display="flex" backgroundColor="red">
+                        <p>{elem.project}</p>
+                        <p>({elem.client})</p>
                       </div>
-                      <div className={time.time_firstdiv_right_data_right}>
-                        <div>{showtime}</div>
 
-                        {isClockRunning ? (
-                          <button
-                            onClick={startTimer}
-                            className={
-                              time.time_firstdiv_right_data_right_button
-                            }
-                          >
-                            <div className={time.clock}></div>
-                            <p>Stop</p>
-                          </button>
-                        ) : (
-                          <Button onClick={startTimer} backgroundColor={"black"} color="white">
-                            Start
-                          </Button>
-                        )}
-                      </div>
+                      <p>{elem.task}</p>
                     </div>
-                  );
-                })
-              ) : (
-                <p>Add task to track time</p>
-              )}
-          
+                    <div className={time.time_firstdiv_right_data_right}>
+                      <div>{showtime}</div>
+
+                      {isClockRunning ? (
+                        <button
+                          
+                          className={time.time_firstdiv_right_data_right_button}
+                        >
+                          <div className={time.clock}></div>
+                          <p>Stop</p>
+                        </button>
+                      ) : (
+                        <Button
+                         
+                          backgroundColor={"black"}
+                          color="white"
+                        >
+                          Start
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <p>Add task to track time</p>
+            )}
           </div>
         </div>
       </div>
+      <Box marginTop={"80%"}>
+        <SecondaryFooter />
+      </Box>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Popover,
   PopoverArrow,
@@ -14,14 +15,24 @@ import project_page from "../module.css/projects.module.css";
 import { Icon } from "@chakra-ui/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { SearchIcon, SmallAddIcon } from "@chakra-ui/icons";
+import SecondaryNavbar from "./SecondaryNavbar";
+import SecondaryFooter from "./SecondaryFooter";
+import { useNavigate } from "react-router-dom";
 
 const Projects = () => {
+  const navigte=useNavigate()
+  const handleclick=()=>{
+    navigte("/new_project");
+  }
   return (
     <div>
+      <Box marginTop={"50px"}>
+        <SecondaryNavbar />
+      </Box>
       <div className={project_page.second_navbar_parent}>
         <div className={project_page.second_navbar}>
           <div className={project_page.second_navbar_left}>
-            <button className={project_page.new_prj_btn}>
+            <button onClick={handleclick} className={project_page.new_prj_btn}>
               <SmallAddIcon width={"20px"} height={"20px"} />
               New Project
             </button>
@@ -183,6 +194,9 @@ const Projects = () => {
           </div>
         </div>
       </div>
+      <Box marginTop={"20%"}>
+        <SecondaryFooter />
+      </Box>
     </div>
   );
 };
