@@ -16,6 +16,7 @@ margin: auto;
 margin-top: 20px;
 display: flex;
 gap: 20px;
+margin-top:80px;
 }
 .time_firstdiv_left{
     top: 16px;
@@ -73,6 +74,8 @@ gap: 20px;
 }
 .time_firstdiv_right_head{
     width: 100%;
+    height: 500px;
+    overflow: scroll;
     /* background-color: red; */
 }
 .time_firstdiv_right_head_days{
@@ -180,6 +183,12 @@ font-weight: 500;
     animation: spin 72s linear infinite;
     transform-origin: top;
 
+}
+.final_submit{
+    width: 77%;
+    display: flex;
+margin: auto;
+justify-content:end ;
 }
 
 @keyframes spin {
