@@ -28,7 +28,7 @@ const data = [
 
 export default function OverviewGraph() {
   return (
-    <Box zIndex='1' mt='0.5rem' w='100%' pr='2rem'>
+    <Box zIndex='1' mt='0.5rem' size={["sm",'sm','md','lg']} pr='2rem'>
       <Box fontWeight={'500'} ml='80%' mb='0.5rem'>Invoices issued in 2022</Box>
       <BarChart width={830} height={250} data={data}>
         <CartesianGrid strokeDasharray="3 3" />

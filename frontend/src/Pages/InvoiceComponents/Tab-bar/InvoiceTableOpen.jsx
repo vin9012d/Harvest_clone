@@ -10,7 +10,7 @@ import React from "react";
 
 const data = [
   { date: "01/01/2022", id: 1, client: "Ranajit Das", balance: 1500 },
-  { date: "03/02/2022", id: 2, client: "Jay Das", balance: 1300 },
+  { date: "03/02/2022", id: 2, client: "Jay Das", balance: 1368 },
 ];
 
 // coming from overview section
@@ -52,7 +52,7 @@ const InvoiceTableOpen = () => {
               <Td></Td>
               <Td></Td>
               <Td>Total</Td>
-              <Td>$ 2800</Td>
+              <Td>$ 2868</Td>
             </Tr>
           </Tfoot>
         </Table>

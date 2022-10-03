@@ -10,7 +10,7 @@ export const Taskbreakdown = ({ width }) => {
     let widths = [20, 30, 10, 40]
     let bars=[];
     for (let i = 0; i < widths.length; i++){
-        let vin = { width: ((widths[0] * 100) / 50),color:colors[i] }
+        let vin = { width: (Math.floor((widths[0] * 100) / 140)),color:colors[i] }
         bars.push({...vin})
     }
 
@@ -55,15 +55,15 @@ export const Taskbreakdown = ({ width }) => {
             <Flex justifyContent="space-between">
                 <Box>
                     <Text>Total Hours</Text>
-                    <Text>35</Text>
+                    <Text>70</Text>
                 </Box>
                 <Box>
 
                     <Text>Capacity</Text>
-                    <Text>50</Text>
+                    <Text>140</Text>
                 </Box>
            </Flex>
-            <MultiColorProgressbar value={20} height={30} bars={bars} minVal={0} maxVal={100} />
+            <MultiColorProgressbar value={20} height={30} bars={bars} minVal={0} maxVal={140} />
      
             <Box mt="40px">
 

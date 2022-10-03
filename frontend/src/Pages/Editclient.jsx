@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Box, Flex, Heading, Input, Select, Text, Textarea } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Input, Select, Text, Textarea } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
+import SecondaryFooter from "./SecondaryFooter";
+import SecondaryNavbar from "./SecondaryNavbar";
 export const EditClient = () => {
   const navigate = useNavigate();
   // const token = useSelector((state) => state.authReducer.token);
@@ -55,7 +57,11 @@ export const EditClient = () => {
 
   
   return (
-    <Box style={{ width: "68%", margin: "auto", marginTop: "50px" }}>
+    <Box>
+            <Box mb='3.5rem'>
+        <SecondaryNavbar />
+      </Box>
+    <Box style={{ width: "80%", margin: "auto", marginTop: "3.5rem" }}>
       <Box>
         <Heading>Edit Client</Heading>
       </Box>
@@ -98,7 +104,7 @@ export const EditClient = () => {
         </Select>
       </Flex>
       <Flex justifyContent="center" marginTop="20px" gap="20px">
-        <button
+        <Button
           style={{
             background: "green",
             color: "white",
@@ -109,8 +115,8 @@ export const EditClient = () => {
           onClick={handleUpdate}
         >
           Save client
-        </button>
-        <button
+        </Button>
+        <Button
           style={{
             background: "red",
             color: "white",
@@ -121,8 +127,8 @@ export const EditClient = () => {
           onClick={deleteClient}
         >
           Remove this Client
-        </button>
-        <button
+        </Button>
+        <Button
           style={{
             border: "1px solid",
             padding: "8px 12px",
@@ -132,8 +138,12 @@ export const EditClient = () => {
           onClick={canceladd}
         >
           Cancel
-        </button>
+        </Button>
       </Flex>
-    </Box>
+      </Box>
+      <Box>
+        <SecondaryFooter />
+      </Box>
+      </Box>
   );
 };

@@ -301,7 +301,7 @@ let vinu=[]
         </Flex> <Text ml='3' fontSize="3xl" fontWeight='bolder'>This Week: 26 Sep – 02 Oct 2022</Text><Spacer />  <Daytypes w="140px" />    </Flex>
         
         <hr  style={{marginBottom:"20px",marginTop:'12px'}}/>
-        <Flex justifyContent='space-between'> 
+        <Flex justifyContent='space-between' gap={['8',"none"]} flexWrap='wrap'> 
           <Box>
             <Text>Total Hours</Text>
             <Text>1.08</Text>

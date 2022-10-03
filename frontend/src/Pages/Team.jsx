@@ -166,7 +166,7 @@ let vinu=[]
       </Flex> <Text ml='3' fontSize="3xl" fontWeight='bolder'>This Week: 26 Sep – 02 Oct 2022</Text><Spacer />  <Daytypes w="140px" />    </Flex>
       <hr style={{marginTop:'20px', marginBottom:"20px"}} />
       
-      <Flex justifyContent='space-between'>
+      <Flex justifyContent='space-between' gap={['8',"none"]} flexWrap='wrap'>
         <Box>
           <Text>Total hours</Text>
           <Text fontWeight="bold" fontSize='2xl'>115.25</Text>
@@ -180,7 +180,8 @@ let vinu=[]
         <Flex alignItems="center" gap='2'> 
                         <Box borderRadius="2px" width="20px" height="20px" backgroundColor="green.400" ></Box>
                         <Text>Billable</Text>
-                    </Flex>
+            </Flex>
+            
               <Flex gap='2'mt='2'>  
                         <Box borderRadius="2px" width="20px" height="20px" backgroundColor="green.100" ></Box>
                         <Text>Not Billable</Text>
@@ -188,19 +189,19 @@ let vinu=[]
         </Box>
         
         <Box>
-          <Text fontWeight='bold' >99</Text>
-          <Text fontWeight='bold'>99</Text>
+          <Text fontWeight='bold' >90</Text>
+          <Text fontWeight='bold'>30</Text>
           
         </Box>
         <Box w="18%" mr='10px'>
-        <MultiColorProgressbar value={35} height={30} bars={bars} minVal={0} maxVal={50} />
+        <MultiColorProgressbar value={70} height={30} bars={bars} minVal={0} maxVal={120} />
           
         </Box>
 
 
       </Flex>
       <hr style={{marginTop:'20px', marginBottom:"35px"}} />  
-     { team.length>0 && <Reporttable data={team} />}  
+     { team.length>0 && <Reporttable name={"team"} data={team} />}  
       <Box>
         <SecondaryFooter />
       </Box>

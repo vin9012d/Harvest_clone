@@ -14,7 +14,7 @@ import React from 'react'
 import { HeaderRow } from './HeaderRow'
 import { TableRow } from './TableRow'
 
-export const Reporttable = ({ data }) => {
+export const Reporttable = ({ data,name }) => {
   let total = 0;
   for (let i = 0; i < data.length; i++){
     total = total+data[i].total;
@@ -38,7 +38,7 @@ export const Reporttable = ({ data }) => {
                   <Tbody>
                       
                       {data.map((item,ind) => (
-                          <TableRow key={ind} data={item} />  
+                          <TableRow key={ind} data={item}  name={name} />  
                       ))}
     </Tbody>
     <Tfoot>

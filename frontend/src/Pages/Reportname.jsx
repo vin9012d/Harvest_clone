@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, CircularProgress, CircularProgressLabel, Flex, Icon, Spacer, Text } from "@chakra-ui/react"
+import { Box, CircularProgress, CircularProgressLabel, Flex, Heading, Icon, Spacer, Text } from "@chakra-ui/react"
 import { Daytypes } from '../Components/Vinodmodal/Daytypes'
 import { Reporttable } from '../Components/Vinodmodal/Reporttable'
 import { Totalhours } from '../Components/Vinodmodal/Totalhours'
@@ -10,11 +10,13 @@ import { BsArrowLeftSquare, BsArrowRightSquare } from "react-icons/bs"
 import { FormText } from 'reactstrap'
 import SecondaryFooter from './SecondaryFooter'
 import SecondaryNavbar from './SecondaryNavbar'
+import { useParams } from 'react-router-dom'
 export const Reportname = () => {
     const [clients, setClients] = useState([]);
     const [project, setProject] = useState([]);
     const [task, setTask] = useState([]);
     const [team, setTeam] = useState([]);
+    const {name}=useParams()
 
 
     const data = [
@@ -55,20 +57,20 @@ export const Reportname = () => {
         {
             date: "21 sep",
             works: [{ title: "work of project", time: 1.01 },
-            { title: "web development", time: 1.01 },
-            { title: "work of project", time: 1.01 }]
+            { title: "web development", time: 1.71 },
+            { title: "work of project", time: 1.61 }]
         },
 
         {
             date: "22 sep",
-            works: [{ title: "software testing", time: 1.01 }]
+            works: [{ title: "software testing", time: 1.31 }]
         },
 
         {
             date: "23 sep",
             works: [
 
-                { title: "Navbar building", time: 1.01 },
+                { title: "Navbar building", time: 6.01 },
                 { title: "Navbar responsive", time: 5.01 },
                 { title: "Navbar css", time: 2.01 },
                 { title: "Navbar integrate", time: 3.01 },
@@ -78,16 +80,16 @@ export const Reportname = () => {
         },
         {
             date: "24 sep",
-            works: [{ title: "footer building", time: 1.01 }]
+            works: [{ title: "footer building", time: 9.01 }]
         },
         {
             date: "25 sep",
-            works: [{ title: "cart building", time: 1.01 }]
+            works: [{ title: "cart building", time: 8.01 }]
         },
         {
             date: "25 sep",
             works: [
-                { title: "checkout building", time: 1.01 },
+                { title: "checkout building", time: 2 },
                 { title: "checkout building", time: 1.01 }
 
             ]
@@ -289,13 +291,16 @@ export const Reportname = () => {
 <Box>
 
 <SecondaryNavbar />
-</Box>
-            <Box  mt='3.5rem' >
-                <Flex alignItems='center'>   <Flex alignItems='center' > <Icon as={BsArrowLeftSquare} w={8} h={8} />
+            </Box>
+            
+
+            <Box mt='3.5rem'  m='auto' w={['90%','90%','80%']}>
+            <Box  >
+                <Flex alignItems='center'  >   <Flex alignItems='center' > <Icon as={BsArrowLeftSquare} w={8} h={8} />
                     <Icon as={BsArrowRightSquare} w={8} h={8} />
                 </Flex> <Text ml='3' fontSize="3xl" fontWeight='bolder'>This Week: 26 Sep – 02 Oct 2022</Text><Spacer />  <Daytypes w="140px" />    </Flex>
                 <hr style={{ marginTop: "20px", marginBottom: "25px"}} />
-                <Flex justifyContent='space-between' mt='5'>
+                <Flex justifyContent='space-between' mt='5' gap={['8',"none"]} flexWrap='wrap'>
                     <Box>
                         <Text>Total Hours</Text>
                         <Text>1.08</Text>
@@ -348,8 +353,11 @@ export const Reportname = () => {
    {  team.length>0 && <Reporttable data={team} />} */}
             <hr style={{ marginTop: "20px", marginBottom: "25px"}} />
             <Flex justifyContent='space-between' direction={["column","column",'row']} alignItems={["center",'center','none']}>
-                <Box width={["80%","80%",'30%']} >
-                    <Box mt='7'  boxShadow=" rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;" p='5'>
+                    <Box mt={["none",'none','-36']} width={["80%", "80%", '30%']}>
+                        <Box mb='3'>
+                            <Heading>{name}</Heading>
+                        </Box>
+                    <Box   boxShadow=" rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;" p='5'>
                         <Totalhours width="90%"  />
                     </Box>
                     <Box mt='7'  boxShadow=" rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;" p='5'>
@@ -361,13 +369,13 @@ export const Reportname = () => {
                 
                 </Box>
                 
-                <Box mt={["30px",'30px','none']} width={['80%','80%',"60%"]}>    <Teamworktable data={vinod} /></Box>
+                <Box  mt={["30px",'30px','none']} width={['80%','80%',"60%"]}>    <Teamworktable data={vinod} /></Box>
 
             </Flex>
             <Box>
         <SecondaryFooter />
       </Box>
-
+      </Box>
         </Box>
 
     )
