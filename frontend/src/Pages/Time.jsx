@@ -1,11 +1,13 @@
 import { Icon, SmallAddIcon } from '@chakra-ui/icons';
-import { background, Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, useDisclosure } from '@chakra-ui/react';
+import {Input, background, Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Select, Tab, useDisclosure, TabList, Tabs, TabPanels, TabPanel } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { IoIosArrowDown } from 'react-icons/io';
-import { Input } from 'reactstrap';
+import { Counter } from '../Components/counter';
 import time from "../module.css/time.module.css"
 import SecondaryFooter from './SecondaryFooter';
 import SecondaryNavbar from './SecondaryNavbar';
+import {v4 as uuid} from "uuid"
+
   const projects = {
     Exampl_project: {
       client_name: "Vinod",
@@ -17,17 +19,30 @@ import SecondaryNavbar from './SecondaryNavbar';
     },
   };
 // var tm=5000000
-const timeconvert=(tm)=>{
+const timeConverttToHour=(tm)=>{
 const second=Math.floor(tm/1000)
 const minute=Math.floor(second/60)
 const hour=Math.floor(minute/60)
 const remain_minute = minute%60
 return hour +':'+ remain_minute;
 }
+const timeConverttToSecond=(tm)=>{
+var check=tm.includes(":")
 
+if(check){
+  var arr = tm.split(":");
+  let hour=+arr[0]*60*60
+  let minute=+arr[1]*60
+  console.log(arr)
+ return hour+minute
+}
+else{
+  var hour=+tm*60*60
+  return hour
+}
+}
 export const Time = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [project, setproject] = useState("")
   const [project_name,setProject_names]=useState([])
   const [selected_project, setselected_project] = useState(
     Object.keys(projects)[0]||""
@@ -36,10 +51,24 @@ export const Time = () => {
   const [selected_day, setselected_day] = useState("day1")
   const [week, setweek] = useState({day1:[],day2:[],day3:[],day4:[],day5:[],day6:[],day7:[]})
   const [isClockRunning, setisClockRunning] = useState(false)
+  const [selectedTime, setselectedTime] = useState("0")     
+   console.log(selected_day);
 
- 
-    
-   
+const handleSubmitWeek=()=>{
+var work=[]
+var obj=week
+console.log(obj.day1)
+for(var key in obj)
+
+  var data = {
+    project_name: week.day1[0].project,
+    client_name: week.day1[0].client,
+    week_number: "Week 1",
+    emp_name: "Bharat Rozodkar",
+    work: [],
+  };
+}
+
   useEffect( () => {
     var temp=[]
     for(var key in projects){
@@ -51,17 +80,19 @@ export const Time = () => {
 setProject_names(()=>[...temp]);
   },[])
 const handleNewTime = () => {
-
+var timer = timeConverttToSecond(selectedTime);
   const data = {
     task: selected_task,
     project: selected_project,
     client: projects[selected_project].client_name,
-    time:0
+    time: timer,
+    id: uuid(),
   };
   const temp = week;
   week[selected_day].push(data);
   setweek({ ...temp });
   console.log(week);
+  onClose()
 };
 
   return (
@@ -92,81 +123,51 @@ const handleNewTime = () => {
               >
                 New time entry for Saturday, 01 Oct
               </ModalHeader>
-              <ModalBody>
+              <ModalBody height={"auto"}>
                 <p>Project / Task</p>
-                <Popover>
-                  <PopoverTrigger>
-                    <Button
-                      background={"white"}
-                      border="1px solid black"
-                      height={"auto"}
-                      padding="10px 0px"
-                      width={"100%"}
-                      margin="auto"
-                    >
-                      {selected_project ? selected_project : "Select Project"}
-                      <Icon width={"40px"} as={IoIosArrowDown} />
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent width="100%">
-                    <PopoverArrow />
-                    <PopoverBody>
-                      <input
-                        className={time.inp_search}
-                        type="text"
-                        placeholder="Search ..."
-                      ></input>
-                      {project_name.map((e, index) => {
-                        return (
-                          <div
-                            key={index}
-                            onClick={() => setselected_project(e.project_nm)}
-                          >
-                            <p>{e.cl_name}</p>
-                            <p>{e.project_nm}</p>
-                          </div>
-                        );
-                      })}
-                    </PopoverBody>
-                  </PopoverContent>
-                </Popover>
-                <Popover>
-                  <PopoverTrigger>
-                    <Button
-                      background={"white"}
-                      border="1px solid black"
-                      height={"auto"}
-                      padding="10px 0px"
-                      width={"100%"}
-                      margin="auto"
-                    >
-                      {selected_task ? selected_task : "Select task"}
-                      <Icon width={"40px"} as={IoIosArrowDown} />
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent width="100%">
-                    <PopoverArrow />
-                    <PopoverBody>
-                      <input
-                        className={time.inp_search}
-                        type="text"
-                        placeholder="Search ..."
-                      ></input>
-                      {projects[selected_project].tasks.map((e) => {
-                        return <p onClick={() => setselected_task(e)}>{e}</p>;
-                      })}
-                    </PopoverBody>
-                  </PopoverContent>
-                </Popover>
-                <div display="flex  ">
-                  <Input placeholder="Notes (optional)" width="50px" />
+
+                <Select
+                  mt={3}
+                  onChange={(e) => setselected_project(e.target.value)}
+                  placeholder="Select project"
+                >
+                  {project_name.map((e, index) => {
+                    return (
+                      <option
+                        marginTop="100px"
+                        key={index}
+                        value={e.project_nm}
+                      >
+                        <p>{e.project_nm}</p>
+                        <p>({e.cl_name})</p>
+                      </option>
+                    );
+                  })}
+                </Select>
+                <Select
+                  onChange={(e) => setselected_task(() => e.target.value)}
+                  placeholder="Select task"
+                  mt={3}
+                >
+                  {projects[selected_project].tasks.map((elem, index) => {
+                    return (
+                      <option key={index} value={elem}>
+                        {elem}
+                      </option>
+                    );
+                  })}
+                </Select>
+                <Box mt={3}>
+                  <Input placeholder="Notes (optional)" />
+                </Box>
+                <Box mt={3}>
                   <Input
+                    type="text"
+                    value={selectedTime}
+                    onChange={(e) => setselectedTime(() => e.target.value)}
                     placeholder="0:00"
-                    // htmlSize={5}
-                    w={25}
-                    // size="lg"
                   />
-                </div>
+                </Box>
               </ModalBody>
 
               <ModalFooter>
@@ -183,8 +184,57 @@ const handleNewTime = () => {
         </div>
         <div className={time.time_firstdiv_right}>
           <div className={time.time_firstdiv_right_head}>
-            <div className={time.time_firstdiv_right_head_days}>
-              <div
+            {/* <div className={time.time_firstdiv_right_head_days}> */}
+            <Tabs>
+              <TabList>
+                <Tab onClick={(e) => setselected_day("day1")}>Day 1</Tab>
+                <Tab>
+                  <p onClick={(e) => setselected_day("day2")}>Day 2</p>
+                </Tab>
+                <Tab onClick={(e) => setselected_day("day3")}>Day 3</Tab>
+                <Tab onClick={(e) => setselected_day("day4")}>Day 4</Tab>
+                <Tab onClick={(e) => setselected_day("day5")}>Day 5</Tab>
+                <Tab onClick={(e) => setselected_day("day6")}>Day 6</Tab>
+                <Tab onClick={(e) => setselected_day("day7")}>Day 7</Tab>
+              </TabList>
+
+              <TabPanels>
+                <TabPanel>
+                  {week[selected_day].length > 0 ? (
+                    week[selected_day].map((elem, index) => {
+                      const showtime = timeConverttToHour(elem.time);
+                      console.log(elem.time);
+                      return (
+                        <div className={time.time_firstdiv_right_data_child}>
+                          <div className={time.time_firstdiv_right_data_left}>
+                            <div display="flex" backgroundColor="red">
+                              <p>{elem.project}</p>
+                              <p>({elem.client})</p>
+                            </div>
+
+                            <p>{elem.task}</p>
+                          </div>
+                          <div className={time.time_firstdiv_right_data_right}>
+                            <Counter
+                              day={selected_day}
+                              week={week}
+                              setweek={setweek}
+                              time={elem.time}
+                              setisClockRunning={setisClockRunning}
+                              isClockRunning={isClockRunning}
+                              id={elem.id}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <p>Add task to track time</p>
+                  )}
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+            {/* <div
                 onClick={(e) => setselected_day("day1")}
                 value="day1"
                 style={{
@@ -255,52 +305,17 @@ const handleNewTime = () => {
                 <p>0:00</p>
               </div>
               <div>Total</div>
-            </div>
+            </div> */}
           </div>
-          <div className={time.time_firstdiv_right_data}>
-            {week[selected_day].length > 0 ? (
-              week[selected_day].map((elem, index) => {
-                const showtime = timeconvert(elem.time);
-                return (
-                  <div className={time.time_firstdiv_right_data_child}>
-                    <div className={time.time_firstdiv_right_data_left}>
-                      <div display="flex" backgroundColor="red">
-                        <p>{elem.project}</p>
-                        <p>({elem.client})</p>
-                      </div>
-
-                      <p>{elem.task}</p>
-                    </div>
-                    <div className={time.time_firstdiv_right_data_right}>
-                      <div>{showtime}</div>
-
-                      {isClockRunning ? (
-                        <button
-                          
-                          className={time.time_firstdiv_right_data_right_button}
-                        >
-                          <div className={time.clock}></div>
-                          <p>Stop</p>
-                        </button>
-                      ) : (
-                        <Button
-                         
-                          backgroundColor={"black"}
-                          color="white"
-                        >
-                          Start
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <p>Add task to track time</p>
-            )}
-          </div>
+          <div className={time.time_firstdiv_right_data}></div>
         </div>
       </div>
+      <div className={time.final_submit}>
+        <Button onClick={handleSubmitWeek} colorScheme="black" variant="outline">
+          Submit week for approval
+        </Button>
+      </div>
+
       <Box marginTop={"80%"}>
         <SecondaryFooter />
       </Box>

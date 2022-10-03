@@ -93,7 +93,7 @@ const Projects = () => {
                 <PopoverContent width="250px">
                   <PopoverArrow />
                   <PopoverBody className={project_page.manager_fltr_con}>
-                    <p>Active Projects</p>
+                    <p>All clients</p>
                     <h3 className={project_page.client_filter_head}>
                       Active Clients
                     </h3>

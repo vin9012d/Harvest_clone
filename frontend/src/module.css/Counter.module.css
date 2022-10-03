@@ -1,0 +1,57 @@
+.time_firstdiv_right_data_right_button {
+    display: flex;
+    align-items: center;
+    background-color: #1d1e1c;
+    color: white;
+    width: 100px;
+    border-radius: 10px;
+    justify-content: center;
+
+}
+.clock {
+    margin-top: 20px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: black;
+    transform: translate(-50%, -50%);
+    box-shadow: inset 0px 0px 10px black;
+}
+
+.clock::before {
+    position: absolute;
+    content: '';
+    height: 10px;
+    width: 1px;
+    background: white;
+    top: 50%;
+    left: calc(50% - 2px);
+    border-radius: 5px;
+    animation: spin 6s linear infinite;
+    transform-origin: top;
+}
+
+.clock::after {
+    position: absolute;
+    content: '';
+    height: 10px;
+    width: 1.5px;
+    background: white;
+    top: 50%;
+    left: calc(50% - 2px);
+    border-radius: 5px;
+    animation: spin 72s linear infinite;
+    transform-origin: top;
+
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(-180deg)
+    }
+
+    100% {
+        transform: rotate(180deg)
+    }
+}
