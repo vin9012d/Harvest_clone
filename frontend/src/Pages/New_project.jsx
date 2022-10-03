@@ -37,6 +37,8 @@ import {
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import new_project from "../module.css/new_project.module.css";
+import SecondaryFooter from "./SecondaryFooter";
+import SecondaryNavbar from "./SecondaryNavbar";
 var clientnames=["vinod","govid","bharat","arbaz"]
 
 const NewProject = () => {
@@ -180,6 +182,9 @@ const handleDeleteTeamMember=async(e)=>{
   }
   return (
     <div>
+      <Box marginTop={"50px"}>
+        <SecondaryNavbar />
+      </Box>
       <div className={new_project.new_prj_main}>
         <h1 className={new_project.new_prj_heading}>New project</h1>
         <hr></hr>
@@ -193,7 +198,9 @@ const handleDeleteTeamMember=async(e)=>{
                     className={new_project.new_prj_box2_right_1st_btn}
                     width={"90%"}
                   >
-                    {client_name.length>0?client_name: "Choose a client..."}
+                    {client_name.length > 0
+                      ? client_name
+                      : "Choose a client..."}
                     <Icon width={"40px"} as={IoIosArrowDown} />
                   </button>
                 </PopoverTrigger>
@@ -226,7 +233,11 @@ const handleDeleteTeamMember=async(e)=>{
           <div className={new_project.new_prj_box2_row}>
             <p className={new_project.new_prj_box2_left}>Project name</p>
             <div className={new_project.new_prj_box2_right_2nd}>
-              <Input onChange={(e) => setproject_name(()=> e.target.value)} focusBorderColor="black" borderColor="gray.400" />
+              <Input
+                onChange={(e) => setproject_name(() => e.target.value)}
+                focusBorderColor="black"
+                borderColor="gray.400"
+              />
             </div>
           </div>
           <div className={new_project.new_prj_box2_row}>
@@ -236,7 +247,6 @@ const handleDeleteTeamMember=async(e)=>{
                 width={"20%"}
                 focusBorderColor="black"
                 borderColor="gray.400"
-                
               />
             </div>
           </div>
@@ -978,6 +988,9 @@ const handleDeleteTeamMember=async(e)=>{
           <button className={new_project.new_prj_cancel_btn}>Cancel</button>
         </div>
       </div>
+      <Box >
+        <SecondaryFooter />
+      </Box>
     </div>
   );
 };
