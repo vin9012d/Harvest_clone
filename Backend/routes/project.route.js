@@ -18,7 +18,11 @@ projectControl.post("/", async(req, res) => {
 
 
 })
-
+projectControl.get("/", async(req, res) => {
+    const payload = req.body;
+    const new_data = await ProjectModel.find()
+    res.json(new_data)
+})
 
 module.exports = {
     projectControl
