@@ -47,7 +47,7 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    return navigate("/login");
     dispatch(signup(formData)).then((r) => {
       if (r.type === "SIGNUP_SUCCESS" && r.status === true) {
         return navigate("/login");

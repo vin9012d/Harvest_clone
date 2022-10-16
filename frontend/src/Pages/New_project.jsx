@@ -34,7 +34,7 @@ import {
   Textarea,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import new_project from "../module.css/new_project.module.css";
 import SecondaryFooter from "./SecondaryFooter";
@@ -180,6 +180,15 @@ const handleDeleteTeamMember=async(e)=>{
    await setteam(()=>[...team_names, first_name + " " + last_name])
   await  setcharge(()=>[...charge,0])
   }
+
+  useEffect(() => {
+   
+    fetch(`loca`)
+
+
+ })
+
+
   return (
     <div>
       <Box marginTop={"50px"}>

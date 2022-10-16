@@ -14,7 +14,7 @@ timeControl.post("/", async(req, res) => {
          await new_data.save()
         console.log(new_data,'new_data')
     
-      res.send("reached to the time post")
+        res.json({message:"data posted successfully"})
      } else {
          let newWorK=[]
          console.log(data.work, 'work')
@@ -59,7 +59,7 @@ timeControl.post("/", async(req, res) => {
 
 
          await TimeModel.updateOne({ week_number, project_name, client_name }, { $set: { "work": newWorK } })
-         res.send("reached to the time post")
+         res.json({message:"data posted successfully"})
     }
 
 })
