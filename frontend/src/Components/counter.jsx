@@ -4,25 +4,12 @@ import counter from "../module.css/Counter.module.css"
 
   
     const timeconvert = (tm) => {
-      const minute = Math.floor(tm / 60);
-      const hour = Math.floor(minute / 60);
-      const remain_minute = minute % 60;
+      console.log(tm)
+      const hour = Math.floor(tm / 60);
+      const remain_minute = tm % 60;
       return hour + ":" + remain_minute;
     };
-    const timeConverttToSecond = (tm) => {
-      var check = tm.includes(":");
-
-      if (check) {
-        var arr = tm.split(":");
-        let hour = +arr[0] * 60 * 60;
-        let minute = +arr[1] * 60;
-        console.log(arr);
-        return hour + minute;
-      } else {
-        var hour = +tm * 60 * 60;
-        return hour;
-      }
-    };
+   
 
 export const Counter = ({day,id, time, setisClockRunning, isClockRunning,setweek,week }) => {
   const [vinod, setVinod] = useState(time);
@@ -41,7 +28,6 @@ export const Counter = ({day,id, time, setisClockRunning, isClockRunning,setweek
     var obj = tempweek[day];
     // console.log(typeof())
     for (var key in obj) {
-      console.log(obj[key]) 
       if(obj[key].id===id){
 
         tempweek[day][key].time = vinod;
@@ -55,17 +41,17 @@ export const Counter = ({day,id, time, setisClockRunning, isClockRunning,setweek
          var obj = tempweek[day];
          // console.log(typeof())
          for (var key in obj) {
-           console.log(obj[key]);
            if (obj[key].id === id) {
              tempweek[day][key].time = vinod;
              setweek(() => tempweek);
            }
          }
     }
+
     if (state === true) {
       setTimeout(() => {
         setVinod((vinod) => vinod + 1);
-      }, 10);
+      }, 1000);
     }
   }, [vinod, state]);
 
@@ -77,19 +63,6 @@ export const Counter = ({day,id, time, setisClockRunning, isClockRunning,setweek
     //     </div>
     <>
       {clock}
-      {/* {isClockRunning ? (
-        <button
-          onClick={handleStop}
-          className={time.time_firstdiv_right_data_right_button}
-        >
-          <div className={time.clock}></div>
-          <p>Stop</p>
-        </button>
-      ) : (
-        <Button backgroundColor={"black"} color="white" onClick={handleStatus}>
-          Start
-        </Button>
-      )} */}
       {state ? (
         <button
           onClick={handleStop}

@@ -190,6 +190,9 @@ font-weight: 500;
 margin: auto;
 justify-content:end ;
 }
+.modal_select_project_option{
+    background-color: #188433;
+}
 
 @keyframes spin {
     0% {
