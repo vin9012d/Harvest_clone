@@ -28,7 +28,7 @@ clientControl.get("/",authentication, async(req, res) => {
 })
 
 
-clientControl.patch("/edit/:edit_id", async(req, res) => {
+clientControl.patch("/edit/:edit_id",authentication, async(req, res) => {
     const { edit_id } = req.params;
 
 
@@ -45,7 +45,7 @@ clientControl.patch("/edit/:edit_id", async(req, res) => {
 
 })
 
-clientControl.delete("/delete/:delete_id", async(req, res) => {
+clientControl.delete("/delete/:delete_id",authentication, async(req, res) => {
     const { delete_id } = req.params;
     console.log(delete_id,'deletid')
 
@@ -62,7 +62,7 @@ clientControl.delete("/delete/:delete_id", async(req, res) => {
 
 })
 
-clientControl.post("/contact", async(req, res) => {
+clientControl.post("/contact",authentication, async(req, res) => {
     
     const payload = req.body;
     const new_data = await ClientModel.updateOne({ _id: "63380eafd7b98b0b98107a8c" },  {
@@ -81,7 +81,7 @@ res.json({message:"Reached"})
 
 
 
-clientControl.delete("/contact", async(req, res) => {
+clientControl.delete("/contact",authentication, async(req, res) => {
     
     const payload = req.body;
     const new_data = await ClientModel.updateOne({ _id: "63380eafd7b98b0b98107a8c" },  {

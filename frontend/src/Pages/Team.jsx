@@ -2,6 +2,7 @@ import { Box, Flex, Icon, Spacer, Tab, TabList, TabPanel, TabPanels, Tabs, Text 
 import MultiColorProgressbar from 'multi-color-progressbar-with-indicator'
 import React, { useEffect, useState } from 'react'
 import { BsArrowLeftSquare, BsArrowRightSquare } from 'react-icons/bs'
+import { useSelector } from 'react-redux'
 import Mininavbar from '../Components/Mininavbar'
 import { Daytypes } from '../Components/Vinodmodal/Daytypes'
 import { Reporttable } from '../Components/Vinodmodal/Reporttable'
@@ -9,7 +10,8 @@ import SecondaryFooter from './SecondaryFooter'
 import SecondaryNavbar from './SecondaryNavbar'
 
 export const Team = () => {
-  const [team,setTeam]=useState([])
+  const [team, setTeam] = useState([])
+  const token = useSelector((store) => store.AuthReducer.token);
 
 
   const data = [
@@ -129,7 +131,7 @@ let vinu=[]
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        // token: `bearer ${token}`,
+        "Authorization": `bearer ${token}`,
       },
     })
       .then((res) => res.json())

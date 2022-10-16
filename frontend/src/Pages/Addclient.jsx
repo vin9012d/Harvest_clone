@@ -9,6 +9,7 @@ import SecondaryFooter from "./SecondaryFooter";
 export const AddClient = () => {
   const navigate = useNavigate();
 //   const token = useSelector((state) => state.authReducer.token);
+const token = useSelector((store) => store.AuthReducer.token);
   
     const [payload, setPayload] = useState({client_name:"",address:""})
     const handlePayload = (e) => {
@@ -25,7 +26,7 @@ export const AddClient = () => {
       body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
-        // token: `bearer ${token}`,
+        "Authorization": `bearer ${token}`,
       },
     })
       .then((res) => res.json())

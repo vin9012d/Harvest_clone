@@ -7,6 +7,7 @@ import SecondaryNavbar from "./SecondaryNavbar";
 export const EditClient = () => {
   const navigate = useNavigate();
   // const token = useSelector((state) => state.authReducer.token);
+  const token = useSelector((store) => store.AuthReducer.token);
   const [client_name, setClient] = useState("");
   const [address, setAddress] = useState("");
  
@@ -25,7 +26,7 @@ export const EditClient = () => {
       body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
-        // token: `bearer ${token}`,
+        "Authorization": `bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -46,7 +47,7 @@ export const EditClient = () => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        // token: `bearer ${token}`,
+        "Authorization": `bearer ${token}`
       },
     })
       .then((res) => navigate("/manages"))

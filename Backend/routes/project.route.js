@@ -1,9 +1,10 @@
 const { Router } = require("express");
+const { authentication } = require("../middlewares/authentication");
 const { ProjectModel } = require("../models/project.model");
 
 const projectControl = Router();
 
-projectControl.post("/", async(req, res) => {
+projectControl.post("/",authentication, async(req, res) => {
     
     const payload = req.body;
     const new_data = new ProjectModel(payload)
@@ -17,7 +18,7 @@ projectControl.post("/", async(req, res) => {
 })
 
 
-projectControl.get("/", async(req, res) => {
+projectControl.get("/",authentication, async(req, res) => {
     
     const payload = req.body;
     const new_data = await ProjectModel.find()
@@ -29,7 +30,7 @@ projectControl.get("/", async(req, res) => {
     res.json(new_data)
 
 })
-projectControl.get("/", async(req, res) => {
+projectControl.get("/",authentication, async(req, res) => {
     const payload = req.body;
     const new_data = await ProjectModel.find()
     res.json(new_data)
