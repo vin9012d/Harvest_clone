@@ -8,6 +8,7 @@ import SecondaryFooter from './SecondaryFooter';
 import SecondaryNavbar from './SecondaryNavbar';
 import {v4 as uuid} from "uuid"
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
   const projects = {
     Exampl_project: {
@@ -44,6 +45,7 @@ else{
 }
 
 export const Time = () => {
+    const token = useSelector((store) => store.AuthReducer.token);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [project_name,setProject_names]=useState([])
   const [selected_project, setselected_project] = useState("");
@@ -57,14 +59,14 @@ export const Time = () => {
   //  console.log(tasks,"task");
 
   useEffect(() => {
-axios.get("http://localhost:8080/project").then((res)=>setproject_data(()=>res.data)).catch((err)=>console.log(err));
+axios.get("http://localhost:8080/project",{
+      headers: {
+        authorization: `bearer ${token}`,
+      },
+    }).then((res)=>setproject_data(()=>res.data)).catch((err)=>console.log(err));
   }, [])
 
   const handle_select_project=(e)=>{
-
-    // console.log(project_data,"value")
-    // console.log(e.target.value);
-    // return
     setselected_project(()=>e.target.value)
     var count=-1
     for(var a=0;a<project_data.length;a++){
@@ -103,7 +105,14 @@ const handleSubmitWeek=()=>{
   };
   console.log(data);
   
-  axios.post("http://localhost:8080/time",  data ).then((r)=>console.log(r.data)).catch((err)=>console.log(err));
+  axios
+    .post("http://localhost:8080/time", data, {
+      headers: {
+        authorization: `bearer ${token}`,
+      }
+    })
+    .then((r) => console.log(r.data))
+    .catch((err) => console.log(err));
 
 }
 

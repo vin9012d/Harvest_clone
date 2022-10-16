@@ -19,10 +19,12 @@ import SecondaryNavbar from "./SecondaryNavbar";
 import SecondaryFooter from "./SecondaryFooter";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 
 const Projects = () => {
   const [data, setdata] = useState([])
+      const token = useSelector((store) => store.AuthReducer.token);
   console.log(data)
   const navigte=useNavigate()
   const handleclick=()=>{
@@ -30,7 +32,14 @@ const Projects = () => {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:8080/project").then((res)=>setdata(()=>res.data)).catch((e)=>console.log(e));
+    axios
+      .get("http://localhost:8080/project", {
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      })
+      .then((res) => setdata(() => res.data))
+      .catch((e) => console.log(e));
   }, []);
   return (
     <div>
