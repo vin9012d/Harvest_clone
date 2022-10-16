@@ -59,14 +59,14 @@ export const Time = () => {
   //  console.log(tasks,"task");
 
   useEffect(() => {
-axios.get("http://localhost:8080/project").then((res)=>setproject_data(()=>res.data)).catch((err)=>console.log(err));
+axios.get("http://localhost:8080/project",{
+      headers: {
+        authorization: `bearer ${token}`,
+      },
+    }).then((res)=>setproject_data(()=>res.data)).catch((err)=>console.log(err));
   }, [])
 
   const handle_select_project=(e)=>{
-
-    // console.log(project_data,"value")
-    // console.log(e.target.value);
-    // return
     setselected_project(()=>e.target.value)
     var count=-1
     for(var a=0;a<project_data.length;a++){
@@ -109,7 +109,7 @@ const handleSubmitWeek=()=>{
     .post("http://localhost:8080/time", data, {
       headers: {
         authorization: `bearer ${token}`,
-      },
+      }
     })
     .then((r) => console.log(r.data))
     .catch((err) => console.log(err));
