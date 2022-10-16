@@ -1,9 +1,10 @@
 const { Router } = require("express");
+const { authentication } = require("../middlewares/authentication");
 const { TimeModel } = require("../models/time.model");
 
 const timeControl = Router();
 
-timeControl.post("/", async(req, res) => {
+timeControl.post("/",authentication, async(req, res) => {
     const { week_number, project_name, client_name,work ,emp_name} = req.body;
     let payload = req.body;
 
@@ -65,7 +66,7 @@ timeControl.post("/", async(req, res) => {
 })
 
 
-timeControl.get("/", async (req, res) => {
+timeControl.get("/",authentication, async (req, res) => {
     
     let data = await TimeModel.find();
     res.json(data)

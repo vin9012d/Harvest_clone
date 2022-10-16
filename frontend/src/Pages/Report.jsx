@@ -10,11 +10,13 @@ import {BsArrowLeftSquare,BsArrowRightSquare} from "react-icons/bs"
 import { FormText } from 'reactstrap'
 import SecondaryNavbar from './SecondaryNavbar'
 import SecondaryFooter from './SecondaryFooter'
+import { useSelector } from 'react-redux'
 export const Report = () => {
   const [clients, setClients] = useState([]);
   const [project, setProject] = useState([]);
   const [task, setTask] = useState([]);
   const [team, setTeam] = useState([]);
+  const token = useSelector((store) => store.AuthReducer.token);
 
 
   const data = [
@@ -257,7 +259,7 @@ let vinu=[]
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        // token: `bearer ${token}`,
+        "Authorization": `bearer ${token}`,
       },
     })
       .then((res) => res.json())
