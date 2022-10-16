@@ -1,4 +1,4 @@
-import { Box, Button, Text, Flex, Img } from "@chakra-ui/react";
+import { Box, Button, Text, Flex} from "@chakra-ui/react";
 import React from "react";
 
 const SecondaryFooter = () => {
@@ -12,7 +12,8 @@ const SecondaryFooter = () => {
       </Box>
       <Flex justifyContent={'center'} alignItems='center' mt='1rem' gap='1rem' flexWrap={'wrap'}>
         <Box>
-          <Img w='8rem' h='2.5rem' src="https://lh3.googleusercontent.com/oPzvsT71DTmdkhC6IvnEenT1qAGljVS9K-53Ni_hlRSgfmUyASKWQtWYuFU3I3dUyztCzEg=s170" alt='logo' />
+          <Text fontWeight={'600'}>Harvest</Text>
+          
           </Box>
         <Flex gap='1rem' fontWeight={"500"}>
             <a href="https://www.getharvest.com/terms-of-service">Terms</a>
