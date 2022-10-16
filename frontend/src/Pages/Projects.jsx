@@ -33,7 +33,7 @@ const Projects = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/project", {
+      .get("https://mysterious-ridge-11647.herokuapp.com/project", {
         headers: {
           authorization: `bearer ${token}`,
         },

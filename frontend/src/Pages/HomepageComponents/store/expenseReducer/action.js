@@ -8,7 +8,7 @@ const getRequestExpense =()=>{
 
 const getExpense = () => ( dispatch )=>{
     dispatch(getRequestExpense())
-    return axios.get("http://localhost:8080/expenses")
+    return axios.get("https://mysterious-ridge-11647.herokuapp.com/expenses")
     .then((res)=>{
 
         return dispatch({type: types.GET_EXPENSE_SUCCESS, payload: res.data})
@@ -25,7 +25,7 @@ const deleteExpenseRequest = () => {
 }
 const deleteExpense = (id) => (dispatch) => {
     dispatch(deleteExpenseRequest())
-    return axios.delete(`http://localhost:8080/expenses/${id}`).then((r) => {
+    return axios.delete(`https://mysterious-ridge-11647.herokuapp.com/expenses/${id}`).then((r) => {
         return dispatch({ type: types.DELETE_EXPENSE_SUCCESS })
     }).catch((e) => {
         return dispatch({ type: types.DELETE_EXPENSE_FAILURE })
@@ -39,7 +39,7 @@ const editExpenseRequest = () => {
 const editExpense = (data) => (dispatch) => {
     console.log(data)
     dispatch(editExpenseRequest())
-    return axios.put(`http://localhost:8080/expenses/${data.id}`, {
+    return axios.put(`https://mysterious-ridge-11647.herokuapp.com/expenses/${data.id}`, {
         "date":data.date,
        "project":data.project,
        "category":data.category,
@@ -62,7 +62,7 @@ const addExpenseRequest = () => {
 const addExpense = (data) => (dispatch) => {
     console.log(data)
     dispatch(addExpenseRequest())
-    return axios.post(`http://localhost:8080/expenses`, {
+    return axios.post(`https://mysterious-ridge-11647.herokuapp.com/expenses`, {
         "date":data.date,
         "project":data.project,
         "category":data.category,

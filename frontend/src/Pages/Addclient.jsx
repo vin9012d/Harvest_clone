@@ -21,7 +21,7 @@ const token = useSelector((store) => store.AuthReducer.token);
 
   const addclient = async () => {
  
-    await fetch("http://localhost:8080/client", {
+    await fetch("https://mysterious-ridge-11647.herokuapp.com/client", {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {

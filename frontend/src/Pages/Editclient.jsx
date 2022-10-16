@@ -21,7 +21,7 @@ export const EditClient = () => {
       client_name,
       address
     };
-    await fetch(`http://localhost:8080/client/edit/${edit_id}`, {
+    await fetch(`https://mysterious-ridge-11647.herokuapp.com/client/edit/${edit_id}`, {
       method: "PATCH",
       body: JSON.stringify(payload),
       headers: {
@@ -43,7 +43,7 @@ export const EditClient = () => {
   };
 
   const deleteClient = async () => {
-    await fetch(`http://localhost:8080/client/delete/${edit_id}`, {
+    await fetch(`https://mysterious-ridge-11647.herokuapp.com/client/delete/${edit_id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

@@ -27,7 +27,7 @@ export const Manage = () => {
   const navigate=useNavigate()
 
   const getClientsdata = async () => {
-    await fetch("http://localhost:8080/client", {
+    await fetch("https://mysterious-ridge-11647.herokuapp.com/client", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

@@ -50,7 +50,7 @@ const NewProject = () => {
   const [clientnames,setClientNames]=useState([])
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
-  const [team_names, setteam] = useState(["Bharat Rozodkar"])
+  const [team_names, setteam] = useState(["Vinod Chaudhari"])
   const [first_name, setfirst_name] = useState("")
 const [last_name, setlast_name] = useState("")
 const [name, setname] = useState("")
@@ -104,7 +104,7 @@ console.log(start_date, end_date);
     }
     console.log(data)
     axios
-      .post("http://localhost:8080/project", data, {
+      .post("https://mysterious-ridge-11647.herokuapp.com/project", data, {
         headers: {
           authorization: `bearer ${token}`,
         },
@@ -197,7 +197,7 @@ const handleDeleteTeamMember=async(e)=>{
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/client", {
+      .get("https://mysterious-ridge-11647.herokuapp.com/client", {
         headers: {
           authorization: `bearer ${token}`,
         },

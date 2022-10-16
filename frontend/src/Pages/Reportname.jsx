@@ -248,7 +248,7 @@ export const Reportname = () => {
 
 
     const getdata = async () => {
-        await fetch("http://localhost:8080/time", {
+        await fetch("https://mysterious-ridge-11647.herokuapp.com/time", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

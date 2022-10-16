@@ -3,6 +3,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import SecNavDrawer from "./InvoiceComponents/SecNavDrawer";
 const SecondaryNavbar = () => {
+
+  let name = JSON.parse(localStorage.getItem("name"))
+  
   return (
     <>
       <Box
@@ -109,7 +112,7 @@ const SecondaryNavbar = () => {
         <Box>
           <Text display={"flex"} gap="10px" alignItems="center" color="white">
             <Avatar size="sm" src="https://bit.ly/broken-link" />
-            Rita 
+            {name}
           </Text>
         </Box>
       </Box>

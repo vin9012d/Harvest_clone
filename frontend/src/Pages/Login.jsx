@@ -34,6 +34,7 @@ export const Login = () => {
       if (r.type === "LOGIN_SUCCESS") {
         setEmail("");
         setPassword("");
+        localStorage.setItem("name",JSON.stringify(email))
         
         navigate("/manages")
       }

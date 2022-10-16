@@ -7,10 +7,10 @@ const EmployeeList = () => {
   const[user,setUser]=useState([]);
   useEffect(()=>
   {
-    axios.get('http://localhost:8080/userData')
+    axios.get('https://mysterious-ridge-11647.herokuapp.com/userData')
     .then((r)=>{console.log(r.data);setData(r.data)});
 
-    axios.get('http://localhost:8080/registeredUsers')
+    axios.get('https://mysterious-ridge-11647.herokuapp.com/registeredUsers')
     .then((r)=>{console.log(r.data);setUser(r.data)});
 
   },[])

@@ -59,7 +59,7 @@ export const Time = () => {
   //  console.log(tasks,"task");
 
   useEffect(() => {
-axios.get("http://localhost:8080/project",{
+axios.get("https://mysterious-ridge-11647.herokuapp.com/project",{
       headers: {
         authorization: `bearer ${token}`,
       },
@@ -106,7 +106,7 @@ const handleSubmitWeek=()=>{
   console.log(data);
   
   axios
-    .post("http://localhost:8080/time", data, {
+    .post("https://mysterious-ridge-11647.herokuapp.com/time", data, {
       headers: {
         authorization: `bearer ${token}`,
       }

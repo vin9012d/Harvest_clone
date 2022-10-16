@@ -6,7 +6,7 @@ const Timediv = () => {
   const[data,setData]=useState([]);
   useEffect(()=>
   {
-    axios.get('http://localhost:8080/userData')
+    axios.get('https://mysterious-ridge-11647.herokuapp.com/userData')
     .then((r)=>{console.log(r.data);setData(r.data)});
   },[])
   return (

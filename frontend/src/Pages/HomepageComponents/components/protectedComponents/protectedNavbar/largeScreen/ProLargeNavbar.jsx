@@ -9,7 +9,7 @@ export const ProLargeNavbar = () => {
 
   useEffect(()=>
   {
-    axios.get('http://localhost:8080/registeredUsers')
+    axios.get('https://mysterious-ridge-11647.herokuapp.com/registeredUsers')
     .then((r)=>setUser(r.data));
   },[])
 
