@@ -109,7 +109,7 @@ const SecondaryNavbar = () => {
         <Box>
           <Text display={"flex"} gap="10px" alignItems="center" color="white">
             <Avatar size="sm" src="https://bit.ly/broken-link" />
-            Ranajit Das
+            Rita 
           </Text>
         </Box>
       </Box>
