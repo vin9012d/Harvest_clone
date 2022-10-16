@@ -24,7 +24,7 @@ export const login = (params) => (dispatch) => {
       dispatch({ type: types.LOGIN_SUCCESS, payload: r.data.token });
 
       console.log(r.data);
-      return { type: types.LOGIN_SUCCESS, token: r.data?.tokens };
+      return { type: types.LOGIN_SUCCESS, token: r.data?.token };
     })
     .catch((e) => {
       dispatch({ type: types.LOGIN_FALIURE });

@@ -24,21 +24,20 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/manages")
-    return;
     const payload = {
       email,
       password,
     };
 
     dispatch(login(payload)).then((r) => {
-      console.log(r);
+      console.log(r,'logindata');
       if (r.type === "LOGIN_SUCCESS") {
         setEmail("");
         setPassword("");
-        navigate(-1);
+        
+        navigate("/manages")
       }
-    });
+    }); 
   };
 
 

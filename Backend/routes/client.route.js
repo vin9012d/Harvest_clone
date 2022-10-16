@@ -1,8 +1,9 @@
 const { Router } = require("express");
+const { authentication } = require("../middlewares/authentication");
 const { ClientModel } = require("../models/client.mode");
 const clientControl = Router();
 
-clientControl.post("/", async(req, res) => {
+clientControl.post("/", authentication,  async(req, res) => {
     
     const payload = req.body;
     const new_data = new ClientModel(payload);
@@ -11,7 +12,7 @@ clientControl.post("/", async(req, res) => {
     res.json({message:"Reached"})
 
 })
-clientControl.get("/", async(req, res) => {
+clientControl.get("/",authentication, async(req, res) => {
     // const { edit_id } = req.params;
     const new_data1 = await ClientModel.find();
     console.log(new_data1)
