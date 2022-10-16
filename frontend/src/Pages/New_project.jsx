@@ -34,8 +34,10 @@ import {
   Textarea,
   useDisclosure,
 } from "@chakra-ui/react";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 import new_project from "../module.css/new_project.module.css";
 import SecondaryFooter from "./SecondaryFooter";
 import SecondaryNavbar from "./SecondaryNavbar";
@@ -58,11 +60,12 @@ const [project_name, setproject_name] = useState("")
 const [start_date, setstart_date] = useState("")
 const [end_date, setend_date] = useState("")
 const [budget, setbudget] = useState(0)
+const navigate=useNavigate()
 var task = [
-  { name: "Business Development" },
-  { name: "Design" },
-  { name: "Marketing" },
-  { name: "Programming" }
+  { task_name: "Business Development" },
+  { task_name: "Design" },
+  { task_name: "Marketing" },
+  { task_name: "Programming" },
 ];
 
 console.log(start_date, end_date);
@@ -78,7 +81,7 @@ console.log(start_date, end_date);
     const team_data=[]
     for(var a=0;a<selected_team.length;a++){
       var obj={}
-      obj.name=selected_team[a]
+      obj.emp_name=selected_team[a]
      
       const indexof = team_names.indexOf(selected_team[a])
 
@@ -92,10 +95,11 @@ console.log(start_date, end_date);
       budget,
       task,
       end_date,
-      start_date,
+      date:start_date,
       team:team_data
     }
     console.log(data)
+    axios.post("http://localhost:8080/project",data).then((res)=>{navigate("/projects")}).catch((e)=>console.log(e,"err"))
   }
 
 const handleDeleteTeamMember=async(e)=>{
@@ -103,7 +107,7 @@ const handleDeleteTeamMember=async(e)=>{
   console.log(e.target.id,"jk")
       const temp = team_names;
       var indexOfTeam=-1
-      for (var a = 0; a < temp.length; a++) {
+      for (let a = 0; a < temp.length; a++) {
         // console.log(id,temp[a])
         if (temp[a] === id) {
           indexOfTeam = a;
@@ -114,7 +118,7 @@ const handleDeleteTeamMember=async(e)=>{
   await setteam(()=>temp)
   let index=-1
   var tempteam = selected_team
-  for (var a = 0; a < tempteam.length; a++) {
+  for (let a = 0; a < tempteam.length; a++) {
     if (temp[a] === id) {
       index = a;
       break;
