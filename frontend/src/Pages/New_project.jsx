@@ -37,14 +37,17 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import new_project from "../module.css/new_project.module.css";
 import SecondaryFooter from "./SecondaryFooter";
 import SecondaryNavbar from "./SecondaryNavbar";
-var clientnames=["vinod","govid","bharat","arbaz"]
+// var clientnames=["vinod","govid","bharat","arbaz"]
 
 const NewProject = () => {
+  const token = useSelector((store) => store.AuthReducer.token);
   const [selected, setselected] = useState(0);
+  const [clientnames,setClientNames]=useState([])
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
   const [team_names, setteam] = useState(["Bharat Rozodkar"])
@@ -77,7 +80,8 @@ console.log(start_date, end_date);
     "Vacation",
   ];
 
-  const Submit_project=()=>{
+  const Submit_project = () => {
+    
     const team_data=[]
     for(var a=0;a<selected_team.length;a++){
       var obj={}
@@ -99,7 +103,12 @@ console.log(start_date, end_date);
       team:team_data
     }
     console.log(data)
-    axios.post("http://localhost:8080/project",data).then((res)=>{navigate("/projects")}).catch((e)=>console.log(e,"err"))
+    axios.post("http://localhost:8080/project", data,
+  {  headers: {
+     
+      "Authorization": `bearer ${token}`
+    }}
+    ).then((res) => { navigate("/projects") }).catch((e) => console.log(e, "err"))
   }
 
 const handleDeleteTeamMember=async(e)=>{
@@ -186,11 +195,8 @@ const handleDeleteTeamMember=async(e)=>{
   }
 
   useEffect(() => {
-   
-    fetch(`loca`)
-
-
- })
+    axios.get("http://localhost:8080/client").then((res)=>setClientNames(res.data)).catch((e)=>console.log(e));
+  }, []);
 
 
   return (
@@ -228,13 +234,14 @@ const handleDeleteTeamMember=async(e)=>{
                       type="text"
                       placeholder="Search by project or client"
                     ></input>
-                    {clientnames.map((elem) => {
+                    {   clientnames.length>0 &&   clientnames.map((elem) => {
                       return (
                         <p
-                          id={elem}
+                          id={elem.client_name}
+                          key={elem.client_name}
                           onClick={(e) => setclient_name(() => e.target.id)}
                         >
-                          {elem}
+                          {elem.client_name}
                         </p>
                       );
                     })}

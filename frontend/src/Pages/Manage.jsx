@@ -1,5 +1,5 @@
 import { ArrowForwardIcon, SearchIcon } from "@chakra-ui/icons";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import React, { useEffect } from "react";
 import {
   Box,
@@ -20,17 +20,18 @@ import SecondaryNavbar from "./SecondaryNavbar";
 import SecondaryFooter from "./SecondaryFooter";
 export const Manage = () => {
   const [client_data, setClient_data] = useState([]);
-  // const token = useSelector((state) => state.authReducer.token);
+  const token = useSelector((store) => store.AuthReducer.token);
   // const { id } = useParams();
 
   // console.log(id);
+  const navigate=useNavigate()
 
   const getClientsdata = async () => {
     await fetch("http://localhost:8080/client", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        // token: `bearer ${token}`,
+        "Authorization": `bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -40,7 +41,8 @@ export const Manage = () => {
         setClient_data(res);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err, 'err');
+        navigate("/login")
       });
   };
 

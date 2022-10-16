@@ -184,7 +184,7 @@ let vinu=[]
       let Total = 0;
         
         if (obj[vin.task] == undefined) {
-          obj[vin.task]={ client_name:res[i].client_name,project_name:res[i].project_name ,hours:0,billable:0,notbillable:0,total:0}
+          obj[vin.task]={ hours:0,billable:0,notbillable:0,total:0}
         }
         
         console.log(vin,'vin')
@@ -224,7 +224,7 @@ let vinu=[]
       let Total = 0;
 
       if (obj[res[i].emp_name] == undefined) {
-        obj[res[i].emp_name]={ project_name:res[i].project_name, client_name:res[i].client_name ,hours:0,billable:0,notbillable:0,total:0}
+        obj[res[i].emp_name]={ hours:0,billable:0,notbillable:0,total:0}
       }
   
       for(let j = 0; j < res[i].work.length; j++) {

@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { UserModel } = require("../models/user.model");
-
+require("dotenv").config();
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -49,31 +49,45 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-
+console.log("login come baba a")
   const { email, password } = req.body;
+  
+  console.log(email, password, 'email password')
+  console.log("vinod1")
 
   const user = await UserModel.find({ email });
-  const hash = user[1]?.password;
+  console.log(user,'user')
+  const hash = user[0]?.password;
+  console.log(hash,'hash', user.length)
 
   if (user.length === 1) {
-    bcrypt.compare(password, hash, function (err, results) {
+ 
+   bcrypt.compare(password, hash, function (err, results) {
       if (err) {
+        console.log(err,'results')
         return res.status(400).send({ message: "Invalid Credentials" });
       } else if (results) {
-        var token = jwt.sign({ email }, process.env.SECRET_KEY, {
+        console.log(results,'results')
+        var token= jwt.sign({ email }, process.env.SECRET_KEY, {
           expiresIn: "2d",
         });
+       
+        
         return res
           .status(200)
-          .send({ message: "Login Successfully", token, status: results });
+          .send({ message: "Login Successfully", status: results, token });
       }
     });
+  } else {
+    
+    res
+    .status(401)
+    .send({ message: "Login Successfully"});
   }
 
+  console.log("before return failure;")
 
-    res
-      .status(200)
-      .send({ message: "Login Successfully", token, status: results });
+  
   });
 
 

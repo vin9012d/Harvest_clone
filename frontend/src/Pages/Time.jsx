@@ -42,12 +42,7 @@ else{
   return hour
 }
 }
-const minuteToFloat=(m)=>{
-var hour=Math.floor(m/60)
-var minute=m%60
-var float=hour+'.'+Math.floor(minute/0.6)
-return float
-}
+
 export const Time = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [project_name,setProject_names]=useState([])
@@ -88,13 +83,13 @@ const handleSubmitWeek=()=>{
 
   for (var a = 0; a < arr.length; a++) {
     // console.log(arr[a])
-    const hour = minuteToFloat(arr[a].time);
-    var per_hour_charge = 5;
+    const hour = arr[a].time;
+    
     var tempwork = {
-      billable: (hour* per_hour_charge).toFixed(2),
+      billable: hour,
       notbillable: 0,
       task: arr[a].task,
-      charge: per_hour_charge,
+      charge: 5,
     };
     work.push(tempwork);
   }
@@ -106,8 +101,9 @@ const handleSubmitWeek=()=>{
     emp_name: "Bharat Rozodkar",
     work: work,
   };
-    console.log(data);
-  // axios.post("http://localhost:8080/time",  data ).then((r)=>console.log(r.data)).catch((err)=>console.log(err));
+  console.log(data);
+  
+  axios.post("http://localhost:8080/time",  data ).then((r)=>console.log(r.data)).catch((err)=>console.log(err));
 
 }
 
