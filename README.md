@@ -27,12 +27,12 @@ Harvest time tracking integrates all of your team logs and stores it in a single
 <ul>
 <li>Homepage</li>
 <li>Signup/Login</li>
-<li>Channels</li>
-<li>Connect Channel</li>
-<li>Data analytics</li>
-<li>Publishing</li>
-<li>Engagement</li>
-<li>About</li>
+<li>Time page</li>
+<li>Projects</li>
+<li>Team</li>
+<li>Reports</li>
+<li>Invoices</li>
+<li>Manage</li>
 </ul>
 <h2> Features </h2>
 <ul>
