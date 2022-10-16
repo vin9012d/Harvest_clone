@@ -103,12 +103,13 @@ console.log(start_date, end_date);
       team:team_data
     }
     console.log(data)
-    axios.post("http://localhost:8080/project", data,
-  {  headers: {
-     
-      "Authorization": `bearer ${token}`
-    }}
-    ).then((res) => { navigate("/projects") }).catch((e) => console.log(e, "err"))
+    axios
+      .post("http://localhost:8080/project", data, {
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      }).then(()=>navigate("/projects"))
+      .catch((e) => console.log(e, "err"));
   }
 
 const handleDeleteTeamMember=async(e)=>{
@@ -195,8 +196,15 @@ const handleDeleteTeamMember=async(e)=>{
   }
 
   useEffect(() => {
-    axios.get("http://localhost:8080/client").then((res)=>setClientNames(res.data)).catch((e)=>console.log(e));
-  }, []);
+    axios
+      .get("http://localhost:8080/client", {
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      })
+      .then((res) =>  setClientNames(res.data))
+      .catch((e) => console.log(e, "err"));
+  },[]);
 
 
   return (
