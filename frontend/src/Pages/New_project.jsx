@@ -34,13 +34,20 @@ import {
   Textarea,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import new_project from "../module.css/new_project.module.css";
-var clientnames=["vinod","govid","bharat","arbaz"]
+import SecondaryFooter from "./SecondaryFooter";
+import SecondaryNavbar from "./SecondaryNavbar";
+// var clientnames=["vinod","govid","bharat","arbaz"]
 
 const NewProject = () => {
+  const token = useSelector((store) => store.AuthReducer.token);
   const [selected, setselected] = useState(0);
+  const [clientnames,setClientNames]=useState([])
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
   const [team_names, setteam] = useState(["Bharat Rozodkar"])
@@ -56,11 +63,12 @@ const [project_name, setproject_name] = useState("")
 const [start_date, setstart_date] = useState("")
 const [end_date, setend_date] = useState("")
 const [budget, setbudget] = useState(0)
+const navigate=useNavigate()
 var task = [
-  { name: "Business Development" },
-  { name: "Design" },
-  { name: "Marketing" },
-  { name: "Programming" }
+  { task_name: "Business Development" },
+  { task_name: "Design" },
+  { task_name: "Marketing" },
+  { task_name: "Programming" },
 ];
 
 console.log(start_date, end_date);
@@ -72,11 +80,12 @@ console.log(start_date, end_date);
     "Vacation",
   ];
 
-  const Submit_project=()=>{
+  const Submit_project = () => {
+    
     const team_data=[]
     for(var a=0;a<selected_team.length;a++){
       var obj={}
-      obj.name=selected_team[a]
+      obj.emp_name=selected_team[a]
      
       const indexof = team_names.indexOf(selected_team[a])
 
@@ -90,10 +99,16 @@ console.log(start_date, end_date);
       budget,
       task,
       end_date,
-      start_date,
+      date:start_date,
       team:team_data
     }
     console.log(data)
+    axios.post("http://localhost:8080/project", data,
+  {  headers: {
+     
+      "Authorization": `bearer ${token}`
+    }}
+    ).then((res) => { navigate("/projects") }).catch((e) => console.log(e, "err"))
   }
 
 const handleDeleteTeamMember=async(e)=>{
@@ -101,7 +116,7 @@ const handleDeleteTeamMember=async(e)=>{
   console.log(e.target.id,"jk")
       const temp = team_names;
       var indexOfTeam=-1
-      for (var a = 0; a < temp.length; a++) {
+      for (let a = 0; a < temp.length; a++) {
         // console.log(id,temp[a])
         if (temp[a] === id) {
           indexOfTeam = a;
@@ -112,7 +127,7 @@ const handleDeleteTeamMember=async(e)=>{
   await setteam(()=>temp)
   let index=-1
   var tempteam = selected_team
-  for (var a = 0; a < tempteam.length; a++) {
+  for (let a = 0; a < tempteam.length; a++) {
     if (temp[a] === id) {
       index = a;
       break;
@@ -178,8 +193,17 @@ const handleDeleteTeamMember=async(e)=>{
    await setteam(()=>[...team_names, first_name + " " + last_name])
   await  setcharge(()=>[...charge,0])
   }
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/client").then((res)=>setClientNames(res.data)).catch((e)=>console.log(e));
+  }, []);
+
+
   return (
     <div>
+      <Box marginTop={"50px"}>
+        <SecondaryNavbar />
+      </Box>
       <div className={new_project.new_prj_main}>
         <h1 className={new_project.new_prj_heading}>New project</h1>
         <hr></hr>
@@ -193,7 +217,9 @@ const handleDeleteTeamMember=async(e)=>{
                     className={new_project.new_prj_box2_right_1st_btn}
                     width={"90%"}
                   >
-                    {client_name.length>0?client_name: "Choose a client..."}
+                    {client_name.length > 0
+                      ? client_name
+                      : "Choose a client..."}
                     <Icon width={"40px"} as={IoIosArrowDown} />
                   </button>
                 </PopoverTrigger>
@@ -208,13 +234,14 @@ const handleDeleteTeamMember=async(e)=>{
                       type="text"
                       placeholder="Search by project or client"
                     ></input>
-                    {clientnames.map((elem) => {
+                    {   clientnames.length>0 &&   clientnames.map((elem) => {
                       return (
                         <p
-                          id={elem}
+                          id={elem.client_name}
+                          key={elem.client_name}
                           onClick={(e) => setclient_name(() => e.target.id)}
                         >
-                          {elem}
+                          {elem.client_name}
                         </p>
                       );
                     })}
@@ -226,7 +253,11 @@ const handleDeleteTeamMember=async(e)=>{
           <div className={new_project.new_prj_box2_row}>
             <p className={new_project.new_prj_box2_left}>Project name</p>
             <div className={new_project.new_prj_box2_right_2nd}>
-              <Input onChange={(e) => setproject_name(()=> e.target.value)} focusBorderColor="black" borderColor="gray.400" />
+              <Input
+                onChange={(e) => setproject_name(() => e.target.value)}
+                focusBorderColor="black"
+                borderColor="gray.400"
+              />
             </div>
           </div>
           <div className={new_project.new_prj_box2_row}>
@@ -236,7 +267,6 @@ const handleDeleteTeamMember=async(e)=>{
                 width={"20%"}
                 focusBorderColor="black"
                 borderColor="gray.400"
-                
               />
             </div>
           </div>
@@ -978,6 +1008,9 @@ const handleDeleteTeamMember=async(e)=>{
           <button className={new_project.new_prj_cancel_btn}>Cancel</button>
         </div>
       </div>
+      <Box >
+        <SecondaryFooter />
+      </Box>
     </div>
   );
 };

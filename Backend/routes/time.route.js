@@ -14,7 +14,7 @@ timeControl.post("/", async(req, res) => {
          await new_data.save()
         console.log(new_data,'new_data')
     
-      res.send("reached to the time post")
+        res.json({message:"data posted successfully"})
      } else {
          let newWorK=[]
          console.log(data.work, 'work')
@@ -34,7 +34,7 @@ timeControl.post("/", async(req, res) => {
 
              if (flag == false) {
                  console.log(data.work[i],'data wokk i fialing')
-                 newWorK.push({billable:data.work[i].billable, notbillable:data.work[i].notbillable, task:data.work[i].task })
+                 newWorK.push({billable:data.work[i].billable, notbillable:data.work[i].notbillable, task:data.work[i].task,charge:data.work[i].charge })
                  console.log(newWorK.at,'after push testing')
              }
               
@@ -59,7 +59,7 @@ timeControl.post("/", async(req, res) => {
 
 
          await TimeModel.updateOne({ week_number, project_name, client_name }, { $set: { "work": newWorK } })
-         res.send("reached to the time post")
+         res.json({message:"data posted successfully"})
     }
 
 })

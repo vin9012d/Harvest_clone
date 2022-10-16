@@ -1,5 +1,5 @@
 import { ArrowForwardIcon, SearchIcon } from "@chakra-ui/icons";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import React, { useEffect } from "react";
 import {
   Box,
@@ -16,19 +16,22 @@ import {
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import SecondaryNavbar from "./SecondaryNavbar";
+import SecondaryFooter from "./SecondaryFooter";
 export const Manage = () => {
   const [client_data, setClient_data] = useState([]);
-  // const token = useSelector((state) => state.authReducer.token);
+  const token = useSelector((store) => store.AuthReducer.token);
   // const { id } = useParams();
 
   // console.log(id);
+  const navigate=useNavigate()
 
   const getClientsdata = async () => {
     await fetch("http://localhost:8080/client", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        // token: `bearer ${token}`,
+        "Authorization": `bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -38,7 +41,8 @@ export const Manage = () => {
         setClient_data(res);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err, 'err');
+        navigate("/login")
       });
   };
 
@@ -47,6 +51,11 @@ export const Manage = () => {
   }, []);
 
   return (
+    <Box>
+      <Box mb='3.5rem'>
+        <SecondaryNavbar />
+      </Box>
+
     <Box style={{ width: "50%", margin: "auto" }}>
       <Box margin="30px 0px">
         <Heading>Client</Heading>
@@ -61,9 +70,9 @@ export const Manage = () => {
             borderRadius="10px"
             w="150px"
             h="40px"
-            bg="green"
+            bg="#008000"
           >
-            <Link to="/addclient">+ New Client</Link>
+            <Link to="/addclient"> + New Client </Link>
           </Box>
           <Box
           
@@ -88,17 +97,21 @@ export const Manage = () => {
               <option value="Import clients from CSV">
                 Import clients from CSV
               </option>
-              <option value="">Import contacts from CSV</option>
+                <option value="">Import contacts from CSV</option>
+                
               <option value="">___________</option>
-              <option value="">Export client to Excel</option>
-              <option value="">Export contacts to Excel</option>
-              <option value="">Export contacts to CSV</option>
+                <option value="">Export client to Excel</option>
+                
+                <option value="">Export contacts to Excel</option>
+                
+                <option value="">Export contacts to CSV</option>
+                
               <option value="">Export client to CSV</option>
              
             </Select>
           </Box>
         </Stack>
-        <Stack direction={["column", "row"]} spacing="24px">
+        <Stack direction= {["column", "row"]}  spacing="24px">
           <Box
            
             border="1px solid"
@@ -106,10 +119,12 @@ export const Manage = () => {
             padding="7.5px"
             borderRadius="11px"
             w="200px"
-            h="42px"
+            h="40px"
             color="black"
-          >
-            View Archieved clients
+            >
+              
+
+            View Archieved Clients
             <ArrowForwardIcon marginLeft="5px" />
 
           </Box>
@@ -121,7 +136,7 @@ export const Manage = () => {
 
         <InputGroup border="none">
           <InputLeftElement
-            pointerEvents="none"
+          
             children={<SearchIcon color="black" />}
           />
           <Input type="text" placeholder="Filter by client or contact" />
@@ -134,7 +149,7 @@ export const Manage = () => {
           marginTop="20px"
           bg="#efefef"
           key={ind}
-            border="1px solid grey"
+            border="#efefef"
             borderLeft="none"
             borderRight="none"
             height="50px"
@@ -148,7 +163,7 @@ export const Manage = () => {
                   style={{
                     borderRadius: "5px",
                     background: "white",
-                    border: "1px solid grey",
+                    border: "1px solid black",
                     padding: "0px 7px",
                    
                   }}
@@ -176,7 +191,12 @@ export const Manage = () => {
           </Box>
         ))}
       </Box>
-    </Box>
+      </Box>
+
+      <Box>
+        <SecondaryFooter />
+      </Box>
+      </Box>
   );
 };
 

@@ -28,7 +28,7 @@ console.log(data,'data')
           
               return <Box key={ind}>
                    
-                  <Box textAlign='left' p="3"  backgroundColor="#efefef"> {item.date} vinod m chaudhari</Box>
+                  <Box textAlign='left' p="3"  backgroundColor="#efefef"> {item.date} </Box>
                      <Box>
                       <Teamworkrow data={item.works} />
                      

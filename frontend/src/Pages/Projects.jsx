@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Popover,
   PopoverArrow,
@@ -9,19 +10,37 @@ import {
   PopoverTrigger,
   Progress,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import project_page from "../module.css/projects.module.css";
 import { Icon } from "@chakra-ui/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { SearchIcon, SmallAddIcon } from "@chakra-ui/icons";
+import SecondaryNavbar from "./SecondaryNavbar";
+import SecondaryFooter from "./SecondaryFooter";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 const Projects = () => {
+  const [data, setdata] = useState([])
+  console.log(data)
+  const navigte=useNavigate()
+  const handleclick=()=>{
+    navigte("/new_project");
+  }
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/project").then((res)=>setdata(()=>res.data)).catch((e)=>console.log(e));
+  }, []);
   return (
     <div>
+      <Box marginTop={"50px"}>
+        <SecondaryNavbar />
+      </Box>
       <div className={project_page.second_navbar_parent}>
         <div className={project_page.second_navbar}>
           <div className={project_page.second_navbar_left}>
-            <button className={project_page.new_prj_btn}>
+            <button onClick={handleclick} className={project_page.new_prj_btn}>
               <SmallAddIcon width={"20px"} height={"20px"} />
               New Project
             </button>
@@ -82,7 +101,7 @@ const Projects = () => {
                 <PopoverContent width="250px">
                   <PopoverArrow />
                   <PopoverBody className={project_page.manager_fltr_con}>
-                    <p>Active Projects</p>
+                    <p>All clients</p>
                     <h3 className={project_page.client_filter_head}>
                       Active Clients
                     </h3>
@@ -131,58 +150,77 @@ const Projects = () => {
                 <td width={"120px"}></td>
               </thead>
               <tbody>
-                <tr className={project_page.prj_nm_tr}>
-                  <td></td>
-                  <td>Example client</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <input className={project_page.input_box} type="checkbox" />
-                  </td>
-                  <td className={project_page.cl_name}>Example Project</td>
-                  <td>50</td>
-                  <td>
-                    <div className={project_page.td_spent}>
-                      5 <Progress value={5} />
-                    </div>
-                  </td>
-                  <td>45</td>
-                  <td>$0.00</td>
-                  <td>
-                    <Popover>
-                      <PopoverTrigger>
-                        <button
-                          className={project_page.action_btn}
-                          backgroundColor={"red"}
-                          border={"1px solid black"}
-                        >
-                          Actions <Icon width={"40px"} as={IoIosArrowDown} />
-                        </button>
-                      </PopoverTrigger>
-                      <PopoverContent width="120px">
-                        <PopoverArrow />
-                        <PopoverBody className={project_page.actions_opt2}>
-                          <p>Edit</p>
-                          <p>Pin</p>
-                          <p>Duplicate</p>
-                          <hr className={project_page.act_hr}></hr>
-                          <p>Archieve</p>
-                          <p>Delete</p>
-                        </PopoverBody>
-                      </PopoverContent>
-                    </Popover>
-                  </td>
-                </tr>
+                {data.length > 0 &&
+                  data.map((item, ind) => (
+                    <>
+                      {" "}
+                      <tr className={project_page.prj_nm_tr} key={ind}>
+                        <td></td>
+                        <td>{item.client_name}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input
+                            className={project_page.input_box}
+                            type="checkbox"
+                          />
+                        </td>
+                        <td className={project_page.cl_name}>
+                        {item.project_name}
+                        </td>
+                        <td>{item.budget}</td>
+                        <td>
+                          <div className={project_page.td_spent}>
+                            5 <Progress value={5} />
+                          </div>
+                        </td>
+                        <td>45</td>
+                        <td>$0.00</td>
+                        <td>
+                          <Popover>
+                            <PopoverTrigger>
+                              <button
+                                className={project_page.action_btn}
+                                backgroundColor={"red"}
+                                border={"1px solid black"}
+                              >
+                                Actions{" "}
+                                <Icon width={"40px"} as={IoIosArrowDown} />
+                              </button>
+                            </PopoverTrigger>
+                            <PopoverContent width="120px">
+                              <PopoverArrow />
+                              <PopoverBody
+                                className={project_page.actions_opt2}
+                              >
+                                <p>Edit</p>
+                                <p>Pin</p>
+                                <p>Duplicate</p>
+                                <hr className={project_page.act_hr}></hr>
+                                <p>Archieve</p>
+                                <p>Delete</p>
+                              </PopoverBody>
+                            </PopoverContent>
+                          </Popover>
+                        </td>
+                      </tr>
+                    </>
+                  ))}
+            
+             
               </tbody>
             </table>
           </div>
         </div>
       </div>
+      <Box marginTop={"20%"}>
+        <SecondaryFooter />
+      </Box>
     </div>
   );
 };

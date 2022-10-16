@@ -2,7 +2,7 @@ import { Box, Tr } from '@chakra-ui/react'
 import React from 'react'
 import { TableColumn } from './TableColumn';
 
-export const TableRow = ({data}) => {
+export const TableRow = ({data,name}) => {
 
     const values = Object.values(data);
     console.log(data,'data')
@@ -16,7 +16,7 @@ const heading = Object.keys(data);
       }}>          {values.map((item,id) => {
            
                   
-          return <>    <TableColumn objkey={heading[id]} key={id} Values={item}  />
+          return <>    <TableColumn objkey={heading[id]} key={id} name={name} Values={item}  />
           
           </>  
           })}

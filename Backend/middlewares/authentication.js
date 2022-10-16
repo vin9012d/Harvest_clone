@@ -1,20 +1,28 @@
-const jwt = require("jsonwebtoken");
-
+var jwt = require('jsonwebtoken');
+require("dotenv").config();
 const authentication = (req, res, next) => {
-  const token = req.headers?.authentication?.split(" ")[1];
-
-  if (token) {
+ 
+    console.log(req.body)
+    
+    console.log(req.headers.authorization)
+    if (!req.headers.authorization) {
+    res.send("Please login again")
+}
+    const token = req.headers?.authorization?.split(" ")[1]    
+    
     jwt.verify(token, process.env.SECRET_KEY, function (err, decoded) {
       if (err) {
-        return res.redirect("/login");
-      } else {
-        console.log(decoded);
-        next();
-      }
+        return res.redirect("/login")
+          
+        } else {
+            
+            next()
+        }
     });
-  } else {
-    return res.redirect("/login");
-  }
-};
+      
+}
 
-module.exports = { authentication };
+
+module.exports = {
+    authentication
+}

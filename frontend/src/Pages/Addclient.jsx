@@ -1,15 +1,15 @@
 import React from "react";
-import { Box, Heading, Input, Select, Text, Textarea } from "@chakra-ui/react";
+import { Box, Button, Heading, Input, Select, Text, Textarea } from "@chakra-ui/react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import SecondaryNavbar from "./SecondaryNavbar";
+import SecondaryFooter from "./SecondaryFooter";
 export const AddClient = () => {
   const navigate = useNavigate();
 //   const token = useSelector((state) => state.authReducer.token);
-  const [client_name, setClient] = useState("");
-  const [address, setAddress] = useState("");
-    const [currency, setCurr] = useState("");
+  
     const [payload, setPayload] = useState({client_name:"",address:""})
     const handlePayload = (e) => {
 
@@ -41,17 +41,26 @@ export const AddClient = () => {
     navigate("/client");
   };
   return (
-    <Box style={{ width: "50%", margin: "auto", marginTop: "50px" }}>
-      <Box>
-        <Heading>New Client</Heading>
+    <Box>
+          <Box mb='3.5rem'>
+        <SecondaryNavbar />
+      </Box>
+    <Box style={{ width: "80%", margin: "auto", marginTop: "3.5rem" }}>
+        <Box>
+          
+          <Heading>New Client</Heading>
+          
         <Text>
           Once you’ve added a client, you can add projects and contacts.
-        </Text>
+          </Text>
+          
       </Box>
       <Box>
         <hr />
       </Box>
-      <Box display="flex" justifyContent="space-between" marginTop="50px">
+        <Box display="flex" justifyContent="space-between" marginTop="50px">
+          
+
         <Text padding="5px" color="black" fontWeight="600">
           Client Name
         </Text>
@@ -62,14 +71,20 @@ export const AddClient = () => {
         />
       </Box>
       <Box display="flex" justifyContent="space-between" marginTop="20px">
-        <Text padding="5px" color="black" fontWeight="600" 
+
+
+        <Text padding="5px" color="black"
+          fontWeight="600" 
           >
           Address
         </Text>
         <Textarea
+           onChange={handlePayload}
           width="70%"
-          name='address'   value={payload.address}
-          onChange={handlePayload}
+          name='address'
+          
+          value={payload.address}
+         
         ></Textarea>
       </Box>
       <Box display="flex" justifyContent="space-between" marginTop="20px">
@@ -79,45 +94,54 @@ export const AddClient = () => {
         <Select
           width="70%"
           placeholder=" Choose Currency"
-          onChange={(e) => setCurr(e.target.value)}
+          
         >
           <option value={"Euro - EUR"}>Euro - EUR</option>
           <option value={"United States Dollor - USD"}>
             United States Dollor - USD
           </option>
           <option value={"British Pount - GBP"}>British Pount - GBP</option>
+
+
           <option value={"Indian Rupee - INR"}>Indian Rupee - INR</option>
           <option value={"Australian Dolar - AUD"}>
             Australian Dolar - AUD
           </option>
-          <option value={"Canedian Dollar -CAD"}>Canedian Dollar -CAD</option>
+         
         </Select>
       </Box>
       <Box display="flex" justifyContent="center" marginTop="20px" gap="10px">
-        <button
+        <Button
           style={{
             background: "green",
             color: "white",
             padding: "8px",
             fontWeight: "bold",
+
+
             borderRadius: "10px",
           }}
           onClick={addclient}
         >
           Save client
-        </button>
-        <button
+        </Button>
+        <Button
           style={{
             border: "1px solid",
             padding: "8px",
             fontWeight: "bold",
+
             borderRadius: "10px",
           }}
           onClick={canceladd}
         >
           Cancel
-        </button>
+        </Button>
       </Box>
-    </Box>
+      </Box>
+      <Box>
+        <SecondaryFooter />
+      </Box>
+      </Box>
   );
 };
