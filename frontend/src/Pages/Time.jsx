@@ -1,5 +1,5 @@
 import { Icon, SmallAddIcon } from '@chakra-ui/icons';
-import {Input, background, Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Select, Tab, useDisclosure, TabList, Tabs, TabPanels, TabPanel, Text } from '@chakra-ui/react';
+import {Input, background, Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Select, Tab, useDisclosure, TabList, Tabs, TabPanels, TabPanel, Text,useToast } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { IoIosArrowDown } from 'react-icons/io';
 import { Counter } from '../Components/counter';
@@ -47,6 +47,7 @@ else{
 export const Time = () => {
     const token = useSelector((store) => store.AuthReducer.token);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast=useToast()
   const [project_name,setProject_names]=useState([])
   const [selected_project, setselected_project] = useState("");
   const [tasks, settasks] = useState([])
@@ -55,7 +56,9 @@ export const Time = () => {
   const [week, setweek] = useState({day1:[],day2:[],day3:[],day4:[],day5:[],day6:[],day7:[]})
   const [isClockRunning, setisClockRunning] = useState(false)
   const [selectedTime, setselectedTime] = useState("0") 
-  const [project_data, setproject_data] = useState([]);    
+  const [project_data, setproject_data] = useState([]);  
+  const [team_name, setTeam_name] = useState("")
+  const [budget,setBudget]=useState(0)
   //  console.log(tasks,"task");
 
   useEffect(() => {
@@ -76,8 +79,13 @@ axios.get("https://mysterious-ridge-11647.herokuapp.com/project",{
       }
     }
     console.log(count)
-    console.log(project_data[count].task,"hello");
- settasks(() => project_data[count].task);
+    console.log(project_data[count].task, "hello");
+    console.log(project_data[count],'selected project')
+    settasks(() => project_data[count].task);
+    console.log(project_data[count],'sample project')
+  
+    setTeam_name(project_data[count].team[0].emp_name)
+    setBudget(project_data[count].budget)
   }
 const handleSubmitWeek=()=>{
   var work = [];
@@ -92,18 +100,21 @@ const handleSubmitWeek=()=>{
       notbillable: 0,
       task: arr[a].task,
       charge: 5,
+      
     };
     work.push(tempwork);
   }
+console.log(week.day1[0],'day1 0')
 
   var data = {
     project_name: week.day1[0].project,
     client_name: week.day1[0].client,
     week_number: "Week 1",
-    emp_name: "Bharat Rozodkar",
+    emp_name: team_name,
     work: work,
+    budget:budget
   };
-  console.log(data);
+  console.log(data,'vinod data');
   
   axios
     .post("https://mysterious-ridge-11647.herokuapp.com/time", data, {
@@ -111,7 +122,16 @@ const handleSubmitWeek=()=>{
         authorization: `bearer ${token}`,
       }
     })
-    .then((r) => console.log(r.data))
+    .then((r) => {
+      toast({
+        title: 'Data submitted.',
+        description: "Working hour is submited successfully.",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
+      console.log(r.data)
+    })
     .catch((err) => console.log(err));
 
 }

@@ -79,8 +79,6 @@ res.json({message:"Reached"})
 
 })
 
-
-
 clientControl.delete("/contact",authentication, async(req, res) => {
     
     const payload = req.body;

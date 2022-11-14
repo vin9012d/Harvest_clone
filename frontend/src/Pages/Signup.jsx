@@ -19,6 +19,12 @@ import {
   Input,
   Text,
   useMediaQuery,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  useToast
+
 } from "@chakra-ui/react";
 
 
@@ -34,6 +40,7 @@ const initState = {
 const Signup = () => {
   const [formData, setFormData] = useState(initState);
   const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -45,25 +52,15 @@ const Signup = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    dispatch(signup(formData)).then((r) => {
-      if (r.type === "SIGNUP_SUCCESS" && r.status === true) {
-        return navigate("/login");
-      } else if (r.type === "SIGNUP_SUCCESS" && r.status === false) {
-        alert("User Already Registerd, please login ");
-      }
-    });
-
-    setFormData({ ...initState });
-  };
+  const toast = useToast()
+  
 
   useEffect(() => {
     document.title = "Sign up for Harvest";
   }, []);
 
   return (
+<>
 
     <Box
       className={styles.signupContainer}
@@ -135,7 +132,42 @@ const Signup = () => {
             </Text>
           </Box>
           <Box fontWeight="700" color="#393838f6">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => {
+              
+       e.preventDefault();
+    
+          
+     
+              dispatch(signup(formData)).then((r) => {
+              
+                if (r.type === "SIGNUP_SUCCESS" && r.status === true) {
+                
+                  
+        toast({
+          title: 'Account created.',
+          description: "We've created your account for you.",
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+        })
+        return navigate("/login");
+                } else if (r.type === "SIGNUP_SUCCESS" && r.status === false) {
+                 
+        toast({
+          title: 'User Allredy Exist',
+          description: "Please sign in",
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        })
+      }
+    });
+
+    setFormData({ ...initState });
+
+            }}
+            
+            >
               <Flex
                 direction={isSmallerThan768 ? "column" : "row"}
                 justifyContent="space-between"
@@ -310,7 +342,8 @@ const Signup = () => {
           </Box>
         </Box>
       </Container>
-    </Box>
+      </Box>
+      </>
   );
 };
 

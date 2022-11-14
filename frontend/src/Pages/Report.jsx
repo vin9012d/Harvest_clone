@@ -107,7 +107,7 @@ export const Report = () => {
       let Total = 0;
 
       if (obj[res[i].project_name] == undefined) {
-        obj[res[i].project_name]={hours:0,billable:0,notbillable:0,total:0}
+        obj[res[i].project_name]={hours:0, billable:0,notbillable:0,total:0}
       }
   
       for(let j = 0; j < res[i].work.length; j++) {
@@ -157,6 +157,7 @@ let vinu=[]
       obj[res[i].client_name].notbillable = obj[res[i].client_name].notbillable + Notbillable;
       obj[res[i].client_name].hours = obj[res[i].client_name].notbillable + obj[res[i].client_name].billable;
       obj[res[i].client_name].total = obj[res[i].client_name].total + Total;
+      
     }
 let vinu=[]
     for (let key in obj) {
@@ -186,7 +187,7 @@ let vinu=[]
       let Total = 0;
         
         if (obj[vin.task] == undefined) {
-          obj[vin.task]={ hours:0,billable:0,notbillable:0,total:0}
+          obj[vin.task]={ hours:0 ,billable:0,notbillable:0,total:0}
         }
         
         console.log(vin,'vin')
@@ -202,6 +203,7 @@ let vinu=[]
         
         
           obj[vin.task].total = obj[vin.task].total + Total;
+        
     
       }
 
@@ -242,6 +244,7 @@ let vinu=[]
       obj[res[i].emp_name].hours= obj[res[i].emp_name].notbillable+obj[res[i].emp_name].billable
 
       obj[res[i].emp_name].total = obj[res[i].emp_name].total + Total;
+     
     }
 let vinu=[]
     for (let key in obj) {

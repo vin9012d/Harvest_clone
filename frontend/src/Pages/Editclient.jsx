@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Button, Flex, Heading, Input, Select, Text, Textarea } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SecondaryFooter from "./SecondaryFooter";
 import SecondaryNavbar from "./SecondaryNavbar";
+import { getClientsData } from "../Redux/AppReducer/action";
+import { useEffect } from "react";
 export const EditClient = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   // const token = useSelector((state) => state.authReducer.token);
   const token = useSelector((store) => store.AuthReducer.token);
+  const { isLoading, data } = useSelector((store) => store.AppReducer);
   const [client_name, setClient] = useState("");
   const [address, setAddress] = useState("");
  
@@ -32,6 +36,7 @@ export const EditClient = () => {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
+        dispatch(getClientsData())
         navigate("/manages");
       })
       .catch((err) => {
@@ -39,7 +44,7 @@ export const EditClient = () => {
       });
   };
   const canceladd = () => {
-    navigate("/manage/client");
+    navigate("/manages")
   };
 
   const deleteClient = async () => {
@@ -50,11 +55,31 @@ export const EditClient = () => {
         "Authorization": `bearer ${token}`
       },
     })
-      .then((res) => navigate("/manages"))
+      .then((res) => {
+        dispatch(getClientsData())
+        navigate("/manages")
+      })
       .catch((err) => {
         console.log(err);
       });
   };
+  
+  useEffect(() => {
+    if (data.length == 0) {
+      dispatch(getClientsData())
+    }
+    
+  }, [])
+  useEffect(() => {
+    if (data.length > 0) {
+      let filtered = data.find((ele) => {
+        return ele._id==edit_id
+      })
+
+      setClient(filtered.client_name)
+    }
+    
+  },[data])
 
   
   return (

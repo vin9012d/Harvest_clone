@@ -6,6 +6,7 @@ const timeSchema = mongoose.Schema({
     client_name: String,
     week_number: String,
     emp_name: String,
+    budget:Number,
     work:[{billable:Number,notbillable:Number,task:String,charge:Number}] 
     
 })

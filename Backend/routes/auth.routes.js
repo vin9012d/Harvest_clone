@@ -19,7 +19,7 @@ router.post("/signup", async (req, res) => {
     });
   }
 
-  bcrypt.hash(password, 8, async function (err, hash) {
+  bcrypt.hash(password, 2, async function (err, hash) {
     if (err) {
       return res
         .status(500)
@@ -55,18 +55,23 @@ console.log("login come baba a")
   console.log(email, password, 'email password')
   console.log("vinod1")
 
-  const user = await UserModel.find({ email });
+  const user = await UserModel.findOne({ email });
   console.log(user,'user')
-  const hash = user[0]?.password;
-  console.log(hash,'hash', user.length)
-
-  if (user.length === 1) {
- 
-   bcrypt.compare(password, hash, function (err, results) {
-      if (err) {
+  if (user == null) {
+    res
+    .status(401)
+    .send({ message: "No user found"});
+  } else {
+    const hash = user.password;
+    console.log("user1")
+    bcrypt.compare(password, hash, function (err, results) {
+     console.log("user 5")
+     if (err) {
+        console.log("user2")
         console.log(err,'results')
         return res.status(400).send({ message: "Invalid Credentials" });
-      } else if (results) {
+      } else {
+        console.log("use3")
         console.log(results,'results')
         var token= jwt.sign({ email }, process.env.SECRET_KEY, {
           expiresIn: "2d",
@@ -78,14 +83,23 @@ console.log("login come baba a")
           .send({ message: "Login Successfully", status: results, token });
       }
     });
-  } else {
-    
-    res
-    .status(401)
-    .send({ message: "Login Successfully"});
   }
+ 
 
-  console.log("before return failure;")
+
+
+  
+
+  
+  
+   
+
+
+ 
+ 
+
+
+
 
   
   });

@@ -3,13 +3,15 @@ import { Box, Button, Heading, Input, Select, Text, Textarea } from "@chakra-ui/
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SecondaryNavbar from "./SecondaryNavbar";
 import SecondaryFooter from "./SecondaryFooter";
+import { getClientsData } from "../Redux/AppReducer/action";
 export const AddClient = () => {
   const navigate = useNavigate();
 //   const token = useSelector((state) => state.authReducer.token);
-const token = useSelector((store) => store.AuthReducer.token);
+  const token = useSelector((store) => store.AuthReducer.token);
+  const dispatch=useDispatch()
   
     const [payload, setPayload] = useState({client_name:"",address:""})
     const handlePayload = (e) => {
@@ -32,6 +34,7 @@ const token = useSelector((store) => store.AuthReducer.token);
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
+        dispatch(getClientsData())
         navigate("/manages");
       })
       .catch((err) => {
@@ -39,7 +42,7 @@ const token = useSelector((store) => store.AuthReducer.token);
       });
   };
   const canceladd = () => {
-    navigate("/client");
+    navigate("/manages")
   };
   return (
     <Box>

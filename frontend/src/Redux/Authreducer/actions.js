@@ -17,6 +17,7 @@ export const signup = (payload) => (dispatch) => {
 };
 
 export const login = (params) => (dispatch) => {
+  console.log("Login start")
   dispatch({ type: types.LOGIN_REQUEST });
   return axios
     .post("https://mysterious-ridge-11647.herokuapp.com/auth/login", params)

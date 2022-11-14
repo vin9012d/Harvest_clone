@@ -15,47 +15,44 @@ import {
 } from "@chakra-ui/react";
 
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SecondaryNavbar from "./SecondaryNavbar";
 import SecondaryFooter from "./SecondaryFooter";
+import { Loader } from "../Components/Loader";
+import { getClientsData } from "../Redux/AppReducer/action";
+
 export const Manage = () => {
-  const [client_data, setClient_data] = useState([]);
-  const token = useSelector((store) => store.AuthReducer.token);
+  
+  const { isLoading, data } = useSelector((store) => store.AppReducer);
+  console.log(isLoading,'isLoading')
+  const [client_data, setClient_data] = useState(data || []);
+  const dispatch=useDispatch()
   // const { id } = useParams();
 
   // console.log(id);
   const navigate=useNavigate()
 
   const getClientsdata = async () => {
-    await fetch("https://mysterious-ridge-11647.herokuapp.com/client", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-
-        setClient_data(res);
-      })
-      .catch((err) => {
-        console.log(err, 'err');
-        navigate("/login")
-      });
+    dispatch(getClientsData())
   };
 
   useEffect(() => {
-    getClientsdata();
-  }, []);
+    if (data.length == 0) {
+      getClientsdata().then((res) => {
+        console.log(res,'manage then condition')
+      })
+  
+    }
+    setClient_data(data)
+  }, [data]);
 
   return (
     <Box>
+    
       <Box mb='3.5rem'>
         <SecondaryNavbar />
       </Box>
-
+    {  isLoading && <Loader />}
     <Box style={{ width: "50%", margin: "auto" }}>
       <Box margin="30px 0px">
         <Heading>Client</Heading>

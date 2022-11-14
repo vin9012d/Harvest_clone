@@ -9,6 +9,7 @@ import {
   Icon,
   Input,
   Text,
+  useToast
 } from "@chakra-ui/react";
 import { ReactComponent as IconHarvest } from "../assets/IconHarvest.svg";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,10 +20,12 @@ import { login } from "../Redux/Authreducer/actions";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const toast = useToast()
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
+    console.log("vinod in ogin enter")
     e.preventDefault();
     const payload = {
       email,
@@ -34,11 +37,38 @@ export const Login = () => {
       if (r.type === "LOGIN_SUCCESS") {
         setEmail("");
         setPassword("");
-        localStorage.setItem("name",JSON.stringify(email))
+        localStorage.setItem("name", JSON.stringify(email))
+        localStorage.setItem("token",JSON.stringify(r.token) )
+        toast({
+          title: 'Successfull logged in.',
+          description: "You are successully authenticated.",
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+        })
         
         navigate("/manages")
+      } else {
+        console.log("vinod in login")
+        toast({
+          title: 'Invalid credential.',
+          description: "Please enter right email and passwotd to login.",
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        })
+
       }
-    }); 
+    }).catch((err) => {
+      console.log(err,'err')
+      toast({
+        title: 'Account created.',
+        description: "We've created your account for you.",
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      })
+    })
   };
 
 
