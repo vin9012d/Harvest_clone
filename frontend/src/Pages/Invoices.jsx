@@ -197,7 +197,6 @@ export const Invoices = () => {
                             Next step
                           </Button>
                           <Button
-                            allowtoggle
                             border="1px solid gray"
                             bg="white"
                             h="2rem"
